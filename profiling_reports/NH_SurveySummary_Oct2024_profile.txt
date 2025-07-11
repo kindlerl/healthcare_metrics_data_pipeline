@@ -1,0 +1,159 @@
+=== File: NH_SurveySummary_Oct2024.csv ===
+
+Shape: (44243, 41)
+
+
+--- First 5 Rows ---
+
+CMS Certification Number (CCN)                  Provider Name       Provider Address    City/Town State  ZIP Code  Inspection Cycle Health Survey Date Fire Safety Survey Date  Total Number of Health Deficiencies  Total Number of Fire Safety Deficiencies  Count of Freedom from Abuse and Neglect and Exploitation Deficiencies  Count of Quality of Life and Care Deficiencies  Count of Resident Assessment and Care Planning Deficiencies  Count of Nursing and Physician Services Deficiencies  Count of Resident Rights Deficiencies  Count of Nutrition and Dietary Deficiencies  Count of Pharmacy Service Deficiencies  Count of Environmental Deficiencies  Count of Administration Deficiencies  Count of Infection Control Deficiencies  Count of Emergency Preparedness Deficiencies  Count of Automatic Sprinkler Systems Deficiencies  Count of Construction Deficiencies  Count of Services Deficiencies  Count of Corridor Walls and Doors Deficiencies  Count of Egress Deficiencies  Count of Electrical Deficiencies  Count of Emergency Plans and Fire Drills Deficiencies  Count of Fire Alarm Systems Deficiencies  Count of Smoke Deficiencies  Count of Interior Deficiencies  Count of Gas and Vacuum and Electrical Systems Deficiencies  Count of Hazardous Area Deficiencies  Count of Illumination and Emergency Power Deficiencies  Count of Laboratories Deficiencies  Count of Medical Gases and Anaesthetizing Areas Deficiencies  Count of Smoking Regulations Deficiencies  Count of Miscellaneous Deficiencies                                   Location Processing Date
+                        015009       BURNS NURSING HOME, INC.   701 MONROE STREET NW RUSSELLVILLE    AL     35653                 1         2023-03-02              2023-02-15                                    4                                       6.0                                                                      0                                               1                                                            1                                                     0                                      0                                            0                                       0                                    0                                     1                                        1                                           0.0                                                0.0                                 0.0                             1.0                                             0.0                           1.0                               0.0                                                    0.0                                       0.0                          4.0                             0.0                                                          0.0                                   0.0                                                     0.0                                 0.0                                                           0.0                                        0.0                                  0.0 701 MONROE STREET NW,RUSSELLVILLE,AL,35653      2024-10-01
+                        015009       BURNS NURSING HOME, INC.   701 MONROE STREET NW RUSSELLVILLE    AL     35653                 2         2019-08-21              2019-08-21                                    2                                       0.0                                                                      0                                               0                                                            0                                                     0                                      1                                            0                                       0                                    0                                     0                                        1                                           0.0                                                0.0                                 0.0                             0.0                                             0.0                           0.0                               0.0                                                    0.0                                       0.0                          0.0                             0.0                                                          0.0                                   0.0                                                     0.0                                 0.0                                                           0.0                                        0.0                                  0.0 701 MONROE STREET NW,RUSSELLVILLE,AL,35653      2024-10-01
+                        015009       BURNS NURSING HOME, INC.   701 MONROE STREET NW RUSSELLVILLE    AL     35653                 3         2018-08-01              2018-08-09                                    1                                       2.0                                                                      0                                               0                                                            0                                                     0                                      0                                            0                                       0                                    0                                     0                                        1                                           0.0                                                0.0                                 0.0                             0.0                                             0.0                           2.0                               0.0                                                    0.0                                       0.0                          0.0                             0.0                                                          0.0                                   0.0                                                     0.0                                 0.0                                                           0.0                                        0.0                                  0.0 701 MONROE STREET NW,RUSSELLVILLE,AL,35653      2024-10-01
+                        015010 COOSA VALLEY HEALTHCARE CENTER 260 WEST WALNUT STREET    SYLACAUGA    AL     35150                 1         2022-04-09              2022-04-13                                    0                                       3.0                                                                      0                                               0                                                            0                                                     0                                      0                                            0                                       0                                    0                                     0                                        0                                           0.0                                                0.0                                 0.0                             0.0                                             0.0                           1.0                               0.0                                                    0.0                                       0.0                          2.0                             0.0                                                          0.0                                   0.0                                                     0.0                                 0.0                                                           0.0                                        0.0                                  0.0  260 WEST WALNUT STREET,SYLACAUGA,AL,35150      2024-10-01
+                        015010 COOSA VALLEY HEALTHCARE CENTER 260 WEST WALNUT STREET    SYLACAUGA    AL     35150                 2         2019-06-13              2019-06-18                                    1                                       4.0                                                                      0                                               0                                                            0                                                     0                                      0                                            0                                       0                                    0                                     0                                        1                                           0.0                                                0.0                                 0.0                             0.0                                             0.0                           0.0                               0.0                                                    0.0                                       0.0                          3.0                             0.0                                                          0.0                                   0.0                                                     0.0                                 0.0                                                           0.0                                        0.0                                  1.0  260 WEST WALNUT STREET,SYLACAUGA,AL,35150      2024-10-01
+
+
+--- Column Info ---
+
+CMS Certification Number (CCN)                                            object
+Provider Name                                                             object
+Provider Address                                                          object
+City/Town                                                                 object
+State                                                                     object
+ZIP Code                                                                   int64
+Inspection Cycle                                                           int64
+Health Survey Date                                                        object
+Fire Safety Survey Date                                                   object
+Total Number of Health Deficiencies                                        int64
+Total Number of Fire Safety Deficiencies                                 float64
+Count of Freedom from Abuse and Neglect and Exploitation Deficiencies      int64
+Count of Quality of Life and Care Deficiencies                             int64
+Count of Resident Assessment and Care Planning Deficiencies                int64
+Count of Nursing and Physician Services Deficiencies                       int64
+Count of Resident Rights Deficiencies                                      int64
+Count of Nutrition and Dietary Deficiencies                                int64
+Count of Pharmacy Service Deficiencies                                     int64
+Count of Environmental Deficiencies                                        int64
+Count of Administration Deficiencies                                       int64
+Count of Infection Control Deficiencies                                    int64
+Count of Emergency Preparedness Deficiencies                             float64
+Count of Automatic Sprinkler Systems Deficiencies                        float64
+Count of Construction Deficiencies                                       float64
+Count of Services Deficiencies                                           float64
+Count of Corridor Walls and Doors Deficiencies                           float64
+Count of Egress Deficiencies                                             float64
+Count of Electrical Deficiencies                                         float64
+Count of Emergency Plans and Fire Drills Deficiencies                    float64
+Count of Fire Alarm Systems Deficiencies                                 float64
+Count of Smoke Deficiencies                                              float64
+Count of Interior Deficiencies                                           float64
+Count of Gas and Vacuum and Electrical Systems Deficiencies              float64
+Count of Hazardous Area Deficiencies                                     float64
+Count of Illumination and Emergency Power Deficiencies                   float64
+Count of Laboratories Deficiencies                                       float64
+Count of Medical Gases and Anaesthetizing Areas Deficiencies             float64
+Count of Smoking Regulations Deficiencies                                float64
+Count of Miscellaneous Deficiencies                                      float64
+Location                                                                  object
+Processing Date                                                           object
+
+
+--- Duplicate Columns ---
+
+None
+
+
+--- Duplicate Rows ---
+
+None
+
+
+--- Missing Values ---
+
+CMS Certification Number (CCN)                                            0
+Provider Name                                                             0
+Provider Address                                                          0
+City/Town                                                                 0
+State                                                                     0
+ZIP Code                                                                  0
+Inspection Cycle                                                          0
+Health Survey Date                                                        0
+Fire Safety Survey Date                                                  33
+Total Number of Health Deficiencies                                       0
+Total Number of Fire Safety Deficiencies                                 33
+Count of Freedom from Abuse and Neglect and Exploitation Deficiencies     0
+Count of Quality of Life and Care Deficiencies                            0
+Count of Resident Assessment and Care Planning Deficiencies               0
+Count of Nursing and Physician Services Deficiencies                      0
+Count of Resident Rights Deficiencies                                     0
+Count of Nutrition and Dietary Deficiencies                               0
+Count of Pharmacy Service Deficiencies                                    0
+Count of Environmental Deficiencies                                       0
+Count of Administration Deficiencies                                      0
+Count of Infection Control Deficiencies                                   0
+Count of Emergency Preparedness Deficiencies                             33
+Count of Automatic Sprinkler Systems Deficiencies                        33
+Count of Construction Deficiencies                                       33
+Count of Services Deficiencies                                           33
+Count of Corridor Walls and Doors Deficiencies                           33
+Count of Egress Deficiencies                                             33
+Count of Electrical Deficiencies                                         33
+Count of Emergency Plans and Fire Drills Deficiencies                    33
+Count of Fire Alarm Systems Deficiencies                                 33
+Count of Smoke Deficiencies                                              33
+Count of Interior Deficiencies                                           33
+Count of Gas and Vacuum and Electrical Systems Deficiencies              33
+Count of Hazardous Area Deficiencies                                     33
+Count of Illumination and Emergency Power Deficiencies                   33
+Count of Laboratories Deficiencies                                       33
+Count of Medical Gases and Anaesthetizing Areas Deficiencies             33
+Count of Smoking Regulations Deficiencies                                33
+Count of Miscellaneous Deficiencies                                      33
+Location                                                                  0
+Processing Date                                                           0
+
+
+--- Describe (transposed) ---
+
+                                                                         count unique                                      top   freq          mean           std    min      25%      50%      75%      max
+CMS Certification Number (CCN)                                           44243  14814                                   745006      3           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Provider Name                                                            44243  14622                     MILLER'S MERRY MANOR     36           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Provider Address                                                         44243  14786                   15823 SO. WESTERN AVE.      6           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+City/Town                                                                44243   5140                                  CHICAGO    234           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+State                                                                    44243     53                                       TX   3540           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+ZIP Code                                                               44243.0    NaN                                      NaN    NaN  50343.171101  26889.659615  660.0  29720.0  48603.0  73048.0  99929.0
+Inspection Cycle                                                       44243.0    NaN                                      NaN    NaN      1.996768      0.816356    1.0      1.0      2.0      3.0      3.0
+Health Survey Date                                                       44243   2076                               2023-11-16    127           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Fire Safety Survey Date                                                  44210   2095                               2024-04-16     80           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Total Number of Health Deficiencies                                    44243.0    NaN                                      NaN    NaN      6.931469       5.99116    0.0      3.0      5.0     10.0     70.0
+Total Number of Fire Safety Deficiencies                               44210.0    NaN                                      NaN    NaN      4.500927      4.575515    0.0      1.0      3.0      7.0     44.0
+Count of Freedom from Abuse and Neglect and Exploitation Deficiencies  44243.0    NaN                                      NaN    NaN      0.281649      0.696062    0.0      0.0      0.0      0.0      7.0
+Count of Quality of Life and Care Deficiencies                         44243.0    NaN                                      NaN    NaN      1.742897      1.911025    0.0      0.0      1.0      3.0     19.0
+Count of Resident Assessment and Care Planning Deficiencies            44243.0    NaN                                      NaN    NaN      1.087042      1.330969    0.0      0.0      1.0      2.0     11.0
+Count of Nursing and Physician Services Deficiencies                   44243.0    NaN                                      NaN    NaN      0.243609      0.581894    0.0      0.0      0.0      0.0      8.0
+Count of Resident Rights Deficiencies                                  44243.0    NaN                                      NaN    NaN      1.050946      1.412064    0.0      0.0      1.0      2.0     17.0
+Count of Nutrition and Dietary Deficiencies                            44243.0    NaN                                      NaN    NaN      0.718306      0.986119    0.0      0.0      0.0      1.0     11.0
+Count of Pharmacy Service Deficiencies                                 44243.0    NaN                                      NaN    NaN      0.850733      1.084536    0.0      0.0      1.0      1.0      7.0
+Count of Environmental Deficiencies                                    44243.0    NaN                                      NaN    NaN      0.198721      0.505895    0.0      0.0      0.0      0.0      7.0
+Count of Administration Deficiencies                                   44243.0    NaN                                      NaN    NaN      0.205117      0.578411    0.0      0.0      0.0      0.0     12.0
+Count of Infection Control Deficiencies                                44243.0    NaN                                      NaN    NaN      0.552449      0.744994    0.0      0.0      0.0      1.0      8.0
+Count of Emergency Preparedness Deficiencies                           44210.0    NaN                                      NaN    NaN       0.54119      1.499859    0.0      0.0      0.0      0.0     25.0
+Count of Automatic Sprinkler Systems Deficiencies                      44210.0    NaN                                      NaN    NaN      0.000204      0.018419    0.0      0.0      0.0      0.0      2.0
+Count of Construction Deficiencies                                     44210.0    NaN                                      NaN    NaN      0.097693      0.315804    0.0      0.0      0.0      0.0      4.0
+Count of Services Deficiencies                                         44210.0    NaN                                      NaN    NaN      0.263945      0.526676    0.0      0.0      0.0      0.0      4.0
+Count of Corridor Walls and Doors Deficiencies                         44210.0    NaN                                      NaN    NaN      0.000136      0.016475    0.0      0.0      0.0      0.0      3.0
+Count of Egress Deficiencies                                           44210.0    NaN                                      NaN    NaN      0.578625        0.9094    0.0      0.0      0.0      1.0     10.0
+Count of Electrical Deficiencies                                       44210.0    NaN                                      NaN    NaN      0.008233      0.090615    0.0      0.0      0.0      0.0      2.0
+Count of Emergency Plans and Fire Drills Deficiencies                  44210.0    NaN                                      NaN    NaN           0.0           0.0    0.0      0.0      0.0      0.0      0.0
+Count of Fire Alarm Systems Deficiencies                               44210.0    NaN                                      NaN    NaN      0.000023      0.004756    0.0      0.0      0.0      0.0      1.0
+Count of Smoke Deficiencies                                            44210.0    NaN                                      NaN    NaN      1.743293      1.830446    0.0      0.0      1.0      3.0     13.0
+Count of Interior Deficiencies                                         44210.0    NaN                                      NaN    NaN      0.000045      0.006726    0.0      0.0      0.0      0.0      1.0
+Count of Gas and Vacuum and Electrical Systems Deficiencies            44210.0    NaN                                      NaN    NaN      0.808233      1.048165    0.0      0.0      0.0      1.0      8.0
+Count of Hazardous Area Deficiencies                                   44210.0    NaN                                      NaN    NaN      0.000136      0.011649    0.0      0.0      0.0      0.0      1.0
+Count of Illumination and Emergency Power Deficiencies                 44210.0    NaN                                      NaN    NaN      0.000023      0.004756    0.0      0.0      0.0      0.0      1.0
+Count of Laboratories Deficiencies                                     44210.0    NaN                                      NaN    NaN           0.0           0.0    0.0      0.0      0.0      0.0      0.0
+Count of Medical Gases and Anaesthetizing Areas Deficiencies           44210.0    NaN                                      NaN    NaN      0.000045      0.006726    0.0      0.0      0.0      0.0      1.0
+Count of Smoking Regulations Deficiencies                              44210.0    NaN                                      NaN    NaN           0.0           0.0    0.0      0.0      0.0      0.0      0.0
+Count of Miscellaneous Deficiencies                                    44210.0    NaN                                      NaN    NaN      0.459104      0.760825    0.0      0.0      0.0      1.0      7.0
+Location                                                                 44243  14803  15823 SO. WESTERN AVE.,GARDENA,CA,90247      6           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Processing Date                                                          44243      1                               2024-10-01  44243           NaN           NaN    NaN      NaN      NaN      NaN      NaN

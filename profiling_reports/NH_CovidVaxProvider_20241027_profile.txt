@@ -1,0 +1,51 @@
+=== File: NH_CovidVaxProvider_20241027.csv ===
+
+Shape: (14814, 5)
+
+
+--- First 5 Rows ---
+
+CMS Certification Number (CCN) State Percent of residents who are up-to-date on their vaccines Percent of staff who are up-to-date on their vaccines Date vaccination data last updated
+                        015009    AL                                                       3.8                                                  12.3                         10/27/2024
+                        015010    AL                                                       0.0                                                   0.0                         10/27/2024
+                        015012    AL                                                      37.0                                                   0.0                         10/27/2024
+                        015014    AL                                             Not Available                                         Not Available                         10/27/2024
+                        015015    AL                                                      65.6                                                   0.0                         10/27/2024
+
+
+--- Column Info ---
+
+CMS Certification Number (CCN)                               object
+State                                                        object
+Percent of residents who are up-to-date on their vaccines    object
+Percent of staff who are up-to-date on their vaccines        object
+Date vaccination data last updated                           object
+
+
+--- Duplicate Columns ---
+
+None
+
+
+--- Duplicate Rows ---
+
+None
+
+
+--- Missing Values ---
+
+CMS Certification Number (CCN)                               0
+State                                                        0
+Percent of residents who are up-to-date on their vaccines    0
+Percent of staff who are up-to-date on their vaccines        0
+Date vaccination data last updated                           0
+
+
+--- Describe (transposed) ---
+
+                                                           count unique         top   freq
+CMS Certification Number (CCN)                             14814  14814      015009      1
+State                                                      14814     53          TX   1187
+Percent of residents who are up-to-date on their vaccines  14814    938         0.0   4935
+Percent of staff who are up-to-date on their vaccines      14814    688         0.0   7025
+Date vaccination data last updated                         14814      1  10/27/2024  14814

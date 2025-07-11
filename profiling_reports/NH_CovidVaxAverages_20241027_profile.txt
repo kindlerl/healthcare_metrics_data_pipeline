@@ -1,0 +1,48 @@
+=== File: NH_CovidVaxAverages_20241027.csv ===
+
+Shape: (54, 4)
+
+
+--- First 5 Rows ---
+
+State  Percent of residents who are up-to-date on their vaccines  Percent of staff who are up-to-date on their vaccines Date vaccination data last updated
+   US                                                       23.7                                                    5.9                         10/27/2024
+   AK                                                       42.5                                                    5.0                         10/27/2024
+   AL                                                       20.9                                                    2.6                         10/27/2024
+   AR                                                       10.9                                                    3.2                         10/27/2024
+   AZ                                                       19.8                                                    6.1                         10/27/2024
+
+
+--- Column Info ---
+
+State                                                         object
+Percent of residents who are up-to-date on their vaccines    float64
+Percent of staff who are up-to-date on their vaccines        float64
+Date vaccination data last updated                            object
+
+
+--- Duplicate Columns ---
+
+None
+
+
+--- Duplicate Rows ---
+
+None
+
+
+--- Missing Values ---
+
+State                                                        0
+Percent of residents who are up-to-date on their vaccines    0
+Percent of staff who are up-to-date on their vaccines        0
+Date vaccination data last updated                           0
+
+
+--- Describe (transposed) ---
+
+                                                          count unique         top freq       mean       std   min   25%    50%    75%   max
+State                                                        54     54          US    1        NaN       NaN   NaN   NaN    NaN    NaN   NaN
+Percent of residents who are up-to-date on their vaccines  54.0    NaN         NaN  NaN  26.538889  8.951724  10.9  20.9  24.35  30.65  62.6
+Percent of staff who are up-to-date on their vaccines      54.0    NaN         NaN  NaN   6.377778  5.277316   1.3   3.8    5.2  7.275  34.5
+Date vaccination data last updated                           54      1  10/27/2024   54        NaN       NaN   NaN   NaN    NaN    NaN   NaN

@@ -1,0 +1,54 @@
+=== File: NH_DataCollectionIntervals_Oct2024.csv ===
+
+Shape: (45, 6)
+
+
+--- First 5 Rows ---
+
+Measure Code                                                                                                                Measure Description Data Collection Period From Date Data Collection Period Through Date  Measure Date Range  Processing Date
+         004                                           Rate of potentially preventable hospital readmissions 30 days after discharge from a SNF                       10/01/2021                          09/30/2023                 NaN         20241001
+         005                                                                          Rate of successful return to home or community from a SNF                       10/01/2021                          09/30/2023                 NaN         20241001
+         006                                                                     Medicare spending per beneficiary (MSPB) for residents in SNFs                       10/01/2021                          09/30/2023                 NaN         20241001
+         007 Percentage of SNF residents whose medications were reviewed and who received follow-up care when medication issues were identified                       01/01/2023                          12/31/2023                 NaN         20241001
+         013                               Percentage of SNF residents who experience one or more falls with major injury during their SNF stay                       01/01/2023                          12/31/2023                 NaN         20241001
+
+
+--- Column Info ---
+
+Measure Code                            object
+Measure Description                     object
+Data Collection Period From Date        object
+Data Collection Period Through Date     object
+Measure Date Range                     float64
+Processing Date                          int64
+
+
+--- Duplicate Columns ---
+
+None
+
+
+--- Duplicate Rows ---
+
+None
+
+
+--- Missing Values ---
+
+Measure Code                            0
+Measure Description                     0
+Data Collection Period From Date        0
+Data Collection Period Through Date     0
+Measure Date Range                     45
+Processing Date                         0
+
+
+--- Describe (transposed) ---
+
+                                    count unique                                                                                       top freq        mean  std         min         25%         50%         75%         max
+Measure Code                           45     45                                                                                       004    1         NaN  NaN         NaN         NaN         NaN         NaN         NaN
+Measure Description                    45     45  Rate of potentially preventable hospital readmissions 30 days after discharge from a SNF    1         NaN  NaN         NaN         NaN         NaN         NaN         NaN
+Data Collection Period From Date       45      8                                                                                07/01/2023   10         NaN  NaN         NaN         NaN         NaN         NaN         NaN
+Data Collection Period Through Date    45      6                                                                                06/30/2024   14         NaN  NaN         NaN         NaN         NaN         NaN         NaN
+Measure Date Range                    0.0    NaN                                                                                       NaN  NaN         NaN  NaN         NaN         NaN         NaN         NaN         NaN
+Processing Date                      45.0    NaN                                                                                       NaN  NaN  20241001.0  0.0  20241001.0  20241001.0  20241001.0  20241001.0  20241001.0

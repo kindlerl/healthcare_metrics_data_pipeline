@@ -1,0 +1,21 @@
+__pycache__/
+
+# Ignore Word/Google docs
+*.gdoc
+*.docx
+
+*.pyc
+*.pyo
+*.pyd
+.venv/
+.env
+
+# Ignore large data files
+rawdata/*.csv
+
+# Ignore notebook checkpoint saves
+.ipynb_checkpoints/
+
+.DS_Store
+Thumbs.db
+

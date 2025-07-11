@@ -1,0 +1,135 @@
+=== File: PBJ_Daily_Nurse_Staffing_Q2_2024.csv ===
+
+Shape: (1325324, 33)
+
+
+--- First 5 Rows ---
+
+PROVNUM                 PROVNAME         CITY STATE COUNTY_NAME  COUNTY_FIPS CY_Qtr  WorkDate  MDScensus  Hrs_RNDON  Hrs_RNDON_emp  Hrs_RNDON_ctr  Hrs_RNadmin  Hrs_RNadmin_emp  Hrs_RNadmin_ctr  Hrs_RN  Hrs_RN_emp  Hrs_RN_ctr  Hrs_LPNadmin  Hrs_LPNadmin_emp  Hrs_LPNadmin_ctr  Hrs_LPN  Hrs_LPN_emp  Hrs_LPN_ctr  Hrs_CNA  Hrs_CNA_emp  Hrs_CNA_ctr  Hrs_NAtrn  Hrs_NAtrn_emp  Hrs_NAtrn_ctr  Hrs_MedAide  Hrs_MedAide_emp  Hrs_MedAide_ctr
+ 015009 BURNS NURSING HOME, INC. RUSSELLVILLE    AL    Franklin           59 2024Q2  20240401         51      10.77          10.77            0.0        10.40            10.40              0.0   55.70       55.70         0.0           0.0               0.0               0.0    25.50        25.50          0.0   160.08       160.08          0.0        0.0            0.0            0.0          0.0              0.0              0.0
+ 015009 BURNS NURSING HOME, INC. RUSSELLVILLE    AL    Franklin           59 2024Q2  20240402         52       8.43           8.43            0.0        18.25            18.25              0.0   63.28       63.28         0.0           0.0               0.0               0.0    15.22        15.22          0.0   135.95       135.95          0.0        0.0            0.0            0.0          0.0              0.0              0.0
+ 015009 BURNS NURSING HOME, INC. RUSSELLVILLE    AL    Franklin           59 2024Q2  20240403         53      11.13          11.13            0.0        12.08            12.08              0.0   76.29       76.29         0.0           0.0               0.0               0.0     5.46         5.46          0.0   150.31       150.31          0.0        0.0            0.0            0.0          0.0              0.0              0.0
+ 015009 BURNS NURSING HOME, INC. RUSSELLVILLE    AL    Franklin           59 2024Q2  20240404         52      12.27          12.27            0.0        17.53            17.53              0.0   54.13       54.13         0.0           0.0               0.0               0.0    20.18        20.18          0.0   133.01       133.01          0.0        0.0            0.0            0.0          0.0              0.0              0.0
+ 015009 BURNS NURSING HOME, INC. RUSSELLVILLE    AL    Franklin           59 2024Q2  20240405         52       4.95           4.95            0.0        17.42            17.42              0.0   53.63       53.63         0.0           0.0               0.0               0.0    27.85        27.85          0.0   137.92       137.92          0.0        0.0            0.0            0.0          0.0              0.0              0.0
+
+
+--- Column Info ---
+
+PROVNUM              object
+PROVNAME             object
+CITY                 object
+STATE                object
+COUNTY_NAME          object
+COUNTY_FIPS           int64
+CY_Qtr               object
+WorkDate              int64
+MDScensus             int64
+Hrs_RNDON           float64
+Hrs_RNDON_emp       float64
+Hrs_RNDON_ctr       float64
+Hrs_RNadmin         float64
+Hrs_RNadmin_emp     float64
+Hrs_RNadmin_ctr     float64
+Hrs_RN              float64
+Hrs_RN_emp          float64
+Hrs_RN_ctr          float64
+Hrs_LPNadmin        float64
+Hrs_LPNadmin_emp    float64
+Hrs_LPNadmin_ctr    float64
+Hrs_LPN             float64
+Hrs_LPN_emp         float64
+Hrs_LPN_ctr         float64
+Hrs_CNA             float64
+Hrs_CNA_emp         float64
+Hrs_CNA_ctr         float64
+Hrs_NAtrn           float64
+Hrs_NAtrn_emp       float64
+Hrs_NAtrn_ctr       float64
+Hrs_MedAide         float64
+Hrs_MedAide_emp     float64
+Hrs_MedAide_ctr     float64
+
+
+--- Duplicate Columns ---
+
+None
+
+
+--- Duplicate Rows ---
+
+None
+
+
+--- Missing Values ---
+
+PROVNUM             0
+PROVNAME            0
+CITY                0
+STATE               0
+COUNTY_NAME         0
+COUNTY_FIPS         0
+CY_Qtr              0
+WorkDate            0
+MDScensus           0
+Hrs_RNDON           0
+Hrs_RNDON_emp       0
+Hrs_RNDON_ctr       0
+Hrs_RNadmin         0
+Hrs_RNadmin_emp     0
+Hrs_RNadmin_ctr     0
+Hrs_RN              0
+Hrs_RN_emp          0
+Hrs_RN_ctr          0
+Hrs_LPNadmin        0
+Hrs_LPNadmin_emp    0
+Hrs_LPNadmin_ctr    0
+Hrs_LPN             0
+Hrs_LPN_emp         0
+Hrs_LPN_ctr         0
+Hrs_CNA             0
+Hrs_CNA_emp         0
+Hrs_CNA_ctr         0
+Hrs_NAtrn           0
+Hrs_NAtrn_emp       0
+Hrs_NAtrn_ctr       0
+Hrs_MedAide         0
+Hrs_MedAide_emp     0
+Hrs_MedAide_ctr     0
+
+
+--- Describe (transposed) ---
+
+                      count unique                   top     freq            mean         std         min         25%         50%         75%         max
+PROVNUM             1325324  14564                015009       91             NaN         NaN         NaN         NaN         NaN         NaN         NaN
+PROVNAME            1325324  14378  MILLER'S MERRY MANOR     1092             NaN         NaN         NaN         NaN         NaN         NaN         NaN
+CITY                1325324   5086               CHICAGO     7098             NaN         NaN         NaN         NaN         NaN         NaN         NaN
+STATE               1325324     52                    TX   106288             NaN         NaN         NaN         NaN         NaN         NaN         NaN
+COUNTY_NAME         1325324   1672           Los Angeles    33033             NaN         NaN         NaN         NaN         NaN         NaN         NaN
+COUNTY_FIPS       1325324.0    NaN                   NaN      NaN       91.134304   99.128063         1.0        31.0        69.0       117.0       840.0
+CY_Qtr              1325324      1                2024Q2  1325324             NaN         NaN         NaN         NaN         NaN         NaN         NaN
+WorkDate          1325324.0    NaN                   NaN      NaN  20240515.67033   81.670779  20240401.0  20240423.0  20240516.0  20240608.0  20240630.0
+MDScensus         1325324.0    NaN                   NaN      NaN         83.4167   49.041089         0.0        51.0        76.0       104.0       742.0
+Hrs_RNDON         1325324.0    NaN                   NaN      NaN        5.195887    4.389664         0.0         0.0         8.0         8.0      103.96
+Hrs_RNDON_emp     1325324.0    NaN                   NaN      NaN        5.099312    4.382255         0.0         0.0         8.0         8.0      103.96
+Hrs_RNDON_ctr     1325324.0    NaN                   NaN      NaN        0.096574    0.918235         0.0         0.0         0.0         0.0       25.75
+Hrs_RNadmin       1325324.0    NaN                   NaN      NaN       10.262754   14.768749         0.0         0.0         7.5        16.0       275.5
+Hrs_RNadmin_emp   1325324.0    NaN                   NaN      NaN       10.011642   14.559532         0.0         0.0         7.5        16.0       275.5
+Hrs_RNadmin_ctr   1325324.0    NaN                   NaN      NaN        0.251112     1.84527         0.0         0.0         0.0         0.0       87.25
+Hrs_RN            1325324.0    NaN                   NaN      NaN       34.801919    35.32269         0.0       13.25       25.75       45.25      915.98
+Hrs_RN_emp        1325324.0    NaN                   NaN      NaN        31.99023    32.26092         0.0       12.08       24.42        42.0      887.96
+Hrs_RN_ctr        1325324.0    NaN                   NaN      NaN        2.811689   10.503564         0.0         0.0         0.0         0.0      512.39
+Hrs_LPNadmin      1325324.0    NaN                   NaN      NaN        6.712469   10.823725         0.0         0.0         0.0         9.0       281.5
+Hrs_LPNadmin_emp  1325324.0    NaN                   NaN      NaN        6.644582   10.745488         0.0         0.0         0.0        8.98       281.5
+Hrs_LPNadmin_ctr  1325324.0    NaN                   NaN      NaN        0.067886    1.280078         0.0         0.0         0.0         0.0       167.9
+Hrs_LPN           1325324.0    NaN                   NaN      NaN       66.172423   49.819153         0.0        32.6       56.81        88.5    13946.25
+Hrs_LPN_emp       1325324.0    NaN                   NaN      NaN       60.038984   45.178526         0.0       28.25        51.0       81.44       605.0
+Hrs_LPN_ctr       1325324.0    NaN                   NaN      NaN        6.133439   19.637537         0.0         0.0         0.0         4.0     13801.5
+Hrs_CNA           1325324.0    NaN                   NaN      NaN       173.79076  115.159137         0.0       98.57      150.62       220.0      1758.1
+Hrs_CNA_emp       1325324.0    NaN                   NaN      NaN      161.609263  108.124293         0.0       90.25       140.0      207.48     1503.63
+Hrs_CNA_ctr       1325324.0    NaN                   NaN      NaN       12.181497   31.841421         0.0         0.0         0.0         8.0      661.42
+Hrs_NAtrn         1325324.0    NaN                   NaN      NaN        4.314155   13.360674         0.0         0.0         0.0         0.0      443.75
+Hrs_NAtrn_emp     1325324.0    NaN                   NaN      NaN        4.262067   13.020797         0.0         0.0         0.0         0.0      438.75
+Hrs_NAtrn_ctr     1325324.0    NaN                   NaN      NaN        0.052088    2.011555         0.0         0.0         0.0         0.0       247.0
+Hrs_MedAide       1325324.0    NaN                   NaN      NaN        8.578327   17.859696         0.0         0.0         0.0       11.31       429.8
+Hrs_MedAide_emp   1325324.0    NaN                   NaN      NaN        8.363303   17.497837         0.0         0.0         0.0       10.87       429.8
+Hrs_MedAide_ctr   1325324.0    NaN                   NaN      NaN        0.215023    2.104964         0.0         0.0         0.0         0.0       87.75

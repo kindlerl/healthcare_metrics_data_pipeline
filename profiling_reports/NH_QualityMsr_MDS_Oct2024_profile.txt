@@ -1,0 +1,105 @@
+=== File: NH_QualityMsr_MDS_Oct2024.csv ===
+
+Shape: (266652, 23)
+
+
+--- First 5 Rows ---
+
+CMS Certification Number (CCN)            Provider Name     Provider Address    City/Town State  ZIP Code  Measure Code                                                                       Measure Description Resident type  Q1 Measure Score  Footnote for Q1 Measure Score  Q2 Measure Score  Footnote for Q2 Measure Score  Q3 Measure Score  Footnote for Q3 Measure Score  Q4 Measure Score  Footnote for Q4 Measure Score  Four Quarter Average Score  Footnote for Four Quarter Average Score Used in Quality Measure Five Star Rating Measure Period                                      Location Processing Date
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653           401 Percentage of long-stay residents whose need for help with daily activities has increased     Long Stay          4.347830                            NaN          6.666667                            NaN         11.363636                            NaN          6.976744                            NaN                    7.303372                                      NaN                                        Y  2022Q4-2023Q3 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653      2024-10-01
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653           404                                Percentage of long-stay residents who lose too much weight     Long Stay          2.325581                            NaN          0.000000                            NaN          5.000000                            NaN         14.285714                            NaN                    5.389222                                      NaN                                        N  2023Q3-2024Q2 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653      2024-10-01
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653           405    Percentage of low risk long-stay residents who lose control of their bowels or bladder     Long Stay               NaN                            9.0               NaN                            9.0               NaN                            9.0               NaN                            9.0                   56.451613                                      NaN                                        N  2022Q4-2023Q3 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653      2024-10-01
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653           406      Percentage of long-stay residents with a catheter inserted and left in their bladder     Long Stay          2.594192                            NaN          3.924880                            NaN          3.584012                            NaN          4.926641                            NaN                    3.758490                                      NaN                                        Y  2023Q3-2024Q2 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653      2024-10-01
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653           407                          Percentage of long-stay residents with a urinary tract infection     Long Stay          0.000000                            NaN          0.000000                            NaN          0.000000                            NaN          2.173913                            NaN                    0.561798                                      NaN                                        Y  2023Q3-2024Q2 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653      2024-10-01
+
+
+--- Column Info ---
+
+CMS Certification Number (CCN)               object
+Provider Name                                object
+Provider Address                             object
+City/Town                                    object
+State                                        object
+ZIP Code                                      int64
+Measure Code                                  int64
+Measure Description                          object
+Resident type                                object
+Q1 Measure Score                            float64
+Footnote for Q1 Measure Score               float64
+Q2 Measure Score                            float64
+Footnote for Q2 Measure Score               float64
+Q3 Measure Score                            float64
+Footnote for Q3 Measure Score               float64
+Q4 Measure Score                            float64
+Footnote for Q4 Measure Score               float64
+Four Quarter Average Score                  float64
+Footnote for Four Quarter Average Score     float64
+Used in Quality Measure Five Star Rating     object
+Measure Period                               object
+Location                                     object
+Processing Date                              object
+
+
+--- Duplicate Columns ---
+
+None
+
+
+--- Duplicate Rows ---
+
+None
+
+
+--- Missing Values ---
+
+CMS Certification Number (CCN)                   0
+Provider Name                                    0
+Provider Address                                 0
+City/Town                                        0
+State                                            0
+ZIP Code                                         0
+Measure Code                                     0
+Measure Description                              0
+Resident type                                    0
+Q1 Measure Score                             38835
+Footnote for Q1 Measure Score               227817
+Q2 Measure Score                             38404
+Footnote for Q2 Measure Score               228248
+Q3 Measure Score                             37231
+Footnote for Q3 Measure Score               229421
+Q4 Measure Score                             36750
+Footnote for Q4 Measure Score               229902
+Four Quarter Average Score                   10751
+Footnote for Four Quarter Average Score     255901
+Used in Quality Measure Five Star Rating         0
+Measure Period                                   0
+Location                                         0
+Processing Date                                  0
+
+
+--- Describe (transposed) ---
+
+                                             count unique                                                                                        top    freq          mean           std    min       25%        50%        75%      max
+CMS Certification Number (CCN)              266652  14814                                                                                     015009      18           NaN           NaN    NaN       NaN        NaN        NaN      NaN
+Provider Name                               266652  14622                                                                       MILLER'S MERRY MANOR     216           NaN           NaN    NaN       NaN        NaN        NaN      NaN
+Provider Address                            266652  14786                                                                       16 VALLEY VIEW DRIVE      54           NaN           NaN    NaN       NaN        NaN        NaN      NaN
+City/Town                                   266652   5140                                                                                LOS ANGELES    1404           NaN           NaN    NaN       NaN        NaN        NaN      NaN
+State                                       266652     53                                                                                         TX   21366           NaN           NaN    NaN       NaN        NaN        NaN      NaN
+ZIP Code                                  266652.0    NaN                                                                                        NaN     NaN  50345.684623  26871.660176  660.0   29732.0    48601.5    73045.0  99929.0
+Measure Code                              266652.0    NaN                                                                                        NaN     NaN    427.833333     23.949645  401.0     407.0      417.0      452.0    472.0
+Measure Description                         266652     18  Percentage of long-stay residents whose need for help with daily activities has increased   14814           NaN           NaN    NaN       NaN        NaN        NaN      NaN
+Resident type                               266652      2                                                                                  Long Stay  207396           NaN           NaN    NaN       NaN        NaN        NaN      NaN
+Q1 Measure Score                          227817.0    NaN                                                                                        NaN     NaN     30.322417     36.875643    0.0  1.912613   10.52632  61.939852    100.0
+Footnote for Q1 Measure Score              38835.0    NaN                                                                                        NaN     NaN      9.096562      0.898803    9.0       9.0        9.0        9.0     21.0
+Q2 Measure Score                          228248.0    NaN                                                                                        NaN     NaN     30.491261     36.886961    0.0  1.851852  10.743847       62.5    100.0
+Footnote for Q2 Measure Score              38404.0    NaN                                                                                        NaN     NaN      9.090954      0.900764    9.0       9.0        9.0        9.0     21.0
+Q3 Measure Score                          229421.0    NaN                                                                                        NaN     NaN     30.744118     37.253245    0.0  1.960784  10.540248  64.516129    100.0
+Footnote for Q3 Measure Score              37231.0    NaN                                                                                        NaN     NaN      9.091698      0.913752    9.0       9.0        9.0        9.0     21.0
+Q4 Measure Score                          229902.0    NaN                                                                                        NaN     NaN     30.718507     37.433443    0.0  1.851852  10.169492       65.0    100.0
+Footnote for Q4 Measure Score              36750.0    NaN                                                                                        NaN     NaN      9.089769      0.918261    9.0       9.0        9.0        9.0     21.0
+Four Quarter Average Score                255901.0    NaN                                                                                        NaN     NaN     31.322242     36.635451    0.0  2.352941  11.587984  65.666041    100.0
+Footnote for Four Quarter Average Score    10751.0    NaN                                                                                        NaN     NaN       9.28974      1.675999    9.0       9.0        9.0        9.0     21.0
+Used in Quality Measure Five Star Rating    266652      2                                                                                          Y  133326           NaN           NaN    NaN       NaN        NaN        NaN      NaN
+Measure Period                              266652      2                                                                              2023Q3-2024Q2  192582           NaN           NaN    NaN       NaN        NaN        NaN      NaN
+Location                                    266652  14803                                            16 VALLEY VIEW DRIVE, COUNCIL BLUFFS, IA, 51503      54           NaN           NaN    NaN       NaN        NaN        NaN      NaN
+Processing Date                             266652      1                                                                                 2024-10-01  266652           NaN           NaN    NaN       NaN        NaN        NaN      NaN

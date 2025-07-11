@@ -1,0 +1,108 @@
+=== File: NH_FireSafetyCitations_Oct2024.csv ===
+
+Shape: (200003, 24)
+
+
+--- First 5 Rows ---
+
+CMS Certification Number (CCN)            Provider Name     Provider Address    City/Town State  ZIP Code Survey Date Survey Type Deficiency Prefix Deficiency Category  Deficiency Tag Number Tag Version                                                              Deficiency Description Scope Severity Code                       Deficiency Corrected Correction Date  Inspection Cycle Standard Deficiency Complaint Deficiency Infection Control Inspection Deficiency Citation under IDR Citation under IIDR                                   Location Processing Date
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653  2023-02-15 Fire Safety                 K Egress Deficiencies                    226         New                  Have horizontal exits used in accordance with safety requirements.                   E Deficient, Provider has date of correction      2023-02-16                 1                   Y                    N                                       N                  N                   N 701 MONROE STREET NW,RUSSELLVILLE,AL,35653      2024-10-01
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653  2023-02-15 Fire Safety                 K  Smoke Deficiencies                    324         New                                      Provide properly protected cooking facilities.                   D Deficient, Provider has date of correction      2023-02-16                 1                   Y                    N                                       N                  N                   N 701 MONROE STREET NW,RUSSELLVILLE,AL,35653      2024-10-01
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653  2023-02-15 Fire Safety                 K  Smoke Deficiencies                    345         New Have approved installation, maintenance and testing program for fire alarm systems.                   F Deficient, Provider has date of correction      2023-02-25                 1                   Y                    N                                       N                  N                   N 701 MONROE STREET NW,RUSSELLVILLE,AL,35653      2024-10-01
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653  2023-02-15 Fire Safety                 K  Smoke Deficiencies                    353         New                            Inspect, test, and maintain automatic sprinkler systems.                   E Deficient, Provider has date of correction      2023-03-22                 1                   Y                    N                                       N                  N                   N 701 MONROE STREET NW,RUSSELLVILLE,AL,35653      2024-10-01
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653  2023-02-15 Fire Safety                 K  Smoke Deficiencies                    374         New          Install smoke barrier doors that can resist smoke for at least 20 minutes.                   E Deficient, Provider has date of correction      2023-02-22                 1                   Y                    N                                       N                  N                   N 701 MONROE STREET NW,RUSSELLVILLE,AL,35653      2024-10-01
+
+
+--- Column Info ---
+
+CMS Certification Number (CCN)             object
+Provider Name                              object
+Provider Address                           object
+City/Town                                  object
+State                                      object
+ZIP Code                                    int64
+Survey Date                                object
+Survey Type                                object
+Deficiency Prefix                          object
+Deficiency Category                        object
+Deficiency Tag Number                       int64
+Tag Version                                object
+Deficiency Description                     object
+Scope Severity Code                        object
+Deficiency Corrected                       object
+Correction Date                            object
+Inspection Cycle                            int64
+Standard Deficiency                        object
+Complaint Deficiency                       object
+Infection Control Inspection Deficiency    object
+Citation under IDR                         object
+Citation under IIDR                        object
+Location                                   object
+Processing Date                            object
+
+
+--- Duplicate Columns ---
+
+None
+
+
+--- Duplicate Rows ---
+
+None
+
+
+--- Missing Values ---
+
+CMS Certification Number (CCN)                0
+Provider Name                                 0
+Provider Address                              0
+City/Town                                     0
+State                                         0
+ZIP Code                                      0
+Survey Date                                   0
+Survey Type                                   0
+Deficiency Prefix                             0
+Deficiency Category                           0
+Deficiency Tag Number                         0
+Tag Version                                   0
+Deficiency Description                        0
+Scope Severity Code                           0
+Deficiency Corrected                          0
+Correction Date                            1054
+Inspection Cycle                              0
+Standard Deficiency                           0
+Complaint Deficiency                          0
+Infection Control Inspection Deficiency       0
+Citation under IDR                            0
+Citation under IIDR                           0
+Location                                      0
+Processing Date                               0
+
+
+--- Describe (transposed) ---
+
+                                            count unique                                                       top    freq          mean           std    min      25%      50%      75%      max
+CMS Certification Number (CCN)             200003  14019                                                    145650     107           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Provider Name                              200003  13839                                       BRIA OF PALOS HILLS     107           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Provider Address                           200003  13992                                       10426 SOUTH ROBERTS     107           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+City/Town                                  200003   4986                                                CINCINNATI    1658           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+State                                      200003     53                                                        CA   24950           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+ZIP Code                                 200003.0    NaN                                                       NaN     NaN  55055.453628  26848.090071  660.0  36484.5  54871.0  76011.0  99929.0
+Survey Date                                200003   1987                                                2024-04-16     472           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Survey Type                                200003      1                                               Fire Safety  200003           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Deficiency Prefix                          200003      2                                                         K  175902           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Deficiency Category                        200003     15                                        Smoke Deficiencies   77383           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Deficiency Tag Number                    200003.0    NaN                                                       NaN     NaN    444.570906    286.440818    1.0    291.0    353.0    712.0    933.0
+Tag Version                                200003      2                                                       New  200001           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Deficiency Description                     200003    163  Inspect, test, and maintain automatic sprinkler systems.   15453           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Scope Severity Code                        200003     10                                                         F   72638           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Deficiency Corrected                       200003      6                Deficient, Provider has date of correction  192916           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Correction Date                            198949   2578                                                2023-06-30     519           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Inspection Cycle                         200003.0    NaN                                                       NaN     NaN      1.953141      0.818656    1.0      1.0      2.0      3.0      3.0
+Standard Deficiency                        200003      2                                                         Y  198991           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Complaint Deficiency                       200003      2                                                         N  198903           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Infection Control Inspection Deficiency    200003      2                                                         N  199954           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Citation under IDR                         200003      2                                                         N  199957           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Citation under IIDR                        200003      2                                                         N  200001           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Location                                   200003  14009                  10426 SOUTH ROBERTS,PALOS HILLS,IL,60465     107           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Processing Date                            200003      1                                                2024-10-01  200003           NaN           NaN    NaN      NaN      NaN      NaN      NaN

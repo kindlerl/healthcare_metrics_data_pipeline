@@ -1,0 +1,105 @@
+=== File: NH_HealthCitations_Oct2024.csv ===
+
+Shape: (402424, 23)
+
+
+--- First 5 Rows ---
+
+CMS Certification Number (CCN)            Provider Name     Provider Address    City/Town State  ZIP Code Survey Date Survey Type Deficiency Prefix                                Deficiency Category  Deficiency Tag Number                                                                                                                         Deficiency Description Scope Severity Code                       Deficiency Corrected Correction Date  Inspection Cycle Standard Deficiency Complaint Deficiency Infection Control Inspection Deficiency Citation under IDR Citation under IIDR                                   Location Processing Date
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653  2023-03-02      Health                 F                     Infection Control Deficiencies                    880                                                                             Provide and implement an infection prevention and control program.                   F Deficient, Provider has date of correction      2023-04-06                 1                   Y                    N                                       N                  N                   N 701 MONROE STREET NW,RUSSELLVILLE,AL,35653      2024-10-01
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653  2023-03-02      Health                 F Resident Assessment and Care Planning Deficiencies                    656              Develop and implement a complete care plan that meets all the resident's needs, with timetables and actions that can be measured.                   J                        Past Non-Compliance      2023-01-13                 1                   Y                    Y                                       N                  N                   N 701 MONROE STREET NW,RUSSELLVILLE,AL,35653      2024-10-01
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653  2023-03-02      Health                 F              Quality of Life and Care Deficiencies                    689                          Ensure that a nursing home area is free from accident hazards and provides adequate supervision to prevent accidents.                   J                        Past Non-Compliance      2023-01-13                 1                   Y                    Y                                       N                  N                   N 701 MONROE STREET NW,RUSSELLVILLE,AL,35653      2024-10-01
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653  2023-03-02      Health                 F                        Administration Deficiencies                    851 Electronically submit to CMS complete and accurate direct care staffing information, based on payroll and other verifiable and auditable data.                   C Deficient, Provider has date of correction      2023-03-17                 1                   Y                    Y                                       N                  N                   N 701 MONROE STREET NW,RUSSELLVILLE,AL,35653      2024-10-01
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653  2019-08-21      Health                 F                       Resident Rights Deficiencies                    554                                                                 Allow residents to self-administer drugs if determined clinically appropriate.                   D Deficient, Provider has date of correction      2019-09-16                 2                   Y                    N                                       N                  N                   N 701 MONROE STREET NW,RUSSELLVILLE,AL,35653      2024-10-01
+
+
+--- Column Info ---
+
+CMS Certification Number (CCN)             object
+Provider Name                              object
+Provider Address                           object
+City/Town                                  object
+State                                      object
+ZIP Code                                    int64
+Survey Date                                object
+Survey Type                                object
+Deficiency Prefix                          object
+Deficiency Category                        object
+Deficiency Tag Number                       int64
+Deficiency Description                     object
+Scope Severity Code                        object
+Deficiency Corrected                       object
+Correction Date                            object
+Inspection Cycle                            int64
+Standard Deficiency                        object
+Complaint Deficiency                       object
+Infection Control Inspection Deficiency    object
+Citation under IDR                         object
+Citation under IIDR                        object
+Location                                   object
+Processing Date                            object
+
+
+--- Duplicate Columns ---
+
+None
+
+
+--- Duplicate Rows ---
+
+None
+
+
+--- Missing Values ---
+
+CMS Certification Number (CCN)                0
+Provider Name                                 0
+Provider Address                              0
+City/Town                                     0
+State                                         0
+ZIP Code                                      0
+Survey Date                                   0
+Survey Type                                   0
+Deficiency Prefix                             0
+Deficiency Category                           0
+Deficiency Tag Number                         0
+Deficiency Description                        0
+Scope Severity Code                           0
+Deficiency Corrected                          0
+Correction Date                            1353
+Inspection Cycle                              0
+Standard Deficiency                           0
+Complaint Deficiency                          0
+Infection Control Inspection Deficiency       0
+Citation under IDR                            0
+Citation under IIDR                           0
+Location                                      0
+Processing Date                               0
+
+
+--- Describe (transposed) ---
+
+                                            count unique                                                                 top    freq         mean           std    min       25%      50%      75%      max
+CMS Certification Number (CCN)             402424  14719                                                              056010     199          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Provider Name                              402424  14528                                                MILLER'S MERRY MANOR     225          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Provider Address                           402424  14692                                                    3000 N GATE ROAD     199          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+City/Town                                  402424   5118                                                         LOS ANGELES    5101          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+State                                      402424     53                                                                  CA   55664          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+ZIP Code                                 402424.0    NaN                                                                 NaN     NaN  54515.15971  28305.186376  660.0  31328.75  54952.0  78043.0  99929.0
+Survey Date                                402424   2150                                                          2024-01-25    1032          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Survey Type                                402424      1                                                              Health  402424          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Deficiency Prefix                          402424      1                                                                   F  402424          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Deficiency Category                        402424     10                               Quality of Life and Care Deficiencies  105912          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Deficiency Tag Number                    402424.0    NaN                                                                 NaN     NaN   708.860525    103.620274  151.0     641.0    689.0    761.0    949.0
+Deficiency Description                     402424    314  Provide and implement an infection prevention and control program.   22539          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Scope Severity Code                        402424     11                                                                   D  248907          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Deficiency Corrected                       402424      5                          Deficient, Provider has date of correction  391810          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Correction Date                            401071   2603                                                          2024-03-15    1047          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Inspection Cycle                         402424.0    NaN                                                                 NaN     NaN     1.957329      0.813541    1.0       1.0      2.0      3.0      3.0
+Standard Deficiency                        402424      2                                                                   Y  306669          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Complaint Deficiency                       402424      2                                                                   N  277902          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Infection Control Inspection Deficiency    402424      2                                                                   N  395345          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Citation under IDR                         402424      2                                                                   N  401767          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Citation under IIDR                        402424      2                                                                   N  402315          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Location                                   402424  14708                                3000 N GATE ROAD,SEAL BEACH,CA,90740     199          NaN           NaN    NaN       NaN      NaN      NaN      NaN
+Processing Date                            402424      1                                                          2024-10-01  402424          NaN           NaN    NaN       NaN      NaN      NaN      NaN

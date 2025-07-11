@@ -1,0 +1,87 @@
+=== File: NH_QualityMsr_Claims_Oct2024.csv ===
+
+Shape: (59256, 17)
+
+
+--- First 5 Rows ---
+
+CMS Certification Number (CCN)                  Provider Name       Provider Address    City/Town State  ZIP Code  Measure Code                                                                       Measure Description Resident type  Adjusted Score  Observed Score  Expected Score  Footnote for Score Used in Quality Measure Five Star Rating    Measure Period                                      Location Processing Date
+                        015009       BURNS NURSING HOME, INC.   701 MONROE STREET NW RUSSELLVILLE    AL     35653           521 Percentage of short-stay residents who were rehospitalized after a nursing home admission    Short Stay       16.990363       16.129032       21.306542                 NaN                                        Y 20230401-20240331 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653      2024-10-01
+                        015009       BURNS NURSING HOME, INC.   701 MONROE STREET NW RUSSELLVILLE    AL     35653           522       Percentage of short-stay residents who had an outpatient emergency department visit    Short Stay        4.596690        4.838710       11.714163                 NaN                                        Y 20230401-20240331 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653      2024-10-01
+                        015009       BURNS NURSING HOME, INC.   701 MONROE STREET NW RUSSELLVILLE    AL     35653           551                               Number of hospitalizations per 1000 long-stay resident days     Long Stay        1.421487        1.415428        1.717587                 NaN                                        Y 20230401-20240331 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653      2024-10-01
+                        015009       BURNS NURSING HOME, INC.   701 MONROE STREET NW RUSSELLVILLE    AL     35653           552         Number of outpatient emergency department visits per 1000 long-stay resident days     Long Stay        0.732786        0.808816        1.785995                 NaN                                        Y 20230401-20240331 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653      2024-10-01
+                        015010 COOSA VALLEY HEALTHCARE CENTER 260 WEST WALNUT STREET    SYLACAUGA    AL     35150           521 Percentage of short-stay residents who were rehospitalized after a nursing home admission    Short Stay       24.096511       18.055556       16.817600                 NaN                                        Y 20230401-20240331  260 WEST WALNUT STREET, SYLACAUGA, AL, 35150      2024-10-01
+
+
+--- Column Info ---
+
+CMS Certification Number (CCN)               object
+Provider Name                                object
+Provider Address                             object
+City/Town                                    object
+State                                        object
+ZIP Code                                      int64
+Measure Code                                  int64
+Measure Description                          object
+Resident type                                object
+Adjusted Score                              float64
+Observed Score                              float64
+Expected Score                              float64
+Footnote for Score                          float64
+Used in Quality Measure Five Star Rating     object
+Measure Period                               object
+Location                                     object
+Processing Date                              object
+
+
+--- Duplicate Columns ---
+
+None
+
+
+--- Duplicate Rows ---
+
+None
+
+
+--- Missing Values ---
+
+CMS Certification Number (CCN)                  0
+Provider Name                                   0
+Provider Address                                0
+City/Town                                       0
+State                                           0
+ZIP Code                                        0
+Measure Code                                    0
+Measure Description                             0
+Resident type                                   0
+Adjusted Score                              12124
+Observed Score                              12124
+Expected Score                              12124
+Footnote for Score                          47132
+Used in Quality Measure Five Star Rating        0
+Measure Period                                  0
+Location                                        0
+Processing Date                                 0
+
+
+--- Describe (transposed) ---
+
+                                            count unique                                                                                        top   freq          mean           std       min       25%       50%        75%        max
+CMS Certification Number (CCN)              59256  14814                                                                                     015009      4           NaN           NaN       NaN       NaN       NaN        NaN        NaN
+Provider Name                               59256  14622                                                                       MILLER'S MERRY MANOR     48           NaN           NaN       NaN       NaN       NaN        NaN        NaN
+Provider Address                            59256  14786                                                                       16 VALLEY VIEW DRIVE     12           NaN           NaN       NaN       NaN       NaN        NaN        NaN
+City/Town                                   59256   5140                                                                                LOS ANGELES    312           NaN           NaN       NaN       NaN       NaN        NaN        NaN
+State                                       59256     53                                                                                         TX   4748           NaN           NaN       NaN       NaN       NaN        NaN        NaN
+ZIP Code                                  59256.0    NaN                                                                                        NaN    NaN  50345.684623  26871.836533     660.0   29732.0   48601.5    73045.0    99929.0
+Measure Code                              59256.0    NaN                                                                                        NaN    NaN         536.5     15.008458     521.0    521.75     536.5     551.25      552.0
+Measure Description                         59256      4  Percentage of short-stay residents who were rehospitalized after a nursing home admission  14814           NaN           NaN       NaN       NaN       NaN        NaN        NaN
+Resident type                               59256      2                                                                                 Short Stay  29628           NaN           NaN       NaN       NaN       NaN        NaN        NaN
+Adjusted Score                            47132.0    NaN                                                                                        NaN    NaN       9.78303      10.08879       0.0  1.549435  3.980028  17.359958   60.08369
+Observed Score                            47132.0    NaN                                                                                        NaN    NaN      9.638272     10.071603       0.0  1.515152  4.196255  16.666667  69.565217
+Expected Score                            47132.0    NaN                                                                                        NaN    NaN      9.158164      8.511347  0.726584  1.617214  8.973779  15.921756  45.902284
+Footnote for Score                        12124.0    NaN                                                                                        NaN    NaN      9.069779      0.254785       9.0       9.0       9.0        9.0       10.0
+Used in Quality Measure Five Star Rating    59256      1                                                                                          Y  59256           NaN           NaN       NaN       NaN       NaN        NaN        NaN
+Measure Period                              59256      1                                                                          20230401-20240331  59256           NaN           NaN       NaN       NaN       NaN        NaN        NaN
+Location                                    59256  14803                                            16 VALLEY VIEW DRIVE, COUNCIL BLUFFS, IA, 51503     12           NaN           NaN       NaN       NaN       NaN        NaN        NaN
+Processing Date                             59256      1                                                                                 2024-10-01  59256           NaN           NaN       NaN       NaN       NaN        NaN        NaN
