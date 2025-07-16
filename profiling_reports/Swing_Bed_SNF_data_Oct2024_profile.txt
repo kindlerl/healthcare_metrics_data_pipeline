@@ -1,0 +1,84 @@
+=== File: Swing_Bed_SNF_data_Oct2024.csv ===
+
+Shape: (38064, 16)
+
+
+--- First 5 Rows ---
+
+ CMS Certification Number (CCN)            Provider Name Address Line 1 Address Line 2 City/Town State  ZIP Code County/Parish Telephone Number  CMS Region              Measure Code                               Score Footnote Start Date   End Date MeasureDateRange
+                          10007 MIZELL MEMORIAL HOSPITAL  702 N MAIN ST              -       OPP    AL     36467     COVINGTON   (334) 493-3541           4 S_004_01_PPR_PD_COMP_PERF No Different than the National Rate        - 10/01/2021 09/30/2023                -
+                          10007 MIZELL MEMORIAL HOSPITAL  702 N MAIN ST              -       OPP    AL     36467     COVINGTON   (334) 493-3541           4       S_004_01_PPR_PD_OBS                               16.67        - 10/01/2021 09/30/2023                -
+                          10007 MIZELL MEMORIAL HOSPITAL  702 N MAIN ST              -       OPP    AL     36467     COVINGTON   (334) 493-3541           4 S_004_01_PPR_PD_OBS_READM                                  17        - 10/01/2021 09/30/2023                -
+                          10007 MIZELL MEMORIAL HOSPITAL  702 N MAIN ST              -       OPP    AL     36467     COVINGTON   (334) 493-3541           4      S_004_01_PPR_PD_RSRR                               13.94        - 10/01/2021 09/30/2023                -
+                          10007 MIZELL MEMORIAL HOSPITAL  702 N MAIN ST              -       OPP    AL     36467     COVINGTON   (334) 493-3541           4  S_004_01_PPR_PD_RSRR_2_5                                9.89        - 10/01/2021 09/30/2023                -
+
+
+--- Column Info ---
+
+CMS Certification Number (CCN)     int64
+Provider Name                     object
+Address Line 1                    object
+Address Line 2                    object
+City/Town                         object
+State                             object
+ZIP Code                           int64
+County/Parish                     object
+Telephone Number                  object
+CMS Region                         int64
+Measure Code                      object
+Score                             object
+Footnote                          object
+Start Date                        object
+End Date                          object
+MeasureDateRange                  object
+
+
+--- Duplicate Columns ---
+
+None
+
+
+--- Duplicate Rows ---
+
+None
+
+
+--- Missing Values ---
+
+CMS Certification Number (CCN)    0
+Provider Name                     0
+Address Line 1                    0
+Address Line 2                    0
+City/Town                         0
+State                             0
+ZIP Code                          0
+County/Parish                     0
+Telephone Number                  0
+CMS Region                        0
+Measure Code                      0
+Score                             0
+Footnote                          0
+Start Date                        0
+End Date                          0
+MeasureDateRange                  0
+
+
+--- Describe (transposed) ---
+
+                                  count unique                        top   freq           mean            std      min       25%       50%       75%       max
+CMS Certification Number (CCN)  38064.0    NaN                        NaN    NaN  262007.174023  162035.657571  10007.0  110092.0  250077.0  420026.0  713026.0
+Provider Name                     38064    783          MEMORIAL HOSPITAL    144            NaN            NaN      NaN       NaN       NaN       NaN       NaN
+Address Line 1                    38064    791         100 HOSPITAL DRIVE    144            NaN            NaN      NaN       NaN       NaN       NaN       NaN
+Address Line 2                    38064     71                          -  34272            NaN            NaN      NaN       NaN       NaN       NaN       NaN
+City/Town                         38064    698                      MIAMI    288            NaN            NaN      NaN       NaN       NaN       NaN       NaN
+State                             38064     47                         TX   3264            NaN            NaN      NaN       NaN       NaN       NaN       NaN
+ZIP Code                        38064.0    NaN                        NaN    NaN   52816.113493   24775.904546   2554.0   33701.0   48838.0   74301.0   99669.0
+County/Parish                     38064    552                   FRANKLIN    480            NaN            NaN      NaN       NaN       NaN       NaN       NaN
+Telephone Number                  38064    792             (620) 225-8400     96            NaN            NaN      NaN       NaN       NaN       NaN       NaN
+CMS Region                      38064.0    NaN                        NaN    NaN       5.215637       1.972768      1.0       4.0       5.0       6.0      10.0
+Measure Code                      38064     48  S_004_01_PPR_PD_COMP_PERF    793            NaN            NaN      NaN       NaN       NaN       NaN       NaN
+Score                             38064   1407              Not Available  34355            NaN            NaN      NaN       NaN       NaN       NaN       NaN
+Footnote                          38064      4                         10  29378            NaN            NaN      NaN       NaN       NaN       NaN       NaN
+Start Date                        38064      4                 01/01/2023  15067            NaN            NaN      NaN       NaN       NaN       NaN       NaN
+End Date                          38064      3                 09/30/2023  18239            NaN            NaN      NaN       NaN       NaN       NaN       NaN
+MeasureDateRange                  38064      1                          -  38064            NaN            NaN      NaN       NaN       NaN       NaN       NaN

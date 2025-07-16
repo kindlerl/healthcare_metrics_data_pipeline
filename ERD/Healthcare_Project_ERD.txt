@@ -1,0 +1,531 @@
+// Entity Relation Diagram for the Healthcare 
+
+// Healthcare Project ERD Legend
+ 
+// Anchor Table
+// pbj_daily_nurse_staffing_main
+// Central fact table containing daily nurse staffing data 
+// by provider and date.
+// Primary key: PROVNUM (Provider Number)
+
+// Dimension Tables
+// Tables that provide contextual, descriptive, or 
+// supplemental data related to each provider or state.
+
+// Most reference pbj_daily_nurse_staffing_main.PROVNUM or
+//  pbj_daily_nurse_staffing_main.STATE as a foreign key.
+
+// Key Notations
+// [pk] – Primary Key
+// [ref: > table.column] – Foreign Key reference to another table
+
+// Common Relationships
+// PROVNUM (fact table) ⟶ CMS_Certification_Number (dimension tables)
+// STATE ⟶ State_or_Nation (used in aggregated state/nation tables)
+
+// Deficiency_Prefix + Deficiency_Tag_Number => citation_descriptions 
+// (join table for citation metadata)
+
+// =======================================
+// ANCHOR TABLE: pbj_daily_nurse_staffing_main
+// =======================================
+table pbj_daily_nurse_staffing_main {
+  PROVNUM integer [pk]
+  PROVNAME varchar
+  CITY varchar
+  STATE varchar
+  COUNTY_NAME varchar
+  COUNTY_FIPS integer
+  CY_Qtr varchar
+  WorkDate date
+  MDScensus integer
+  Hrs_RNDON float
+  Hrs_RNDON_emp float
+  Hrs_RNDON_ctr float
+  Hrs_RNadmin float
+  Hrs_RNadmin_emp float
+  Hrs_RNadmin_ctr float
+  Hrs_RN float
+  Hrs_RN_emp float
+  Hrs_RN_ctr float
+  Hrs_LPNadmin float
+  Hrs_LPNadmin_emp float
+  Hrs_LPNadmin_ctr float
+  Hrs_LPN float
+  Hrs_LPN_emp float
+  Hrs_LPN_ctr float
+  Hrs_CNA float
+  Hrs_CNA_emp float
+  Hrs_CNA_ctr float
+  Hrs_NAtrn float
+  Hrs_NAtrn_emp float
+  Hrs_NAtrn_ctr float
+  Hrs_MedAide float
+  Hrs_MedAide_emp float
+  Hrs_MedAide_ctr float
+}
+
+table citation_descriptions {
+  Deficiency_Prefix	varchar [pk]
+  Deficiency_Tag_Number	varchar [pk]
+  Deficiency_Prefix_and_Number varchar	
+  Deficiency_Description varchar
+  Deficiency_Category varchar
+}
+
+table covid_vax_averages {
+  State varchar [ref: > pbj_daily_nurse_staffing_main.STATE]
+  Percent_of_residents_who_are_up_to_date_on_their_vaccine float
+  Percent_of_staff_who_are_up_to_date_on_their_vaccines float
+  Date_vaccination_data_last_updated date
+}
+
+table covid_vax_provider {
+  CMS_Certification_Number varchar [ref: > pbj_daily_nurse_staffing_main.PROVNUM]
+  State varchar
+  Percent_of_residents_who_are_up_to_date_on_their_vaccines float
+  Percent_of_staff_who_are_up_to_date_on_their_vaccines float
+  Date_vaccination_data_last_updated date
+}
+
+table data_collection_intervals {
+  Measure_Code varchar [pk]
+  Measure_Description varchar
+  Data_Collection_Period_From_Date date
+  Data_Collection_Period_Through_Date date
+  Measure_Date_Range integer
+  Processing_Date date
+}
+
+table fire_safety_citations {
+  CMS_Certification_Number varchar [ref: > pbj_daily_nurse_staffing_main.PROVNUM]
+  Provider_Name varchar
+  Provider_Address varchar
+  City_Town varchar
+  State varchar
+  ZIP_Code varchar
+  Survey_Date varchar
+  Survey_Type varchar
+  Deficiency_Prefix varchar [ref: > citation_descriptions.Deficiency_Prefix]
+  Deficiency_Category varchar 
+  Deficiency_Tag_Number varchar [ref: > citation_descriptions.Deficiency_Tag_Number]
+  Tag_Version varchar
+  Deficiency_Description varchar
+  Scope_Severity_Code varchar
+  Deficiency_Corrected varchar
+  Correction_Date date
+  Inspection_Cycle integer
+  Standard_Deficiency boolean
+  Complaint_Deficiency boolean
+  Infection_Control_Inspection_Deficiency boolean
+  Citation_under_IDR boolean
+  Citation_under_IIDR boolean
+  Location varchar
+  Processing_Date date 
+}
+
+table health_citations {	
+  CMS_Certification_Number varchar [ref: > pbj_daily_nurse_staffing_main.PROVNUM]
+	Provider_Name varchar
+	Provider_Address varchar
+	City_Town varchar
+	State varchar
+	ZIP_Code varchar
+	Survey_Date date
+	Survey_Type varchar
+  Deficiency_Prefix varchar [ref: > citation_descriptions.Deficiency_Prefix]
+  Deficiency_Category varchar 
+  Deficiency_Tag_Number varchar [ref: > citation_descriptions.Deficiency_Tag_Number]
+	Deficiency_Description varchar
+	Scope_Severity_Code varchar
+	Deficiency_Corrected varchar
+	Correction_Date date
+	Inspection_Cycle varchar
+	Standard_Deficiency boolean
+	Complaint_Deficiency boolean
+	Infection_Control_Inspection_Deficiency boolean
+	Citation_under_IDR boolean
+	Citation_under_IIDR boolean
+	Location varchar
+	Processing_Date date
+}
+
+table health_inspect_cutpoint_state {
+	State varchar [ref: > pbj_daily_nurse_staffing_main.STATE]
+	5_Stars varchar
+	4_Stars varchar
+	3_Stars varchar
+	2_Stars varchar
+	1_Star varchar
+}
+
+table ownership {
+	CMS_Certification_Number varchar [ref: > pbj_daily_nurse_staffing_main.PROVNUM]
+	Provider_Name varchar
+	Provider_Address varchar
+	City_Town varchar
+	State varchar
+	ZIP_Code varchar
+	Role_played_by_Owner_or_Manager_in_Facility varchar
+	Owner_Type varchar
+	Owner_Name varchar
+	Ownership_Percentage varchar
+	Association_Date date
+	Location varchar
+	Processing_Date date
+}
+
+table penalties {
+	CMS_Certification_Number varchar [ref: > pbj_daily_nurse_staffing_main.PROVNUM]
+	Provider_Name varchar
+	Provider_Address varchar
+	City_Town varchar
+	State varchar
+	ZIP_Code varchar
+	Penalty_Date date
+	Penalty_Type varchar
+	Fine_Amount float
+	Payment_Denial_Start_Date date
+	Payment_Denial_Length_in_Days integer
+	Location varchar
+	Processing_Date date
+}
+
+table provider_info {
+	CMS_Certification_Number varchar [ref: > pbj_daily_nurse_staffing_main.PROVNUM]
+	Provider_Name varchar
+	Provider_Address varchar
+	City_Town varchar
+	State varchar
+	ZIP_Code varchar
+	Telephone_Number varchar
+	Provider_SSA_County_Code varchar
+	County_Parish varchar
+	Ownership_Type varchar
+	Number_of_Certified_Beds integer
+	Average_Number_of_Residents_per_Day float
+	Average_Number_of_Residents_per_Day_Footnote float
+	Provider_Type varchar
+	Provider_Resides_in_Hospital varchar
+	Legal_Business_Name varchar
+	Date_First_Approved_to_Provide_Medicare_and_Medicaid_Services date
+	Affiliated_Entity_Name varchar
+	Affiliated_Entity_ID varchar
+	Continuing_Care_Retirement_Community boolean
+	Special_Focus_Status varchar
+	Abuse_Icon boolean
+	Most_Recent_Health_Inspection_More_Than_2_Years_Ago boolean
+	Provider_Changed_Ownership_in_Last_12_Months boolean
+	With_a_Resident_and_Family_Council varchar
+	Automatic_Sprinkler_Systems_in_All_Required_Areas boolean
+	Overall_Rating integer
+	Overall_Rating_Footnote integer
+	Health_Inspection_Rating integer
+	Health_Inspection_Rating_Footnote integer
+	QM_Rating integer
+	QM_Rating_Footnote integer
+	Long_Stay_QM_Rating integer
+	Long_Stay_QM_Rating_Footnote integer
+	Short_Stay_QM_Rating integer
+	Short_Stay_QM_Rating_Footnote integer
+	Staffing_Rating integer
+	Staffing_Rating_Footnote integer
+	Reported_Staffing_Footnote integer
+	Physical_Therapist_Staffing_Footnote integer
+	Reported_Nurse_Aide_Staffing_Hours_per_Resident_per_Day float
+	Reported_LPN_Staffing_Hours_per_Resident_per_Day float
+	Reported_RN_Staffing_Hours_per_Resident_per_Day float
+	Reported_Licensed_Staffing_Hours_per_Resident_per_Day float
+	Reported_Total_Nurse_Staffing_Hours_per_Resident_per_Day float
+	Total_number_of_nurse_staff_hours_per_resident_per_day_on_the_weekend float
+	Registered_Nurse_hours_per_resident_per_day_on_the_weekend float
+	Reported_Physical_Therapist_Staffing_Hours_per_Resident_Per_Day float
+	Total_nursing_staff_turnover integer
+	Total_nursing_staff_turnover_footnote integer
+	Registered_Nurse_turnover integer
+	Registered_Nurse_turnover_footnote integer
+	Number_of_administrators_who_have_left_the_nursing_home integer
+	Administrator_turnover_footnote integer
+	Nursing_Case_Mix_Index float
+	Nursing_Case_Mix_Index_Ratio float
+	Case_Mix_Nurse_Aide_Staffing_Hours_per_Resident_per_Day float
+	Case_Mix_LPN_Staffing_Hours_per_Resident_per_Day float
+	Case_Mix_RN_Staffing_Hours_per_Resident_per_Day float
+	Case_Mix_Total_Nurse_Staffing_Hours_per_Resident_per_Day float
+	Case_Mix_Weekend_Total_Nurse_Staffing_Hours_per_Resident_per_Day float
+	Adjusted_Nurse_Aide_Staffing_Hours_per_Resident_per_Day float
+	Adjusted_LPN_Staffing_Hours_per_Resident_per_Day float
+	Adjusted_RN_Staffing_Hours_per_Resident_per_Day float
+	Adjusted_Total_Nurse_Staffing_Hours_per_Resident_per_Day float
+	Adjusted_Weekend_Total_Nurse_Staffing_Hours_per_Resident_per_Day float
+	Rating_Cycle_1_Standard_Survey_Health_Date date
+	Rating_Cycle_1_Total_Number_of_Health_Deficiencies integer
+	Rating_Cycle_1_Number_of_Standard_Health_Deficiencies integer
+	Rating_Cycle_1_Number_of_Complaint_Health_Deficiencies integer
+	Rating_Cycle_1_Health_Deficiency_Score integer
+	Rating_Cycle_1_Number_of_Health_Revisits integer
+	Rating_Cycle_1_Health_Revisit_Score integer
+	Rating_Cycle_1_Total_Health_Score integer
+	Rating_Cycle_2_Standard_Health_Survey_Date date
+	Rating_Cycle_2_Total_Number_of_Health_Deficiencies integer
+	Rating_Cycle_2_Number_of_Standard_Health_Deficiencies integer
+	Rating_Cycle_2_Number_of_Complaint_Health_Deficiencies integer
+	Rating_Cycle_2_Health_Deficiency_Score integer
+	Rating_Cycle_2_Number_of_Health_Revisits integer
+	Rating_Cycle_2_Health_Revisit_Score integer
+	Rating_Cycle_2_Total_Health_Score integer
+	Rating_Cycle_3_Standard_Health_Survey_Date date
+	Rating_Cycle_3_Total_Number_of_Health_Deficiencies integer
+	Rating_Cycle_3_Number_of_Standard_Health_Deficiencies integer
+	Rating_Cycle_3_Number_of_Complaint_Health_Deficiencies integer
+	Rating_Cycle_3_Health_Deficiency_Score integer
+	Rating_Cycle_3_Number_of_Health_Revisits integer
+	Rating_Cycle_3_Health_Revisit_Score integer
+	Rating_Cycle_3_Total_Health_Score integer
+	Total_Weighted_Health_Survey_Score float
+	Number_of_Facility_Reported_Incidents integer
+	Number_of_Substantiated_Complaints integer
+	Number_of_Citations_from_Infection_Control_Inspections integer
+	Number_of_Fines integer
+	Total_Amount_of_Fines_in_Dollars float
+	Number_of_Payment_Denials integer
+	Total_Number_of_Penalties integer
+	Location varchar
+	Latitude float
+	Longitude float
+	Geocoding_Footnote integer
+	Processing_Date date
+}
+
+table quality_msr_claims {
+	CMS_Certification_Number varchar [ref: > pbj_daily_nurse_staffing_main.PROVNUM]
+	Provider_Name varchar
+	Provider_Address varchar
+	City_Town varchar
+	State varchar
+	ZIP_Code varchar
+	Measure_Code varchar [ref: > data_collection_intervals.Measure_Code]
+	Measure_Description varchar
+	Resident_type varchar
+	Adjusted_Score float
+	Observed_Score float
+	Expected_Score float
+	Footnote_for_Score float
+	Used_in_Quality_Measure_Five_Star_Rating boolean
+	Measure_Period varchar
+	Location varchar
+	Processing_Date date
+}
+
+table quality_msr_mds {
+  CMS_Certification_Number varchar [ref: > pbj_daily_nurse_staffing_main.PROVNUM]
+  Provider_Name varchar
+  Provider_Address varchar
+  City_Town varchar
+  State varchar
+  ZIP_Code varchar
+  Measure_Code varchar [ref: > data_collection_intervals.Measure_Code]
+  Measure_Description varchar
+  Resident_type varchar
+  Q1_Measure_Score float
+  Footnote_for_Q1_Measure_Score integer
+  Q2_Measure_Score float
+  Footnote_for_Q2_Measure_Score integer
+  Q3_Measure_Score float
+  Footnote_for_Q3_Measure_Score integer
+  Q4_Measure_Score float
+  Footnote_for_Q4_Measure_Score integer
+  Four_Quarter_Average_Score float
+  Footnote_for_Four_Quarter_Average_Score integer
+  Used_in_Quality_Measure_Five_Star_Rating boolean
+  Measure_Period varchar
+  Location varchar
+  Processing_Date date
+}
+
+table state_us_averages {
+  State_or_Nation varchar [ref: > pbj_daily_nurse_staffing_main.STATE]
+  Cycle_1_Total_Number_of_Health_Deficiencies float
+  Cycle_1_Total_Number_of_Fire_Safety_Deficiencies float
+  Cycle_2_Total_Number_of_Health_Deficiencies float
+  Cycle_2_Total_Number_of_Fire_Safety_Deficiencies float
+  Cycle_3_Total_Number_of_Health_Deficiencies float
+  Cycle_3_Total_Number_of_Fire_Safety_Deficiencies float
+  Average_Number_of_Residents_per_Day float
+  Reported_Nurse_Aide_Staffing_Hours_per_Resident_per_Day float
+  Reported_LPN_Staffing_Hours_per_Resident_per_Day float
+  Reported_RN_Staffing_Hours_per_Resident_per_Day float
+  Reported_Licensed_Staffing_Hours_per_Resident_per_Day float
+  Reported_Total_Nurse_Staffing_Hours_per_Resident_per_Day float
+  Total_number_of_nurse_staff_hours_per_resident_per_day_on_the_weekend float
+  Registered_Nurse_hours_per_resident_per_day_on_the_weekend float
+  Reported_Physical_Therapist_Staffing_Hours_per_Resident_Per_Day float
+  Total_nursing_staff_turnover float
+  Registered_Nurse_turnover float
+  Number_of_administrators_who_have_left_the_nursing_home float
+  Nursing_Case_Mix_Index float
+  Case_Mix_RN_Staffing_Hours_per_Resident_per_Day float
+  Case_Mix_Total_Nurse_Staffing_Hours_per_Resident_per_Day float
+  Case_Mix_Weekend_Total_Nurse_Staffing_Hours_per_Resident_per_Day float
+  Number_of_Fines float
+  Fine_Amount_in_Dollars float
+  Percentage_of_long_stay_residents_whose_need_for_help_with_daily_activities_has_increased float
+  Percentage_of_long_stay_residents_who_lose_too_much_weight float
+  Percentage_of_low_risk_long_stay_residents_who_lose_control_of_their_bowels_or_bladder float
+  Percentage_of_long_stay_residents_with_a_catheter_inserted_and_left_in_their_bladder float
+  Percentage_of_long_stay_residents_with_a_urinary_tract_infection float
+  Percentage_of_long_stay_residents_who_have_depressive_symptoms float
+  Percentage_of_long_stay_residents_who_were_physically_restrained float
+  Percentage_of_long_stay_residents_experiencing_one_or_more_falls_with_major_injury float
+  Percentage_of_long_stay_residents_assessed_and_appropriately_given_the_pneumococcal_vaccine float
+  Percentage_of_long_stay_residents_who_received_an_antipsychotic_medication float
+  Percentage_of_short_stay_residents_assessed_and_appropriately_given_the_pneumococcal_vaccine float
+  Percentage_of_short_stay_residents_who_newly_received_an_antipsychotic_medication float
+  Percentage_of_long_stay_residents_whose_ability_to_move_independently_worsened float
+  Percentage_of_long_stay_residents_who_received_an_antianxiety_or_hypnotic_medication float
+  Percentage_of_high_risk_long_stay_residents_with_pressure_ulcers float
+  Percentage_of_long_stay_residents_assessed_and_appropriately_given_the_seasonal_influenza_vaccine float
+  Percentage_of_short_stay_residents_who_made_improvements_in_function float
+  Percentage_of_short_stay_residents_who_were_assessed_and_appropriately_given_the_seasonal_influenza_vaccine float
+  Percentage_of_short_stay_residents_who_were_rehospitalized_after_a_nursing_home_admission float
+  Percentage_of_short_stay_residents_who_had_an_outpatient_emergency_department_visit float
+  Number_of_hospitalizations_per_1000_long_stay_resident_days float
+  Number_of_outpatient_emergency_department_visits_per_1000_long_stay_resident_days float
+  Processing_Date date
+}
+
+table survey_dates {
+  CMS_Certification_Number varchar [ref: > pbj_daily_nurse_staffing_main.PROVNUM]
+  Survey_Date date
+  Type_of_Survey varchar
+  Survey_Cycle integer
+  Processing_Date date
+}
+
+table survey_summary {
+  CMS_Certification_Number varchar [ref: > pbj_daily_nurse_staffing_main.PROVNUM]
+  Provider_Name varchar
+  Provider_Address varchar
+  City_Town varchar
+  State varchar
+  ZIP_Code varchar
+  Inspection_Cycle varchar
+  Health_Survey_Date date
+  Fire_Safety_Survey_Date date
+  Total_Number_of_Health_Deficiencies integer
+  Total_Number_of_Fire_Safety_Deficiencies integer
+  Count_of_Freedom_from_Abuse_and_Neglect_and_Exploitation_Deficiencies integer
+  Count_of_Quality_of_Life_and_Care_Deficiencies integer
+  Count_of_Resident_Assessment_and_Care_Planning_Deficiencies integer
+  Count_of_Nursing_and_Physician_Services_Deficiencies integer
+  Count_of_Resident_Rights_Deficiencies integer
+  Count_of_Nutrition_and_Dietary_Deficiencies integer
+  Count_of_Pharmacy_Service_Deficiencies integer
+  Count_of_Environmental_Deficiencies integer
+  Count_of_Administration_Deficiencies integer
+  Count_of_Infection_Control_Deficiencies integer
+  Count_of_Emergency_Preparedness_Deficiencies integer
+  Count_of_Automatic_Sprinkler_Systems_Deficiencies integer
+  Count_of_Construction_Deficiencies integer
+  Count_of_Services_Deficiencies integer
+  Count_of_Corridor_Walls_and_Doors_Deficiencies integer
+  Count_of_Egress_Deficiencies integer
+  Count_of_Electrical_Deficiencies integer
+  Count_of_Emergency_Plans_and_Fire_Drills_Deficiencies integer
+  Count_of_Fire_Alarm_Systems_Deficiencies integer
+  Count_of_Smoke_Deficiencies integer
+  Count_of_Interior_Deficiencies integer
+  Count_of_Gas_and_Vacuum_and_Electrical_Systems_Deficiencies integer
+  Count_of_Hazardous_Area_Deficiencies integer
+  Count_of_Illumination_and_Emergency_Power_Deficiencies integer
+  Count_of_Laboratories_Deficiencies integer
+  Count_of_Medical_Gases_and_Anaesthetizing_Areas_Deficiencies integer
+  Count_of_Smoking_Regulations_Deficiencies integer
+  Count_of_Miscellaneous_Deficiencies integer
+  Location varchar
+  Processing_Date date
+}
+
+table fy_2024_snf_vbp_aggregate_performance {
+  Baseline_Period_FY_2019_National_Average_Readmission_Rate float
+  Performance_Period_FY_2022_National_Average_Readmission_Rate float
+  FY_2024_Achievement_Threshold float
+  FY_2024_Benchmark float
+  Range_of_Performance_Scores varchar
+  Total_Number_of_SNFs_Receiving_Value_Based_Incentive_Payments integer
+  Range_of_Incentive_Payment_Multipliers varchar
+  Range_of_Value_Based_Incentive_Payments float
+  Total_Amount_of_Value_Based_Incentive_Payments float
+}
+
+table fy_2024_snf_vbp_facility_performance {
+  SNF_VBP_Program_Ranking varchar
+  Footnote_SNF_VBP_Program_Ranking varchar
+  CMS_Certification_Number varchar [ref: > pbj_daily_nurse_staffing_main.PROVNUM]
+  Provider_Name varchar
+  Provider_Address varchar
+  City_Town varchar
+  State varchar
+  ZIP_Code varchar
+  Baseline_Period_FY_2019_Risk_Standardized_Readmission_Rate varchar
+  Footnote_Baseline_Period_FY_2019_Risk_Standardized_Readmission_Rate varchar
+  Performance_Period_FY_2022_Risk_Standardized_Readmission_Rate varchar
+  Footnote_Performance_Period_FY_2022_Risk_Standardized_Readmission_Rate varchar
+  Achievement_Score varchar
+  Footnote_Achievement_Score varchar
+  Improvement_Score varchar
+  Footnote_Improvement_Score varchar
+  Performance_Score varchar
+  Footnote_Performance_Score varchar
+  Incentive_Payment_Multiplier varchar
+  Footnote_Incentive_Payment_Multiplier varchar
+}
+
+table skilled_nursing_facility_quality_reporting_program_national_data {
+  CMS_Certification_Number varchar
+  Measure_Code varchar
+  Score float
+  Footnote varchar
+  Start_Date date
+  End_Date date
+  Measure_Date_Range varchar
+}
+
+table skilled_nersing_facility_quality_reporting_program_provider_data {
+  CMS_Certification_Number varchar [ref: > pbj_daily_nurse_staffing_main.PROVNUM]
+  Provider_Name varchar
+  Address_Line_1 varchar
+  City_Town varchar
+  State varchar
+  ZIP_Code varchar
+  County_Parish varchar
+  Telephone_Number varchar
+  CMS_Region integer
+  Measure_Code varchar
+  Score varchar
+  Footnote varchar
+  Start_Date date
+  End_Date date
+  Measure_Date_Range varchar
+  LOCATION1 varchar
+}
+
+table swing_bed_snf_data {
+  CMS_Certification_Number varchar [ref: > pbj_daily_nurse_staffing_main.PROVNUM]
+  Provider_Name varchar
+  Address_Line_1 varchar
+  Address_Line_2 varchar
+  City_Town varchar
+  State varchar
+  ZIP_Code varchar
+  County_Parish varchar
+  Telephone_Number varchar
+  CMS_Region integer
+  Measure_Code varchar
+  Score varchar
+  Footnote varchar
+  Start_Date date
+  End_Date date
+  MeasureDateRange varchar
+}
+

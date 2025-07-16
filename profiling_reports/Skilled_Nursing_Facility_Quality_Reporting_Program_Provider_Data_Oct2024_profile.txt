@@ -1,0 +1,84 @@
+=== File: Skilled_Nursing_Facility_Quality_Reporting_Program_Provider_Data_Oct2024.csv ===
+
+Shape: (711072, 16)
+
+
+--- First 5 Rows ---
+
+CMS Certification Number (CCN)            Provider Name       Address Line 1    City/Town State  ZIP Code County/Parish Telephone Number  CMS Region              Measure Code                               Score Footnote Start Date   End Date Measure Date Range                                     LOCATION1
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653      Franklin    (256)332-4110           4 S_004_01_PPR_PD_COMP_PERF No Different than the National Rate        - 10/01/2021 09/30/2023                  - 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653      Franklin    (256)332-4110           4       S_004_01_PPR_PD_OBS                                5.38        - 10/01/2021 09/30/2023                  - 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653      Franklin    (256)332-4110           4 S_004_01_PPR_PD_OBS_READM                                   5        - 10/01/2021 09/30/2023                  - 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653      Franklin    (256)332-4110           4      S_004_01_PPR_PD_RSRR                                9.02        - 10/01/2021 09/30/2023                  - 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653
+                        015009 BURNS NURSING HOME, INC. 701 MONROE STREET NW RUSSELLVILLE    AL     35653      Franklin    (256)332-4110           4  S_004_01_PPR_PD_RSRR_2_5                                6.25        - 10/01/2021 09/30/2023                  - 701 MONROE STREET NW, RUSSELLVILLE, AL, 35653
+
+
+--- Column Info ---
+
+CMS Certification Number (CCN)    object
+Provider Name                     object
+Address Line 1                    object
+City/Town                         object
+State                             object
+ZIP Code                           int64
+County/Parish                     object
+Telephone Number                  object
+CMS Region                         int64
+Measure Code                      object
+Score                             object
+Footnote                          object
+Start Date                        object
+End Date                          object
+Measure Date Range                object
+LOCATION1                         object
+
+
+--- Duplicate Columns ---
+
+None
+
+
+--- Duplicate Rows ---
+
+None
+
+
+--- Missing Values ---
+
+CMS Certification Number (CCN)    0
+Provider Name                     0
+Address Line 1                    0
+City/Town                         0
+State                             0
+ZIP Code                          0
+County/Parish                     0
+Telephone Number                  0
+CMS Region                        0
+Measure Code                      0
+Score                             0
+Footnote                          0
+Start Date                        0
+End Date                          0
+Measure Date Range                0
+LOCATION1                         0
+
+
+--- Describe (transposed) ---
+
+                                   count unique                                              top    freq          mean           std    min      25%      50%      75%      max
+CMS Certification Number (CCN)    711072  14814                                           015009      48           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Provider Name                     711072  14622                             MILLER'S MERRY MANOR     576           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Address Line 1                    711072  14786                             16 VALLEY VIEW DRIVE     144           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+City/Town                         711072   5140                                      LOS ANGELES    3744           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+State                             711072     53                                               TX   56976           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+ZIP Code                        711072.0    NaN                                              NaN     NaN  50345.684623  26871.628684  660.0  29732.0  48601.5  73045.0  99929.0
+County/Parish                     711072   1687                                      Los Angeles   17856           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Telephone Number                  711072  14754                                    (413)786-8000     192           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+CMS Region                      711072.0    NaN                                              NaN     NaN      5.190765      2.249057    1.0      4.0      5.0      7.0     10.0
+Measure Code                      711072     48                        S_004_01_PPR_PD_COMP_PERF   14814           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Score                             711072   9968                                    Not Available   95258           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Footnote                          711072      8                                                -  594729           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Start Date                        711072      4                                       01/01/2023  281466           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+End Date                          711072      3                                       09/30/2023  340722           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+Measure Date Range                711072      1                                                -  711072           NaN           NaN    NaN      NaN      NaN      NaN      NaN
+LOCATION1                         711072  14803  16 VALLEY VIEW DRIVE, COUNCIL BLUFFS, IA, 51503     144           NaN           NaN    NaN      NaN      NaN      NaN      NaN

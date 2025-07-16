@@ -1,0 +1,59 @@
+=== File: FY_2024_SNF_VBP_Aggregate_Performance.csv ===
+
+Shape: (1, 9)
+
+
+--- First 5 Rows ---
+
+ Baseline Period: FY 2019 National Average Readmission Rate  Performance Period: FY 2022 National Average Readmission Rate  FY 2024 Achievement Threshold  FY 2024 Benchmark Range of Performance Scores  Total Number of SNFs Receiving Value-Based Incentive Payments Range of Incentive Payment Multipliers Range of Value-Based Incentive Payments ($) Total Amount of Value-Based Incentive Payments ($)
+                                                    0.19788                                                        0.20223                        0.79271            0.83033           0.00000-100.00000                                                          10858              0.9802538758-1.0176785153        To be added after the end of FY 2024               To be added after the end of FY 2024
+
+
+--- Column Info ---
+
+Baseline Period: FY 2019 National Average Readmission Rate       float64
+Performance Period: FY 2022 National Average Readmission Rate    float64
+FY 2024 Achievement Threshold                                    float64
+FY 2024 Benchmark                                                float64
+Range of Performance Scores                                       object
+Total Number of SNFs Receiving Value-Based Incentive Payments      int64
+Range of Incentive Payment Multipliers                            object
+Range of Value-Based Incentive Payments ($)                       object
+Total Amount of Value-Based Incentive Payments ($)                object
+
+
+--- Duplicate Columns ---
+
+None
+
+
+--- Duplicate Rows ---
+
+None
+
+
+--- Missing Values ---
+
+Baseline Period: FY 2019 National Average Readmission Rate       0
+Performance Period: FY 2022 National Average Readmission Rate    0
+FY 2024 Achievement Threshold                                    0
+FY 2024 Benchmark                                                0
+Range of Performance Scores                                      0
+Total Number of SNFs Receiving Value-Based Incentive Payments    0
+Range of Incentive Payment Multipliers                           0
+Range of Value-Based Incentive Payments ($)                      0
+Total Amount of Value-Based Incentive Payments ($)               0
+
+
+--- Describe (transposed) ---
+
+                                                              count unique                                   top freq     mean  std      min      25%      50%      75%      max
+Baseline Period: FY 2019 National Average Readmission Rate      1.0    NaN                                   NaN  NaN  0.19788  NaN  0.19788  0.19788  0.19788  0.19788  0.19788
+Performance Period: FY 2022 National Average Readmission Rate   1.0    NaN                                   NaN  NaN  0.20223  NaN  0.20223  0.20223  0.20223  0.20223  0.20223
+FY 2024 Achievement Threshold                                   1.0    NaN                                   NaN  NaN  0.79271  NaN  0.79271  0.79271  0.79271  0.79271  0.79271
+FY 2024 Benchmark                                               1.0    NaN                                   NaN  NaN  0.83033  NaN  0.83033  0.83033  0.83033  0.83033  0.83033
+Range of Performance Scores                                       1      1                     0.00000-100.00000    1      NaN  NaN      NaN      NaN      NaN      NaN      NaN
+Total Number of SNFs Receiving Value-Based Incentive Payments   1.0    NaN                                   NaN  NaN  10858.0  NaN  10858.0  10858.0  10858.0  10858.0  10858.0
+Range of Incentive Payment Multipliers                            1      1             0.9802538758-1.0176785153    1      NaN  NaN      NaN      NaN      NaN      NaN      NaN
+Range of Value-Based Incentive Payments ($)                       1      1  To be added after the end of FY 2024    1      NaN  NaN      NaN      NaN      NaN      NaN      NaN
+Total Amount of Value-Based Incentive Payments ($)                1      1  To be added after the end of FY 2024    1      NaN  NaN      NaN      NaN      NaN      NaN      NaN

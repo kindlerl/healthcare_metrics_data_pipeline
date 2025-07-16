@@ -1,0 +1,96 @@
+=== File: FY_2024_SNF_VBP_Facility_Performance.csv ===
+
+Shape: (10858, 20)
+
+
+--- First 5 Rows ---
+
+ SNF VBP Program Ranking  Footnote -- SNF VBP Program Ranking  CMS Certification Number (CCN)                  Provider Name           Provider Address      City/Town State  ZIP Code Baseline Period: FY 2019 Risk-Standardized Readmission Rate Footnote -- Baseline Period: FY 2019 Risk-Standardized Readmission Rate  Performance Period: FY 2022 Risk-Standardized Readmission Rate  Footnote -- Performance Period: FY 2022 Risk-Standardized Readmission Rate  Achievement Score  Footnote -- Achievement Score Improvement Score Footnote -- Improvement Score  Performance Score  Footnote -- Performance Score  Incentive Payment Multiplier  Footnote -- Incentive Payment Multiplier
+                    7275                                  NaN                           10007       MIZELL MEMORIAL HOSPITAL              702 N MAIN ST            OPP    AL     36467                                                     0.20018                                                                     NaN                                                         0.23768                                                                         NaN            0.00000                            NaN           0.00000                           NaN            0.00000                            NaN                      0.980254                                       NaN
+                     602                                  NaN                           10044 MARION REGIONAL MEDICAL CENTER 1256 MILITARY STREET SOUTH       HAMILTON    AL     35570                                                     0.17051                                                                     NaN                                                         0.17070                                                                         NaN           92.53589                            NaN           0.00000                           NaN           92.53589                            NaN                      1.017401                                       NaN
+                     712                                  NaN                           10045         FAYETTE MEDICAL CENTER   1653 TEMPLE AVENUE NORTH        FAYETTE    AL     35555                                                     0.18901                                                                     NaN                                                         0.17240                                                                         NaN           88.46890                            NaN          80.88418                           NaN           88.46890                            NaN                      1.017140                                       NaN
+                    2966                                  NaN                           10058            BIBB MEDICAL CENTER            208 PIERSON AVE    CENTREVILLE    AL     35042                                                     0.18295                                                                     NaN                                                         0.18755                                                                         NaN           52.22488                            NaN           0.00000                           NaN           52.22488                            NaN                      1.001067                                       NaN
+                     791                                  NaN                           10065         RUSSELL MEDICAL CENTER           3316 HIGHWAY 280 ALEXANDER CITY    AL     35010                                                     0.19672                                                                     NaN                                                         0.17320                                                                         NaN           86.55502                            NaN          81.95009                           NaN           86.55502                            NaN                      1.016977                                       NaN
+
+
+--- Column Info ---
+
+SNF VBP Program Ranking                                                         int64
+Footnote -- SNF VBP Program Ranking                                           float64
+CMS Certification Number (CCN)                                                  int64
+Provider Name                                                                  object
+Provider Address                                                               object
+City/Town                                                                      object
+State                                                                          object
+ZIP Code                                                                        int64
+Baseline Period: FY 2019 Risk-Standardized Readmission Rate                    object
+Footnote -- Baseline Period: FY 2019 Risk-Standardized Readmission Rate        object
+Performance Period: FY 2022 Risk-Standardized Readmission Rate                float64
+Footnote -- Performance Period: FY 2022 Risk-Standardized Readmission Rate    float64
+Achievement Score                                                             float64
+Footnote -- Achievement Score                                                 float64
+Improvement Score                                                              object
+Footnote -- Improvement Score                                                  object
+Performance Score                                                             float64
+Footnote -- Performance Score                                                 float64
+Incentive Payment Multiplier                                                  float64
+Footnote -- Incentive Payment Multiplier                                      float64
+
+
+--- Duplicate Columns ---
+
+None
+
+
+--- Duplicate Rows ---
+
+None
+
+
+--- Missing Values ---
+
+SNF VBP Program Ranking                                                           0
+Footnote -- SNF VBP Program Ranking                                           10858
+CMS Certification Number (CCN)                                                    0
+Provider Name                                                                     0
+Provider Address                                                                  0
+City/Town                                                                         0
+State                                                                             0
+ZIP Code                                                                          0
+Baseline Period: FY 2019 Risk-Standardized Readmission Rate                       0
+Footnote -- Baseline Period: FY 2019 Risk-Standardized Readmission Rate       10341
+Performance Period: FY 2022 Risk-Standardized Readmission Rate                    0
+Footnote -- Performance Period: FY 2022 Risk-Standardized Readmission Rate    10858
+Achievement Score                                                                 0
+Footnote -- Achievement Score                                                 10858
+Improvement Score                                                                 0
+Footnote -- Improvement Score                                                 10341
+Performance Score                                                                 0
+Footnote -- Performance Score                                                 10858
+Incentive Payment Multiplier                                                      0
+Footnote -- Incentive Payment Multiplier                                      10858
+
+
+--- Describe (transposed) ---
+
+                                                                              count unique                                                                                                                                                                                                                       top  freq           mean            std       min        25%       50%        75%       max
+SNF VBP Program Ranking                                                     10858.0    NaN                                                                                                                                                                                                                       NaN   NaN    4824.811107    2449.870548       1.0    2715.25    5429.5     7275.0    7275.0
+Footnote -- SNF VBP Program Ranking                                             0.0    NaN                                                                                                                                                                                                                       NaN   NaN            NaN            NaN       NaN        NaN       NaN        NaN       NaN
+CMS Certification Number (CCN)                                              10858.0    NaN                                                                                                                                                                                                                       NaN   NaN  292957.882115  173074.057436   10007.0  146033.25  265870.5   395679.5  745006.0
+Provider Name                                                                 10858  10747                                                                                                                                                                                                      MILLER'S MERRY MANOR    10            NaN            NaN       NaN        NaN       NaN        NaN       NaN
+Provider Address                                                              10858  10841                                                                                                                                                                                                          3001 LITITZ PIKE     2            NaN            NaN       NaN        NaN       NaN        NaN       NaN
+City/Town                                                                     10858   3978                                                                                                                                                                                                                   CHICAGO    63            NaN            NaN       NaN        NaN       NaN        NaN       NaN
+State                                                                         10858     51                                                                                                                                                                                                                        CA   919            NaN            NaN       NaN        NaN       NaN        NaN       NaN
+ZIP Code                                                                    10858.0    NaN                                                                                                                                                                                                                       NaN   NaN   47766.639897   27688.181137    1001.0    27106.0   45344.5   71402.75   99701.0
+Baseline Period: FY 2019 Risk-Standardized Readmission Rate                   10858   5473                                                                                                                                                                                                                       ---   517            NaN            NaN       NaN        NaN       NaN        NaN       NaN
+Footnote -- Baseline Period: FY 2019 Risk-Standardized Readmission Rate         517      1  This facility had fewer than 25 eligible stays during the baseline period. Therefore, this facility did not have sufficient data to calculate a baseline period risk-standardized readmission rate or improvement score.   517            NaN            NaN       NaN        NaN       NaN        NaN       NaN
+Performance Period: FY 2022 Risk-Standardized Readmission Rate              10858.0    NaN                                                                                                                                                                                                                       NaN   NaN       0.202059       0.021558   0.13328    0.18711  0.200375    0.21534   0.32405
+Footnote -- Performance Period: FY 2022 Risk-Standardized Readmission Rate      0.0    NaN                                                                                                                                                                                                                       NaN   NaN            NaN            NaN       NaN        NaN       NaN        NaN       NaN
+Achievement Score                                                           10858.0    NaN                                                                                                                                                                                                                       NaN   NaN      29.999077      31.705728       0.0        0.0  21.54306   53.27751     100.0
+Footnote -- Achievement Score                                                   0.0    NaN                                                                                                                                                                                                                       NaN   NaN            NaN            NaN       NaN        NaN       NaN        NaN       NaN
+Improvement Score                                                             10858   3774                                                                                                                                                                                                                   0.00000  6037            NaN            NaN       NaN        NaN       NaN        NaN       NaN
+Footnote -- Improvement Score                                                   517      1  This facility had fewer than 25 eligible stays during the baseline period. Therefore, this facility did not have sufficient data to calculate a baseline period risk-standardized readmission rate or improvement score.   517            NaN            NaN       NaN        NaN       NaN        NaN       NaN
+Performance Score                                                           10858.0    NaN                                                                                                                                                                                                                       NaN   NaN       31.87252      31.504759       0.0        0.0  25.48896  55.181137     100.0
+Footnote -- Performance Score                                                   0.0    NaN                                                                                                                                                                                                                       NaN   NaN            NaN            NaN       NaN        NaN       NaN        NaN       NaN
+Incentive Payment Multiplier                                                10858.0    NaN                                                                                                                                                                                                                       NaN   NaN       0.991538       0.013946  0.980254   0.980254   0.98301   1.003772  1.017679
+Footnote -- Incentive Payment Multiplier                                        0.0    NaN                                                                                                                                                                                                                       NaN   NaN            NaN            NaN       NaN        NaN       NaN        NaN       NaN

@@ -3,6 +3,7 @@ __pycache__/
 # Ignore Word/Google docs
 *.gdoc
 *.docx
+*.xlsx
 
 *.pyc
 *.pyo
@@ -19,3 +20,5 @@ rawdata/*.csv
 .DS_Store
 Thumbs.db
 
+# Ignore google drive API files
+GoogleDrive_API/*
