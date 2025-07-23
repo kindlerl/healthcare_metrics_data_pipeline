@@ -11,8 +11,14 @@ __pycache__/
 .venv/
 .env
 
+# Ignore dbt - it has its own GitHub repo
+dbt_healthcare/*
+
 # Ignore large data files
 rawdata/*.csv
+
+# Ignore log files
+logs/*
 
 # Ignore notebook checkpoint saves
 .ipynb_checkpoints/

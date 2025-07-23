@@ -37,7 +37,7 @@ CREATE OR REPLACE STORAGE INTEGRATION HEALTHCARE_INTEGRATION
 DESC INTEGRATION HEALTHCARE_INTEGRATION;
 
 -- STORAGE_AWS_IAM_USER_ARN = arn:aws:iam::285641111216:user/baa41000-s
--- STORAGE_AWS_EXTERNAL_ID = FUC49552_SFCRole=3_R37dhH9hd9/rtw9DA+XPVpSxWPI=
+-- STORAGE_AWS_EXTERNAL_ID = FUC49552_SFCRole=3_gPQcfWzxXK0dZt5gu9MQTlPf+ko=
 
 -- These were copied into the "Trust relationships" tab for the "HEALTHCARE-e2d-project-role"
 -- The resulting JSON:
@@ -95,7 +95,7 @@ ls @HEALTHCARE_DB.BRONZE.HEALTHCARE_S3_STAGE
 -- tables in Snowflake (Bronze layer)
 
 -- Create the tables first
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.pbj_daily_nurse_staffing_main (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.PBJ_DAILY_NURSE_STAFFING_MAIN (
     PROVNUM STRING,
     PROVNAME STRING,
     CITY STRING,
@@ -132,7 +132,7 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.pbj_daily_nurse_staffing_main (
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_citation_descriptions (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_CITATION_DESCRIPTIONS (
     Deficiency_Prefix	STRING,
     Deficiency_Tag_Number	STRING,
     Deficiency_Prefix_and_Number STRING,
@@ -141,34 +141,34 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_citation_descriptions (
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_covid_vax_averages (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_COVID_VAX_AVERAGES (
     State STRING,
     Percent_of_residents_who_are_up_to_date_on_their_vaccine STRING,
     Percent_of_staff_who_are_up_to_date_on_their_vaccines STRING,
-    Date_vaccination_data_last_updated DATE,
+    Date_vaccination_data_last_updated STRING,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_covid_vax_provider (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_COVID_VAX_PROVIDER (
     CMS_Certification_Number STRING,
     State STRING,
     Percent_of_residents_who_are_up_to_date_on_their_vaccines STRING,
     Percent_of_staff_who_are_up_to_date_on_their_vaccines STRING,
-    Date_vaccination_data_last_updated DATE,
+    Date_vaccination_data_last_updated STRING,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_data_collection_intervals (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_DATA_COLLECTION_INTERVALS (
     Measure_Code STRING,
     Measure_Description STRING,
-    Data_Collection_Period_From_Date DATE,
-    Data_Collection_Period_Through_Date DATE,
-    Measure_Date_Range NUMBER,
-    Processing_Date DATE,
+    Data_Collection_Period_From_Date STRING,
+    Data_Collection_Period_Through_Date STRING,
+    Measure_Date_Range STRING,
+    Processing_Date STRING,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_fire_safety_citations (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_FIRE_SAFETY_CITATIONS (
     CMS_Certification_Number STRING,
     Provider_Name STRING,
     Provider_Address STRING,
@@ -184,26 +184,26 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_fire_safety_citations (
     Deficiency_Description STRING,
     Scope_Severity_Code STRING,
     Deficiency_Corrected STRING,
-    Correction_Date DATE,
-    Inspection_Cycle NUMBER,
-    Standard_Deficiency BOOLEAN,
-    Complaint_Deficiency BOOLEAN,
-    Infection_Control_Inspection_Deficiency BOOLEAN,
-    Citation_under_IDR BOOLEAN,
-    Citation_under_IIDR BOOLEAN,
+    Correction_Date STRING,
+    Inspection_Cycle STRING,
+    Standard_Deficiency STRING,
+    Complaint_Deficiency STRING,
+    Infection_Control_Inspection_Deficiency STRING,
+    Citation_under_IDR STRING,
+    Citation_under_IIDR STRING,
     Location STRING,
     Processing_Date date,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_health_citations (	
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_HEALTH_CITATIONS (	
     CMS_Certification_Number STRING,
     Provider_Name STRING,
     Provider_Address STRING,
     City_Town STRING,
     State STRING,
     ZIP_Code STRING,
-    Survey_Date DATE,
+    Survey_Date STRING,
     Survey_Type STRING,
     Deficiency_Prefix STRING,
     Deficiency_Category STRING,
@@ -211,19 +211,19 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_health_citations (
     Deficiency_Description STRING,
     Scope_Severity_Code STRING,
     Deficiency_Corrected STRING,
-    Correction_Date DATE,
+    Correction_Date STRING,
     Inspection_Cycle STRING,
-    Standard_Deficiency BOOLEAN,
-    Complaint_Deficiency BOOLEAN,
-    Infection_Control_Inspection_Deficiency BOOLEAN,
-    Citation_under_IDR BOOLEAN,
-    Citation_under_IIDR BOOLEAN,
+    Standard_Deficiency STRING,
+    Complaint_Deficiency STRING,
+    Infection_Control_Inspection_Deficiency STRING,
+    Citation_under_IDR STRING,
+    Citation_under_IIDR STRING,
     Location STRING,
     Processing_Date DATE,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_health_inspec_cutpoints_state (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_HEALTH_INSPEC_CUTPOINTS_STATE (
     State STRING,
     Five_Stars STRING,
     Four_Stars STRING,
@@ -233,7 +233,7 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_health_inspec_cutpoints_state (
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_ownership (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_OWNERSHIP (
     CMS_Certification_Number STRING,
     Provider_Name STRING,
     Provider_Address STRING,
@@ -250,24 +250,24 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_ownership (
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_penalties (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_PENALTIES (
     CMS_Certification_Number STRING,
     Provider_Name STRING,
     Provider_Address STRING,
     City_Town STRING,
     State STRING,
     ZIP_Code STRING,
-    Penalty_Date DATE,
+    Penalty_Date STRING,
     Penalty_Type STRING,
-    Fine_Amount NUMBER,
-    Payment_Denial_Start_Date DATE,
-    Payment_Denial_Length_in_Days NUMBER,
+    Fine_Amount STRING,
+    Payment_Denial_Start_Date STRING,
+    Payment_Denial_Length_in_Days STRING,
     Location STRING,
     Processing_Date DATE,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_provider_info (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_PROVIDER_INFO (
     CMS_Certification_Number STRING,
     Provider_Name STRING,
     Provider_Address STRING,
@@ -278,13 +278,13 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_provider_info (
     Provider_SSA_County_Code STRING,
     County_Parish STRING,
     Ownership_Type STRING,
-    Number_of_Certified_Beds NUMBER,
-    Average_Number_of_Residents_per_Day NUMBER,
-    Average_Number_of_Residents_per_Day_Footnote NUMBER,
+    Number_of_Certified_Beds STRING,
+    Average_Number_of_Residents_per_Day STRING,
+    Average_Number_of_Residents_per_Day_Footnote STRING,
     Provider_Type STRING,
     Provider_Resides_in_Hospital STRING,
     Legal_Business_Name STRING,
-    Date_First_Approved_to_Provide_Medicare_and_Medicaid_Services DATE,
+    Date_First_Approved_to_Provide_Medicare_and_Medicaid_Services STRING,
     Affiliated_Entity_Name STRING,
     Affiliated_Entity_ID STRING,
     Continuing_Care_Retirement_Community STRING,
@@ -294,87 +294,87 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_provider_info (
     Provider_Changed_Ownership_in_Last_12_Months STRING,
     With_a_Resident_and_Family_Council STRING,
     Automatic_Sprinkler_Systems_in_All_Required_Areas STRING,
-    Overall_Rating NUMBER,
-    Overall_Rating_Footnote NUMBER,
-    Health_Inspection_Rating NUMBER,
-    Health_Inspection_Rating_Footnote NUMBER,
-    QM_Rating NUMBER,
-    QM_Rating_Footnote NUMBER,
-    Long_Stay_QM_Rating NUMBER,
-    Long_Stay_QM_Rating_Footnote NUMBER,
-    Short_Stay_QM_Rating NUMBER,
-    Short_Stay_QM_Rating_Footnote NUMBER,
-    Staffing_Rating NUMBER,
-    Staffing_Rating_Footnote NUMBER,
-    Reported_Staffing_Footnote NUMBER,
-    Physical_Therapist_Staffing_Footnote NUMBER,
-    Reported_Nurse_Aide_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Reported_LPN_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Reported_RN_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Reported_Licensed_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Reported_Total_Nurse_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Total_number_of_nurse_staff_hours_per_resident_per_day_on_the_weekend NUMBER,
-    Registered_Nurse_hours_per_resident_per_day_on_the_weekend NUMBER,
-    Reported_Physical_Therapist_Staffing_Hours_per_Resident_Per_Day NUMBER,
-    Total_nursing_staff_turnover NUMBER,
-    Total_nursing_staff_turnover_footnote NUMBER,
-    Registered_Nurse_turnover NUMBER,
-    Registered_Nurse_turnover_footnote NUMBER,
-    Number_of_administrators_who_have_left_the_nursing_home NUMBER,
-    Administrator_turnover_footnote NUMBER,
-    Nursing_Case_Mix_Index NUMBER,
-    Nursing_Case_Mix_Index_Ratio NUMBER,
-    Case_Mix_Nurse_Aide_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Case_Mix_LPN_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Case_Mix_RN_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Case_Mix_Total_Nurse_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Case_Mix_Weekend_Total_Nurse_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Adjusted_Nurse_Aide_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Adjusted_LPN_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Adjusted_RN_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Adjusted_Total_Nurse_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Adjusted_Weekend_Total_Nurse_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Rating_Cycle_1_Standard_Survey_Health_Date DATE,
-    Rating_Cycle_1_Total_Number_of_Health_Deficiencies NUMBER,
-    Rating_Cycle_1_Number_of_Standard_Health_Deficiencies NUMBER,
-    Rating_Cycle_1_Number_of_Complaint_Health_Deficiencies NUMBER,
-    Rating_Cycle_1_Health_Deficiency_Score NUMBER,
-    Rating_Cycle_1_Number_of_Health_Revisits NUMBER,
-    Rating_Cycle_1_Health_Revisit_Score NUMBER,
-    Rating_Cycle_1_Total_Health_Score NUMBER,
-    Rating_Cycle_2_Standard_Health_Survey_Date DATE,
-    Rating_Cycle_2_Total_Number_of_Health_Deficiencies NUMBER,
-    Rating_Cycle_2_Number_of_Standard_Health_Deficiencies NUMBER,
-    Rating_Cycle_2_Number_of_Complaint_Health_Deficiencies NUMBER,
-    Rating_Cycle_2_Health_Deficiency_Score NUMBER,
-    Rating_Cycle_2_Number_of_Health_Revisits NUMBER,
-    Rating_Cycle_2_Health_Revisit_Score NUMBER,
-    Rating_Cycle_2_Total_Health_Score NUMBER,
-    Rating_Cycle_3_Standard_Health_Survey_Date DATE,
-    Rating_Cycle_3_Total_Number_of_Health_Deficiencies NUMBER,
-    Rating_Cycle_3_Number_of_Standard_Health_Deficiencies NUMBER,
-    Rating_Cycle_3_Number_of_Complaint_Health_Deficiencies NUMBER,
-    Rating_Cycle_3_Health_Deficiency_Score NUMBER,
-    Rating_Cycle_3_Number_of_Health_Revisits NUMBER,
-    Rating_Cycle_3_Health_Revisit_Score NUMBER,
-    Rating_Cycle_3_Total_Health_Score NUMBER,
-    Total_Weighted_Health_Survey_Score NUMBER,
-    Number_of_Facility_Reported_Incidents NUMBER,
-    Number_of_Substantiated_Complaints NUMBER,
-    Number_of_Citations_from_Infection_Control_Inspections NUMBER,
-    Number_of_Fines NUMBER,
-    Total_Amount_of_Fines_in_Dollars NUMBER,
-    Number_of_Payment_Denials NUMBER,
-    Total_Number_of_Penalties NUMBER,
+    Overall_Rating STRING,
+    Overall_Rating_Footnote STRING,
+    Health_Inspection_Rating STRING,
+    Health_Inspection_Rating_Footnote STRING,
+    QM_Rating STRING,
+    QM_Rating_Footnote STRING,
+    Long_Stay_QM_Rating STRING,
+    Long_Stay_QM_Rating_Footnote STRING,
+    Short_Stay_QM_Rating STRING,
+    Short_Stay_QM_Rating_Footnote STRING,
+    Staffing_Rating STRING,
+    Staffing_Rating_Footnote STRING,
+    Reported_Staffing_Footnote STRING,
+    Physical_Therapist_Staffing_Footnote STRING,
+    Reported_Nurse_Aide_Staffing_Hours_per_Resident_per_Day STRING,
+    Reported_LPN_Staffing_Hours_per_Resident_per_Day STRING,
+    Reported_RN_Staffing_Hours_per_Resident_per_Day STRING,
+    Reported_Licensed_Staffing_Hours_per_Resident_per_Day STRING,
+    Reported_Total_Nurse_Staffing_Hours_per_Resident_per_Day STRING,
+    Total_number_of_nurse_staff_hours_per_resident_per_day_on_the_weekend STRING,
+    Registered_Nurse_hours_per_resident_per_day_on_the_weekend STRING,
+    Reported_Physical_Therapist_Staffing_Hours_per_Resident_Per_Day STRING,
+    Total_nursing_staff_turnover STRING,
+    Total_nursing_staff_turnover_footnote STRING,
+    Registered_Nurse_turnover STRING,
+    Registered_Nurse_turnover_footnote STRING,
+    Number_of_administrators_who_have_left_the_nursing_home STRING,
+    Administrator_turnover_footnote STRING,
+    Nursing_Case_Mix_Index STRING,
+    Nursing_Case_Mix_Index_Ratio STRING,
+    Case_Mix_Nurse_Aide_Staffing_Hours_per_Resident_per_Day STRING,
+    Case_Mix_LPN_Staffing_Hours_per_Resident_per_Day STRING,
+    Case_Mix_RN_Staffing_Hours_per_Resident_per_Day STRING,
+    Case_Mix_Total_Nurse_Staffing_Hours_per_Resident_per_Day STRING,
+    Case_Mix_Weekend_Total_Nurse_Staffing_Hours_per_Resident_per_Day STRING,
+    Adjusted_Nurse_Aide_Staffing_Hours_per_Resident_per_Day STRING,
+    Adjusted_LPN_Staffing_Hours_per_Resident_per_Day STRING,
+    Adjusted_RN_Staffing_Hours_per_Resident_per_Day STRING,
+    Adjusted_Total_Nurse_Staffing_Hours_per_Resident_per_Day STRING,
+    Adjusted_Weekend_Total_Nurse_Staffing_Hours_per_Resident_per_Day STRING,
+    Rating_Cycle_1_Standard_Survey_Health_Date STRING,
+    Rating_Cycle_1_Total_Number_of_Health_Deficiencies STRING,
+    Rating_Cycle_1_Number_of_Standard_Health_Deficiencies STRING,
+    Rating_Cycle_1_Number_of_Complaint_Health_Deficiencies STRING,
+    Rating_Cycle_1_Health_Deficiency_Score STRING,
+    Rating_Cycle_1_Number_of_Health_Revisits STRING,
+    Rating_Cycle_1_Health_Revisit_Score STRING,
+    Rating_Cycle_1_Total_Health_Score STRING,
+    Rating_Cycle_2_Standard_Health_Survey_Date STRING,
+    Rating_Cycle_2_Total_Number_of_Health_Deficiencies STRING,
+    Rating_Cycle_2_Number_of_Standard_Health_Deficiencies STRING,
+    Rating_Cycle_2_Number_of_Complaint_Health_Deficiencies STRING,
+    Rating_Cycle_2_Health_Deficiency_Score STRING,
+    Rating_Cycle_2_Number_of_Health_Revisits STRING,
+    Rating_Cycle_2_Health_Revisit_Score STRING,
+    Rating_Cycle_2_Total_Health_Score STRING,
+    Rating_Cycle_3_Standard_Health_Survey_Date STRING,
+    Rating_Cycle_3_Total_Number_of_Health_Deficiencies STRING,
+    Rating_Cycle_3_Number_of_Standard_Health_Deficiencies STRING,
+    Rating_Cycle_3_Number_of_Complaint_Health_Deficiencies STRING,
+    Rating_Cycle_3_Health_Deficiency_Score STRING,
+    Rating_Cycle_3_Number_of_Health_Revisits STRING,
+    Rating_Cycle_3_Health_Revisit_Score STRING,
+    Rating_Cycle_3_Total_Health_Score STRING,
+    Total_Weighted_Health_Survey_Score STRING,
+    Number_of_Facility_Reported_Incidents STRING,
+    Number_of_Substantiated_Complaints STRING,
+    Number_of_Citations_from_Infection_Control_Inspections STRING,
+    Number_of_Fines STRING,
+    Total_Amount_of_Fines_in_Dollars STRING,
+    Number_of_Payment_Denials STRING,
+    Total_Number_of_Penalties STRING,
     Location STRING,
-    Latitude NUMBER,
-    Longitude NUMBER,
-    Geocoding_Footnote NUMBER,
-    Processing_Date DATE,
+    Latitude STRING,
+    Longitude STRING,
+    Geocoding_Footnote STRING,
+    Processing_Date STRING,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_quality_msr_claims (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_QUALITY_MSR_CLAIMS (
     CMS_Certification_Number STRING,
     Provider_Name STRING,
     Provider_Address STRING,
@@ -388,14 +388,14 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_quality_msr_claims (
     Observed_Score NUMBER,
     Expected_Score NUMBER,
     Footnote_for_Score NUMBER,
-    Used_in_Quality_Measure_Five_Star_Rating BOOLEAN,
+    Used_in_Quality_Measure_Five_Star_Rating STRING,
     Measure_Period STRING,
     Location STRING,
     Processing_Date DATE,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_quality_msr_mds (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_QUALITY_MSR_MDS (
     CMS_Certification_Number STRING,
     Provider_Name STRING,
     Provider_Address STRING,
@@ -415,66 +415,66 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_quality_msr_mds (
     Footnote_for_Q4_Measure_Score NUMBER,
     Four_Quarter_Average_Score NUMBER,
     Footnote_for_Four_Quarter_Average_Score NUMBER,
-    Used_in_Quality_Measure_Five_Star_Rating BOOLEAN,
+    Used_in_Quality_Measure_Five_Star_Rating STRING,
     Measure_Period STRING,
     Location STRING,
     Processing_Date DATE,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_state_us_averages (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_STATE_US_AVERAGES (
     State_or_Nation STRING,
-    Cycle_1_Total_Number_of_Health_Deficiencies NUMBER,
-    Cycle_1_Total_Number_of_Fire_Safety_Deficiencies NUMBER,
-    Cycle_2_Total_Number_of_Health_Deficiencies NUMBER,
-    Cycle_2_Total_Number_of_Fire_Safety_Deficiencies NUMBER,
-    Cycle_3_Total_Number_of_Health_Deficiencies NUMBER,
-    Cycle_3_Total_Number_of_Fire_Safety_Deficiencies NUMBER,
-    Average_Number_of_Residents_per_Day NUMBER,
-    Reported_Nurse_Aide_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Reported_LPN_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Reported_RN_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Reported_Licensed_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Reported_Total_Nurse_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Total_number_of_nurse_staff_hours_per_resident_per_day_on_the_weekend NUMBER,
-    Registered_Nurse_hours_per_resident_per_day_on_the_weekend NUMBER,
-    Reported_Physical_Therapist_Staffing_Hours_per_Resident_Per_Day NUMBER,
-    Total_nursing_staff_turnover NUMBER,
-    Registered_Nurse_turnover NUMBER,
-    Number_of_administrators_who_have_left_the_nursing_home NUMBER,
-    Nursing_Case_Mix_Index NUMBER,
-    Case_Mix_RN_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Case_Mix_Total_Nurse_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Case_Mix_Weekend_Total_Nurse_Staffing_Hours_per_Resident_per_Day NUMBER,
-    Number_of_Fines NUMBER,
-    Fine_Amount_in_Dollars NUMBER,
-    Percentage_of_long_stay_residents_whose_need_for_help_with_daily_activities_has_increased NUMBER,
-    Percentage_of_long_stay_residents_who_lose_too_much_weight NUMBER,
-    Percentage_of_low_risk_long_stay_residents_who_lose_control_of_their_bowels_or_bladder NUMBER,
-    Percentage_of_long_stay_residents_with_a_catheter_inserted_and_left_in_their_bladder NUMBER,
-    Percentage_of_long_stay_residents_with_a_urinary_tract_infection NUMBER,
-    Percentage_of_long_stay_residents_who_have_depressive_symptoms NUMBER,
-    Percentage_of_long_stay_residents_who_were_physically_restrained NUMBER,
-    Percentage_of_long_stay_residents_experiencing_one_or_more_falls_with_major_injury NUMBER,
-    Percentage_of_long_stay_residents_assessed_and_appropriately_given_the_pneumococcal_vaccine NUMBER,
-    Percentage_of_long_stay_residents_who_received_an_antipsychotic_medication NUMBER,
-    Percentage_of_short_stay_residents_assessed_and_appropriately_given_the_pneumococcal_vaccine NUMBER,
-    Percentage_of_short_stay_residents_who_newly_received_an_antipsychotic_medication NUMBER,
-    Percentage_of_long_stay_residents_whose_ability_to_move_independently_worsened NUMBER,
-    Percentage_of_long_stay_residents_who_received_an_antianxiety_or_hypnotic_medication NUMBER,
-    Percentage_of_high_risk_long_stay_residents_with_pressure_ulcers NUMBER,
-    Percentage_of_long_stay_residents_assessed_and_appropriately_given_the_seasonal_influenza_vaccine NUMBER,
-    Percentage_of_short_stay_residents_who_made_improvements_in_function NUMBER,
-    Percentage_of_short_stay_residents_who_were_assessed_and_appropriately_given_the_seasonal_influenza_vaccine NUMBER,
-    Percentage_of_short_stay_residents_who_were_rehospitalized_after_a_nursing_home_admission NUMBER,
-    Percentage_of_short_stay_residents_who_had_an_outpatient_emergency_department_visit NUMBER,
-    Number_of_hospitalizations_per_1000_long_stay_resident_days NUMBER,
-    Number_of_outpatient_emergency_department_visits_per_1000_long_stay_resident_days NUMBER,
+    Cycle_1_Total_Number_of_Health_Deficiencies STRING,
+    Cycle_1_Total_Number_of_Fire_Safety_Deficiencies STRING,
+    Cycle_2_Total_Number_of_Health_Deficiencies STRING,
+    Cycle_2_Total_Number_of_Fire_Safety_Deficiencies STRING,
+    Cycle_3_Total_Number_of_Health_Deficiencies STRING,
+    Cycle_3_Total_Number_of_Fire_Safety_Deficiencies STRING,
+    Average_Number_of_Residents_per_Day STRING,
+    Reported_Nurse_Aide_Staffing_Hours_per_Resident_per_Day STRING,
+    Reported_LPN_Staffing_Hours_per_Resident_per_Day STRING,
+    Reported_RN_Staffing_Hours_per_Resident_per_Day STRING,
+    Reported_Licensed_Staffing_Hours_per_Resident_per_Day STRING,
+    Reported_Total_Nurse_Staffing_Hours_per_Resident_per_Day STRING,
+    Total_number_of_nurse_staff_hours_per_resident_per_day_on_the_weekend STRING,
+    Registered_Nurse_hours_per_resident_per_day_on_the_weekend STRING,
+    Reported_Physical_Therapist_Staffing_Hours_per_Resident_Per_Day STRING,
+    Total_nursing_staff_turnover STRING,
+    Registered_Nurse_turnover STRING,
+    Number_of_administrators_who_have_left_the_nursing_home STRING,
+    Nursing_Case_Mix_Index STRING,
+    Case_Mix_RN_Staffing_Hours_per_Resident_per_Day STRING,
+    Case_Mix_Total_Nurse_Staffing_Hours_per_Resident_per_Day STRING,
+    Case_Mix_Weekend_Total_Nurse_Staffing_Hours_per_Resident_per_Day STRING,
+    Number_of_Fines STRING,
+    Fine_Amount_in_Dollars STRING,
+    Percentage_of_long_stay_residents_whose_need_for_help_with_daily_activities_has_increased STRING,
+    Percentage_of_long_stay_residents_who_lose_too_much_weight STRING,
+    Percentage_of_low_risk_long_stay_residents_who_lose_control_of_their_bowels_or_bladder STRING,
+    Percentage_of_long_stay_residents_with_a_catheter_inserted_and_left_in_their_bladder STRING,
+    Percentage_of_long_stay_residents_with_a_urinary_tract_infection STRING,
+    Percentage_of_long_stay_residents_who_have_depressive_symptoms STRING,
+    Percentage_of_long_stay_residents_who_were_physically_restrained STRING,
+    Percentage_of_long_stay_residents_experiencing_one_or_more_falls_with_major_injury STRING,
+    Percentage_of_long_stay_residents_assessed_and_appropriately_given_the_pneumococcal_vaccine STRING,
+    Percentage_of_long_stay_residents_who_received_an_antipsychotic_medication STRING,
+    Percentage_of_short_stay_residents_assessed_and_appropriately_given_the_pneumococcal_vaccine STRING,
+    Percentage_of_short_stay_residents_who_newly_received_an_antipsychotic_medication STRING,
+    Percentage_of_long_stay_residents_whose_ability_to_move_independently_worsened STRING,
+    Percentage_of_long_stay_residents_who_received_an_antianxiety_or_hypnotic_medication STRING,
+    Percentage_of_high_risk_long_stay_residents_with_pressure_ulcers STRING,
+    Percentage_of_long_stay_residents_assessed_and_appropriately_given_the_seasonal_influenza_vaccine STRING,
+    Percentage_of_short_stay_residents_who_made_improvements_in_function STRING,
+    Percentage_of_short_stay_residents_who_were_assessed_and_appropriately_given_the_seasonal_influenza_vaccine STRING,
+    Percentage_of_short_stay_residents_who_were_rehospitalized_after_a_nursing_home_admission STRING,
+    Percentage_of_short_stay_residents_who_had_an_outpatient_emergency_department_visit STRING,
+    Number_of_hospitalizations_per_1000_long_stay_resident_days STRING,
+    Number_of_outpatient_emergency_department_visits_per_1000_long_stay_resident_days STRING,
     Processing_Date DATE,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_survey_dates (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_SURVEY_DATES (
     CMS_Certification_Number STRING,
     Survey_Date DATE,
     Type_of_Survey STRING,
@@ -483,7 +483,7 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_survey_dates (
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_survey_summary (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.NH_SURVEY_SUMMARY (
     CMS_Certification_Number STRING,
     Provider_Name STRING,
     Provider_Address STRING,
@@ -491,57 +491,58 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.nh_survey_summary (
     State STRING,
     ZIP_Code STRING,
     Inspection_Cycle STRING,
-    Health_Survey_Date DATE,
-    Fire_Safety_Survey_Date DATE,
-    Total_Number_of_Health_Deficiencies NUMBER,
-    Total_Number_of_Fire_Safety_Deficiencies NUMBER,
-    Count_of_Freedom_from_Abuse_and_Neglect_and_Exploitation_Deficiencies NUMBER,
-    Count_of_Quality_of_Life_and_Care_Deficiencies NUMBER,
-    Count_of_Resident_Assessment_and_Care_Planning_Deficiencies NUMBER,
-    Count_of_Nursing_and_Physician_Services_Deficiencies NUMBER,
-    Count_of_Resident_Rights_Deficiencies NUMBER,
-    Count_of_Nutrition_and_Dietary_Deficiencies NUMBER,
-    Count_of_Pharmacy_Service_Deficiencies NUMBER,
-    Count_of_Environmental_Deficiencies NUMBER,
-    Count_of_Administration_Deficiencies NUMBER,
-    Count_of_Infection_Control_Deficiencies NUMBER,
-    Count_of_Emergency_Preparedness_Deficiencies NUMBER,
-    Count_of_Automatic_Sprinkler_Systems_Deficiencies NUMBER,
-    Count_of_Construction_Deficiencies NUMBER,
-    Count_of_Services_Deficiencies NUMBER,
-    Count_of_Corridor_Walls_and_Doors_Deficiencies NUMBER,
-    Count_of_Egress_Deficiencies NUMBER,
-    Count_of_Electrical_Deficiencies NUMBER,
-    Count_of_Emergency_Plans_and_Fire_Drills_Deficiencies NUMBER,
-    Count_of_Fire_Alarm_Systems_Deficiencies NUMBER,
-    Count_of_Smoke_Deficiencies NUMBER,
-    Count_of_Interior_Deficiencies NUMBER,
-    Count_of_Gas_and_Vacuum_and_Electrical_Systems_Deficiencies NUMBER,
-    Count_of_Hazardous_Area_Deficiencies NUMBER,
-    Count_of_Illumination_and_Emergency_Power_Deficiencies NUMBER,
-    Count_of_Laboratories_Deficiencies NUMBER,
-    Count_of_Medical_Gases_and_Anaesthetizing_Areas_Deficiencies NUMBER,
-    Count_of_Smoking_Regulations_Deficiencies NUMBER,
-    Count_of_Miscellaneous_Deficiencies NUMBER,
+    Health_Survey_Date STRING,
+    Fire_Safety_Survey_Date STRING,
+    Total_Number_of_Health_Deficiencies STRING,
+    Total_Number_of_Fire_Safety_Deficiencies STRING,
+    Count_of_Freedom_from_Abuse_and_Neglect_and_Exploitation_Deficiencies STRING,
+    Count_of_Quality_of_Life_and_Care_Deficiencies STRING,
+    Count_of_Resident_Assessment_and_Care_Planning_Deficiencies STRING,
+    Count_of_Nursing_and_Physician_Services_Deficiencies STRING,
+    Count_of_Resident_Rights_Deficiencies STRING,
+    Count_of_Nutrition_and_Dietary_Deficiencies STRING,
+    Count_of_Pharmacy_Service_Deficiencies STRING,
+    Count_of_Environmental_Deficiencies STRING,
+    Count_of_Administration_Deficiencies STRING,
+    Count_of_Infection_Control_Deficiencies STRING,
+    Count_of_Emergency_Preparedness_Deficiencies STRING,
+    Count_of_Automatic_Sprinkler_Systems_Deficiencies STRING,
+    Count_of_Construction_Deficiencies STRING,
+    Count_of_Services_Deficiencies STRING,
+    Count_of_Corridor_Walls_and_Doors_Deficiencies STRING,
+    Count_of_Egress_Deficiencies STRING,
+    Count_of_Electrical_Deficiencies STRING,
+    Count_of_Emergency_Plans_and_Fire_Drills_Deficiencies STRING,
+    Count_of_Fire_Alarm_Systems_Deficiencies STRING,
+    Count_of_Smoke_Deficiencies STRING,
+    Count_of_Interior_Deficiencies STRING,
+    Count_of_Gas_and_Vacuum_and_Electrical_Systems_Deficiencies STRING,
+    Count_of_Hazardous_Area_Deficiencies STRING,
+    Count_of_Illumination_and_Emergency_Power_Deficiencies STRING,
+    Count_of_Laboratories_Deficiencies STRING,
+    Count_of_Medical_Gases_and_Anaesthetizing_Areas_Deficiencies STRING,
+    Count_of_Smoking_Regulations_Deficiencies STRING,
+    Count_of_Miscellaneous_Deficiencies STRING,
     Location STRING,
     Processing_Date DATE,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.fy_2024_snf_vbp_aggregate_performance (
-    Baseline_Period_FY_2019_National_Average_Readmission_Rate NUMBER,
-    Performance_Period_FY_2022_National_Average_Readmission_Rate NUMBER,
-    FY_2024_Achievement_Threshold NUMBER,
-    FY_2024_Benchmark NUMBER,
+-- DROP TABLE HEALTHCARE_DB.BRONZE.fy_2024_snf_vbp_aggregate_performance
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.FY_2024_SNF_VBP_AGGREGATE_PERFORMANCE (
+    Baseline_Period_FY_2019_National_Average_Readmission_Rate STRING,
+    Performance_Period_FY_2022_National_Average_Readmission_Rate STRING,
+    FY_2024_Achievement_Threshold STRING,
+    FY_2024_Benchmark STRING,
     Range_of_Performance_Scores STRING,
-    Total_Number_of_SNFs_Receiving_Value_Based_Incentive_Payments NUMBER,
+    Total_Number_of_SNFs_Receiving_Value_Based_Incentive_Payments STRING,
     Range_of_Incentive_Payment_Multipliers STRING,
     Range_of_Value_Based_Incentive_Payments STRING,
     Total_Amount_of_Value_Based_Incentive_Payments STRING,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.fy_2024_snf_vbp_facility_performance (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.FY_2024_SNF_VBP_FACILITY_PERFORMANCE (
     SNF_VBP_Program_Ranking STRING,
     Footnote_SNF_VBP_Program_Ranking STRING,
     CMS_Certification_Number STRING,
@@ -565,18 +566,18 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.fy_2024_snf_vbp_facility_performanc
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.skilled_nursing_facility_quality_reporting_program_national_data (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.SKILLED_NURSING_FACILITY_QUALITY_REPORTING_PROGRAM_NATIONAL_DATA (
     CMS_Certification_Number STRING,
     Measure_Code STRING,
-    Score NUMBER,
+    Score STRING,
     Footnote STRING,
-    Start_Date DATE,
-    End_Date DATE,
+    Start_Date STRING,
+    End_Date STRING,
     Measure_Date_Range STRING,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.skilled_nursing_facility_quality_reporting_program_provider_data (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.SKILLED_NURSING_FACILITY_QUALITY_REPORTING_PROGRAM_PROVIDER_DATA (
     CMS_Certification_Number STRING,
     Provider_Name STRING,
     Address_Line_1 STRING,
@@ -585,18 +586,18 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.skilled_nursing_facility_quality_re
     ZIP_Code STRING,
     County_Parish STRING,
     Telephone_Number STRING,
-    CMS_Region NUMBER,
+    CMS_Region STRING,
     Measure_Code STRING,
     Score STRING,
     Footnote STRING,
-    Start_Date DATE,
-    End_Date DATE,
+    Start_Date STRING,
+    End_Date STRING,
     Measure_Date_Range STRING,
     LOCATION1 STRING,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
 
-CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.swing_bed_snf_data (
+CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.SWING_BED_SNF_DATA (
     CMS_Certification_Number STRING,
     Provider_Name STRING,
     Address_Line_1 STRING,
@@ -606,12 +607,12 @@ CREATE OR REPLACE TABLE HEALTHCARE_DB.BRONZE.swing_bed_snf_data (
     ZIP_Code STRING,
     County_Parish STRING,
     Telephone_Number STRING,
-    CMS_Region NUMBER,
+    CMS_Region STRING,
     Measure_Code STRING,
     Score STRING,
     Footnote STRING,
-    Start_Date DATE,
-    End_Date DATE,
+    Start_Date STRING,
+    End_Date STRING,
     MeasureDateRange STRING,
     load_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 );
@@ -756,6 +757,563 @@ FROM @HEALTHCARE_DB.BRONZE.HEALTHCARE_S3_STAGE
 PATTERN = '.*_Swing_Bed_SNF_data.*?\.csv'
 FILE_FORMAT = (FORMAT_NAME = HEALTHCARE_STAGE_CSV_FORMAT)
 ON_ERROR = 'CONTINUE';
+
+USE SCHEMA HEALTHCARE_DB.BRONZE;
+SHOW TABLES;
+
+select to_boolean(count(1)) from information_schema.tables where table_schema = 'BRONZE' and table_name = 'NH_PROVIDER_INFO';
+
+SELECT LOAD_TIMESTAMP FROM HEALTHCARE_DB.BRONZE.FY_2024_SNF_VBP_AGGREGATE_PERFORMANCE
+
+IF (EXISTS (SELECT * 
+                 FROM INFORMATION_SCHEMA.TABLES 
+                 WHERE TABLE_SCHEMA = 'BRONZE' 
+                 AND  TABLE_NAME = 'NH_PROVIDER_INFO'))
+BEGIN
+    SELECT provider_id FROM HEALTHCARE_DB.BRONZE.NH_PROVIDER_INFO
+END
+
+
+
+
+SELECT COUNT(*) FROM FY_2024_SNF_VBP_AGGREGATE_PERFORMANCE;
+SELECT COUNT(*) FROM FY_2024_SNF_VBP_FACILITY_PERFORMANCE;
+SELECT COUNT(*) FROM NH_CITATION_DESCRIPTIONS;
+SELECT COUNT(*) FROM NH_COVID_VAX_AVERAGES;
+SELECT COUNT(*) FROM NH_COVID_VAX_PROVIDER;
+SELECT COUNT(*) FROM NH_DATA_COLLECTION_INTERVALS;
+SELECT COUNT(*) FROM NH_FIRE_SAFETY_CITATIONS;
+SELECT COUNT(*) FROM NH_HEALTH_CITATIONS;
+SELECT COUNT(*) FROM NH_HEALTH_INSPEC_CUTPOINTS_STATE;
+SELECT COUNT(*) FROM NH_OWNERSHIP;
+SELECT COUNT(*) FROM NH_PENALTIES;
+SELECT COUNT(*) FROM NH_PROVIDER_INFO;
+SELECT COUNT(*) FROM NH_QUALITY_MSR_CLAIMS;
+SELECT COUNT(*) FROM NH_QUALITY_MSR_MDS;
+SELECT COUNT(*) FROM NH_STATE_US_AVERAGES;
+SELECT COUNT(*) FROM NH_SURVEY_DATES;
+SELECT COUNT(*) FROM NH_SURVEY_SUMMARY;
+SELECT COUNT(*) FROM PBJ_DAILY_NURSE_STAFFING_MAIN;
+SELECT COUNT(*) FROM SKILLED_NURSING_FACILITY_QUALITY_REPORTING_PROGRAM_NATIONAL_DATA;
+SELECT COUNT(*) FROM SKILLED_NURSING_FACILITY_QUALITY_REPORTING_PROGRAM_PROVIDER_DATA;
+SELECT COUNT(*) FROM SWING_BED_SNF_DATA;
+
+SELECT * FROM FY_2024_SNF_VBP_AGGREGATE_PERFORMANCE LIMIT 10;
+SELECT * FROM FY_2024_SNF_VBP_FACILITY_PERFORMANCE LIMIT 10;
+SELECT * FROM NH_CITATION_DESCRIPTIONS LIMIT 10;
+SELECT * FROM NH_COVID_VAX_AVERAGES LIMIT 10;
+SELECT * FROM NH_COVID_VAX_PROVIDER LIMIT 10;
+SELECT * FROM NH_DATA_COLLECTION_INTERVALS LIMIT 10;
+SELECT * FROM NH_FIRE_SAFETY_CITATIONS LIMIT 10;
+SELECT * FROM NH_HEALTH_CITATIONS LIMIT 10;
+SELECT * FROM NH_HEALTH_INSPEC_CUTPOINTS_STATE LIMIT 10;
+SELECT * FROM NH_OWNERSHIP LIMIT 10;
+SELECT * FROM NH_PENALTIES LIMIT 10;
+SELECT * FROM NH_PROVIDER_INFO LIMIT 10;
+DESC TABLE NH_PROVIDER_INFO;
+SELECT * FROM NH_QUALITY_MSR_CLAIMS LIMIT 10;
+SELECT * FROM NH_QUALITY_MSR_MDS LIMIT 10;
+SELECT * FROM NH_STATE_US_AVERAGES LIMIT 10;
+SELECT * FROM NH_SURVEY_DATES LIMIT 10;
+SELECT * FROM NH_SURVEY_SUMMARY LIMIT 10;
+SELECT * FROM PBJ_DAILY_NURSE_STAFFING_MAIN LIMIT 10;
+SELECT * FROM SKILLED_NURSING_FACILITY_QUALITY_REPORTING_PROGRAM_NATIONAL_DATA LIMIT 10;
+SELECT * FROM SKILLED_NURSING_FACILITY_QUALITY_REPORTING_PROGRAM_PROVIDER_DATA LIMIT 10;
+SELECT * FROM SWING_BED_SNF_DATA LIMIT 10;
+
+
+with source_data as (
+
+    select
+        *
+    from 
+        HEALTHCARE_DB.BRONZE.nh_provider_info
+),
+deduplicate AS (
+    select
+        cms_certification_number AS provider_id,
+        trim(provider_name) as provider_name,
+        trim(provider_address) as provider_address,
+        trim(city_town) as city_town,
+        trim(state) as state,
+        trim(zip_code) as zip_code,
+        trim(county_parish) as county_name,
+        trim(ownership_type) as ownership_type,
+        trim(provider_type) as provider_type,
+        trim(overall_rating) as overall_rating,
+        trim(provider_resides_in_hospital) as resides_in_hospital_flag,
+        trim(legal_business_name) as legal_business_name,
+        row_number() over (partition by provider_id order by load_timestamp desc nulls last) as rn
+    from source_data
+)
+SELECT
+    *
+FROM
+    deduplicate
+WHERE
+    rn = 1
+
+
+
+WITH source_data AS (
+    SELECT
+        *
+    FROM
+        HEALTHCARE_DB.BRONZE.nh_provider_info
+),
+deduplicated AS (
+    SELECT
+        trim(cms_certification_number) AS provider_id,
+        trim(provider_name) AS provider_name,
+        trim(provider_address) AS provider_address,
+        trim(city_town) AS city_town,
+        trim(state) AS state,
+        trim(zip_code) AS zip_code,
+        trim(telephone_number) AS telephone_number,
+        trim(county_parish) AS county_name,
+        trim(provider_ssa_county_code) AS provider_ssa_county_code,
+        trim(ownership_type) AS ownership_type,
+        trim(provider_type) AS provider_type,
+        trim(legal_business_name) AS legal_business_name,
+        trim(provider_resides_in_hospital) AS provider_resides_in_hospital,
+        trim(date_first_approved_to_provide_medicare_and_medicaid_services) AS date_first_approved_to_provide_medicare_and_medicaid_services,
+        trim(continuing_care_retirement_community) AS continuing_care_retirement_community,
+        trim(with_a_resident_and_family_council) AS with_a_resident_and_family_council,
+        trim(automatic_sprinkler_systems_in_all_required_areas) AS automatic_sprinkler_systems_in_all_required_areas,
+        trim(provider_changed_ownership_in_last_12_months) AS provider_changed_ownership_in_last_12_months,
+        trim(location) AS location,
+        trim(latitude) AS latitude,
+        trim(longitude) AS longitude,
+        row_number() OVER(PARTITION BY provider_id ORDER BY load_timestamp DESC NULLS LAST) AS rn
+    FROM
+        source_data
+),
+final AS (
+    SELECT
+        provider_id,
+        provider_name,
+        provider_address,
+        city_town,
+        state,
+        zip_code,
+        telephone_number,
+        county_name,
+        provider_ssa_county_code,
+        ownership_type,
+        provider_type,
+        legal_business_name,
+        provider_resides_in_hospital,
+        date_first_approved_to_provide_medicare_and_medicaid_services,
+        continuing_care_retirement_community,
+        with_a_resident_and_family_council,
+        automatic_sprinkler_systems_in_all_required_areas,
+        provider_changed_ownership_in_last_12_months,
+        location,
+        latitude,
+        longitude
+    FROM
+        deduplicated
+    WHERE
+        rn = 1
+)
+SELECT
+    *
+FROM
+    final;
+
+{{ 
+    config(
+        database='HEALTHCARE_DB',
+        schema='SILVER',
+        materialized='table',
+        tags=['silver', 'healthcare']
+    )
+}}
+
+
+SELECT COUNT(*) FROM HEALTHCARE_DB.BRONZE.nh_provider_info;
+SELECT COUNT(*) FROM HEALTHCARE_DB.SILVER.DIM_PROVIDER_RAW;
+
+SELECT COUNT(*) FROM HEALTHCARE_DB.SILVER.DIM_PROVIDER;
+
+SELECT COUNT(*) FROM HEALTHCARE_DB.SILVER.DIM_PROVIDER_RATINGS;
+
+-- First, grab all the data from our source
+WITH source_data AS (
+    SELECT
+        *
+    FROM
+        HEALTHCARE_DB.BRONZE.nh_provider_info
+         -- {{ source('bronze', 'nh_provider_info') }}
+),
+-- Next, try to remove duplicates.  This is achieved by selecting the fields
+-- we want to retain, applying a trim() function to them to remove leading/traling
+-- spacces, then applying a "row_number()" aggregator function to apply a 
+-- numeric row number to each unique row.  Duplicate rows will have a row number
+-- greater than 1, so we can filter those out in the next CTE.
+deduplicated AS (
+    SELECT
+        TRIM(CMS_CERTIFICATION_NUMBER) AS provider_id,
+        CAST(TRIM(reported_nurse_aide_staffing_hours_per_resident_per_day) AS float) AS reported_nurse_aide_staffing_hours_per_resident_per_day,
+        CAST(TRIM(reported_lpn_staffing_hours_per_resident_per_day) AS float) AS reported_lpn_staffing_hours_per_resident_per_day,
+        CAST(TRIM(reported_rn_staffing_hours_per_resident_per_day) AS float) AS reported_rn_staffing_hours_per_resident_per_day,
+        CAST(TRIM(reported_licensed_staffing_hours_per_resident_per_day) AS float) AS reported_licensed_staffing_hours_per_resident_per_day,
+        CAST(TRIM(reported_total_nurse_staffing_hours_per_resident_per_day) AS float) AS reported_total_nurse_staffing_hours_per_resident_per_day,
+        row_number() OVER(PARTITION BY provider_id ORDER BY load_timestamp DESC NULLS LAST) AS rn
+    FROM
+        source_data
+),
+-- Select the fields we want to retain and only retain rows with a rn (row_number() in previous CTE)
+-- value of "1" to filter out any duplicated rows.
+final AS (
+    SELECT
+        provider_id,
+        reported_nurse_aide_staffing_hours_per_resident_per_day,
+        reported_lpn_staffing_hours_per_resident_per_day,
+        reported_rn_staffing_hours_per_resident_per_day,
+        reported_licensed_staffing_hours_per_resident_per_day,
+        reported_total_nurse_staffing_hours_per_resident_per_day
+    FROM
+        deduplicated
+    WHERE
+        rn = 1
+)
+-- Select all the retained rows.
+SELECT
+    -- {{ dbt_utils.generate_surrogate_key(['provider_id']) }} as provider_sk,
+    provider_id,
+    reported_nurse_aide_staffing_hours_per_resident_per_day,
+    reported_lpn_staffing_hours_per_resident_per_day,
+    reported_rn_staffing_hours_per_resident_per_day,
+    reported_licensed_staffing_hours_per_resident_per_day,
+    reported_total_nurse_staffing_hours_per_resident_per_day
+FROM
+    final
+    
+DESC TABLE HEALTHCARE_DB.BRONZE.NH_OWNERSHIP;
+
+USE SCHEMA HEALTHCARE_DB.SILVER;
+SHOW TABLES;
+
+SELECT
+    provider_sk,
+    provider_id,
+    owner_name,
+    owner_role
+FROM
+    HEALTHCARE_DB.SILVER.DIM_OWNERSHIP
+WHERE
+    provider_sk IS NULL
+OR
+    provider_id IS NULL
+OR
+    owner_name IS NULL
+OR
+    owner_role IS NULL;
+
+
+
+DESC TABLE HEALTHCARE_DB.BRONZE.NH_HEALTH_CITATIONS;
+SELECT * FROM HEALTHCARE_DB.BRONZE.NH_HEALTH_CITATIONS LIMIT 50;
+
+SELECT DISTINCT MEASURE_PERIOD_END_QTR FROM HEALTHCARE_DB.SILVER.fact_quality_measure_mds;
+
+SELECT DISTINCT survey_cycle FROM HEALTHCARE_DB.BRONZE.NH_SURVEY_DATES;
+
+DESC TABLE HEALTHCARE_DB.SILVER.DIM_CITATION_DESCRIPTIONS;
+
+SELECT DISTINCT survey_cycle FROM HEALTHCARE_DB.SILVER.DIM_CITATION_DESCRIPTIONS;
+
+DESC SCHEMA HEALTHCARE_DB.BRONZE;
+
+SELECT * FROM HEALTHCARE_DB.SILVER.fact_quality_measure_claims ORDER BY provider_id ASC LIMIT 30;
+DESC TABLE HEALTHCARE_DB.SILVER.fact_quality_measure_claims;
+
+SELECT DISTINCT used_in_quality_measure_five_star_rating
+FROM healthcare_db.silver.fact_quality_measure_claims;
+
+DROP TABLE healthcare_db.silver.fact_quality_measure_claims;
+
+SELECT DISTINCT MEASURE_PERIOD
+FROM HEALTHCARE_DB.bronze.nh_quality_msr_claims
+WHERE MEASURE_PERIOD IS NOT NULL
+LIMIT 20;
+
+SELECT DISTINCT debug_measure_period_start, debug_measure_period_end
+FROM HEALTHCARE_DB.SILVER.FACT_QUALITY_MEASURE_CLAIMS
+WHERE debug_measure_period_start IS NOT NULL;
+
+WITH source_data AS (
+    SELECT
+        *
+    FROM
+         -- {{ source('bronze', 'nh_health_citations') }}
+        HEALTHCARE_DB.BRONZE.NH_HEALTH_CITATIONS
+),
+-- Next, try to remove duplicates.  This is achieved by selecting the fields
+-- we want to retain, applying a trim() function to them to remove leading/traling
+-- spacces, then applying a "row_number()" aggregator function to apply a 
+-- numeric row number to each unique row.  Duplicate rows will have a row number
+-- greater than 1, so we can filter those out in the next CTE.
+deduplicated AS (
+    SELECT
+        TRIM(CMS_CERTIFICATION_NUMBER) AS provider_id,
+        TO_DATE(TRIM(SURVEY_DATE), 'YYYY-MM-DD') AS survey_date,
+        CAST(TRIM(SURVEY_TYPE) AS VARCHAR) AS survey_type,
+        CONCAT(TRIM(DEFICIENCY_PREFIX), '-', TRIM(DEFICIENCY_TAG_NUMBER)) AS deficiency_id,
+        TRIM(DEFICIENCY_PREFIX) AS deficiency_prefix,
+        TRIM(DEFICIENCY_TAG_NUMBER) AS deficiency_tag_number,
+        TRIM(DEFICIENCY_CATEGORY) AS deficiency_category,
+        TRIM(DEFICIENCY_DESCRIPTION) AS deficiency_description,
+        TRIM(SCOPE_SEVERITY_CODE) AS scope_severity_code,
+        TRIM(DEFICIENCY_CORRECTED) AS deficiency_corrected,
+        TO_DATE(TRIM(CORRECTION_DATE), 'YYYY-MM-DD') AS correction_date,
+        TRIM(INSPECTION_CYCLE) AS inspection_cycle,
+        CAST(
+            CASE 
+                WHEN TRIM(STANDARD_DEFICIENCY) = 'Y' THEN TRUE
+                WHEN TRIM(STANDARD_DEFICIENCY) = 'N' THEN FALSE
+                ELSE NULL
+            END AS BOOLEAN
+        ) AS standard_deficiency,
+        CAST(
+            CASE 
+                WHEN TRIM(COMPLAINT_DEFICIENCY) = 'Y' THEN TRUE
+                WHEN TRIM(COMPLAINT_DEFICIENCY) = 'N' THEN FALSE
+                ELSE NULL
+            END AS BOOLEAN
+        ) AS complaint_deficiency,
+        CAST(
+            CASE 
+                WHEN TRIM(INFECTION_CONTROL_INSPECTION_DEFICIENCY) = 'Y' THEN TRUE
+                WHEN TRIM(INFECTION_CONTROL_INSPECTION_DEFICIENCY) = 'N' THEN FALSE
+                ELSE NULL
+            END AS BOOLEAN
+        ) AS infection_control_inspection_deficiency,
+        CAST(
+            CASE 
+                WHEN TRIM(CITATION_UNDER_IDR) = 'Y' THEN TRUE
+                WHEN TRIM(CITATION_UNDER_IDR) = 'N' THEN FALSE
+                ELSE NULL
+            END AS BOOLEAN
+        ) AS citation_under_idr,
+        CAST(
+            CASE 
+                WHEN TRIM(CITATION_UNDER_IIDR) = 'Y' THEN TRUE
+                WHEN TRIM(CITATION_UNDER_IIDR) = 'N' THEN FALSE
+                ELSE NULL
+            END AS BOOLEAN
+        ) AS citation_under_iidr,
+        row_number() OVER(PARTITION BY provider_id, survey_date, deficiency_id ORDER BY load_timestamp DESC NULLS LAST) AS rn
+    FROM
+        source_data
+),
+-- Select the fields we want to retain and only retain rows with a rn (row_number() in previous CTE)
+-- value of "1" to filter out any duplicated rows.
+final AS (
+    SELECT
+        provider_id,
+        survey_date,
+        survey_type,
+        deficiency_id,
+        deficiency_prefix,
+        deficiency_tag_number,
+        deficiency_category,
+        deficiency_description,
+        scope_severity_code,
+        deficiency_corrected,
+        correction_date,
+        inspection_cycle,
+        standard_deficiency,
+        complaint_deficiency,
+        infection_control_inspection_deficiency,
+        citation_under_idr,
+        citation_under_iidr
+    FROM
+        deduplicated
+    WHERE
+        rn = 1
+)
+SELECT
+    -- Generate a surrogate key from natural key(s)
+    -- {{ dbt_utils.generate_surrogate_key(['provider_id', 'survey_date', 'deficiency_id']) }} as citation_sk,
+    provider_id,
+    survey_date,
+    survey_type,
+    deficiency_id,
+    deficiency_prefix,
+    deficiency_tag_number,
+    deficiency_category,
+    deficiency_description,
+    scope_severity_code,
+    deficiency_corrected,
+    correction_date,
+    inspection_cycle,
+    standard_deficiency,
+    complaint_deficiency,
+    infection_control_inspection_deficiency,
+    citation_under_idr,
+    citation_under_iidr
+FROM
+    final
+
+
+SELECT REGEXP_LIKE('2024-12-15', '[0-9]{4}-[0-9]{2}-[0-9]{2}')
+SELECT REGEXP_LIKE('10/01/2023-10/31/2023', '[0-9]{2}/[0-9]{2}/[0-9]{4}-[0-9]{2}/[0-9]{2}/[0-9]{4}')
+
+SELECT REGEXP_LIKE(TRIM('a64.36'), '^[0-9].*?$')
+
+
+SELECT REGEXP_LIKE('0.9802538758-1.0176785153', '\d+\.\d+\-\d+\.\d+')
+SELECT REGEXP_LIKE('0.9802538758-1.0176785153', '^[0-9]\.[0-9]+\-[0-9]+\.[0-9]+$')
+
+SELECT 
+    SURVEY_DATE, 
+    CORRECTION_DATE 
+FROM 
+    HEALTHCARE_DB.BRONZE.NH_HEALTH_CITATIONS
+WHERE
+    SURVEY_DATE IS NULL
+OR
+    CORRECTION_DATE IS NULL
+OR
+    NOT REGEXP_LIKE(SURVEY_DATE, '[0-9]{4}-[0-9]{2}-[0-9]{2}')
+OR
+    NOT REGEXP_LIKE(CORRECTION_DATE, '[0-9]{4}-[0-9]{2}-[0-9]{2}')
+
+WITH source_data AS (
+    SELECT
+        *
+    FROM
+         HEALTHCARE_DB.BRONZE.NH_COVID_VAX_AVERAGES
+        
+),
+-- Next, try to remove duplicates.  This is achieved by selecting the fields
+-- we want to retain, applying a trim() function to them to remove leading/traling
+-- spacces, then applying a "row_number()" aggregator function to apply a 
+-- numeric row number to each unique row.  Duplicate rows will have a row number
+-- greater than 1, so we can filter those out in the next CTE.
+deduplicated AS (
+    SELECT
+        TRIM(STATE) AS state,
+        CASE
+            WHEN TRIM(PERCENT_OF_RESIDENTS_WHO_ARE_UP_TO_DATE_ON_THEIR_VACCINE) = 'Not Available' THEN NULL
+            ELSE CAST(TRIM(PERCENT_OF_RESIDENTS_WHO_ARE_UP_TO_DATE_ON_THEIR_VACCINE) AS FLOAT)
+        END AS percent_of_residents_who_are_up_to_date_on_their_vaccines,
+        CASE
+            WHEN TRIM(PERCENT_OF_STAFF_WHO_ARE_UP_TO_DATE_ON_THEIR_VACCINES) = 'Not Available' THEN NULL
+            ELSE CAST(TRIM(PERCENT_OF_STAFF_WHO_ARE_UP_TO_DATE_ON_THEIR_VACCINES) AS FLOAT)
+        END AS percent_of_staff_who_are_up_to_date_on_their_vaccines,
+        TO_DATE(TRIM(DATE_VACCINATION_DATA_LAST_UPDATED), 'mm/dd/yyyy') AS date_vaccination_data_last_updated,
+        row_number() OVER(PARTITION BY state ORDER BY load_timestamp DESC NULLS LAST) AS rn
+    FROM
+        source_data
+),
+-- Select the fields we want to retain and only retain rows with a rn (row_number() in previous CTE)
+-- value of "1" to filter out any duplicated rows.
+final AS (
+    SELECT
+        state,
+        percent_of_residents_who_are_up_to_date_on_their_vaccines,
+        percent_of_staff_who_are_up_to_date_on_their_vaccines,
+        date_vaccination_data_last_updated
+    FROM
+        deduplicated
+    WHERE
+        rn = 1
+)
+SELECT
+        state,
+        percent_of_residents_who_are_up_to_date_on_their_vaccines,
+        percent_of_staff_who_are_up_to_date_on_their_vaccines,
+        date_vaccination_data_last_updated
+FROM
+    final
+
+
+    
+DESC TABLE HEALTHCARE_DB.BRONZE.NH_FIRE_SAFETY_CITATIONS
+
+DESC TABLE HEALTHCARE_DB.SILVER.FACT_HEALTH_CITATIONS
+
+
+SELECT
+    DISTINCT  INSPECTION_CYCLE
+FROM
+    -- HEALTHCARE_DB.SILVER.FACT_FIRE_SAFETY_CITATIONS
+    HEALTHCARE_DB.SILVER.FACT_HEALTH_CITATIONS
+
+SELECT
+    *
+FROM 
+    -- HEALTHCARE_DB.SILVER.FACT_HEALTH_CITATIONS
+    -- HEALTHCARE_DB.SILVER.FACT_SURVEY_SUMMARY
+    HEALTHCARE_DB.BRONZE.SWING_BED_SNF_DATA
+LIMIT
+    200
+
+
+DESC TABLE HEALTHCARE_DB.BRONZE.SWING_BED_SNF_DATA
+
+DESC TABLE HEALTHCARE_DB.SILVER.FACT_SNF_QUALITY_REPORTING_PROGRAM_PROVIDER_DATA
+
+
+SELECT * FROM HEALTHCARE_DB.SILVER.DIM_PROVIDER WHERE PROVIDER_ID = '10007'
+
+
+SELECT COUNT(*) FROM HEALTHCARE_DB.SILVER.DIM_PROVIDER_RAW
+
+SELECT DISTINCT MEASURE_DATE_RANGE FROM HEALTHCARE_DB.BRONZE.skilled_nursing_facility_quality_reporting_program_provider_data
+
+
+SELECT * FROM HEALTHCARE_DB.BRONZE.NH_PROVIDER_INFO WHERE CMS_CERTIFICATION_NUMBER = '010159'
+
+SELECT COUNT(*) FROM HEALTHCARE_DB.BRONZE.SWING_BED_SNF_DATA
+
+SELECT MAX(LENGTH(CMS_CERTIFICATION_NUMBER)) FROM HEALTHCARE_DB.BRONZE.NH_PROVIDER_INFO
+SELECT MIN(LENGTH(CMS_CERTIFICATION_NUMBER)) FROM HEALTHCARE_DB.BRONZE.SWING_BED_SNF_DATA
+
+SELECT
+    COUNT(percent_of_residents_who_are_up_to_date_on_their_vaccines)
+FROM
+    HEALTHCARE_DB.SILVER.fact_covid_vax_provider
+WHERE
+    percent_of_residents_who_are_up_to_date_on_their_vaccines IS NULL
+
+LIST @HEALTHCARE_DB.BRONZE.HEALTHCARE_S3_STAGE PATTERN = '.*_FY_2024_SNF_VBP_AGGREGATE_PERFORMANCE.*?\.csv';
+
+LIST @HEALTHCARE_DB.BRONZE.HEALTHCARE_S3_STAGE PATTERN = '.*_FY_2024_SNF_VBP_Aggregate_Performance.*?\.csv'
+
+SELECT * FROM HEALTHCARE_DB.BRONZE.FY_2024_SNF_VBP_AGGREGATE_PERFORMANCE
+
+DELETE FROM HEALTHCARE_DB.BRONZE.FY_2024_SNF_VBP_AGGREGATE_PERFORMANCE
+
+COPY INTO HEALTHCARE_DB.BRONZE.FY_2024_SNF_VBP_AGGREGATE_PERFORMANCE
+FROM @HEALTHCARE_DB.BRONZE.HEALTHCARE_S3_STAGE
+PATTERN = '.*_FY_2024_SNF_VBP_Aggregate_Performance.*?\.csv'
+FILE_FORMAT = (FORMAT_NAME = HEALTHCARE_STAGE_CSV_FORMAT)
+ON_ERROR = 'CONTINUE';
+
+SHOW FILE FORMATS IN SCHEMA HEALTHCARE_DB.BRONZE;
+
+LIST @HEALTHCARE_DB.BRONZE.HEALTHCARE_S3_STAGE 
+PATTERN = '.*_FY_2024_SNF_VBP_Aggregate_Performance.*?\.csv';
+
+SHOW GRANTS ON STAGE HEALTHCARE_DB.BRONZE.HEALTHCARE_S3_STAGE;
+
+SHOW FILE FORMATS IN SCHEMA HEALTHCARE_DB.BRONZE;
+
+DESCRIBE FILE FORMAT HEALTHCARE_DB.BRONZE.HEALTHCARE_STAGE_CSV_FORMAT;
+
+COPY INTO HEALTHCARE_DB.BRONZE.FY_2024_SNF_VBP_Aggregate_Performance
+FROM @HEALTHCARE_DB.BRONZE.HEALTHCARE_S3_STAGE/20250715163709_FY_2024_SNF_VBP_Aggregate_Performance.csv
+FILE_FORMAT = (FORMAT_NAME = HEALTHCARE_DB.BRONZE.HEALTHCARE_STAGE_CSV_FORMAT)
+ON_ERROR = 'CONTINUE';
+
+
+
+
+
 
 
 
