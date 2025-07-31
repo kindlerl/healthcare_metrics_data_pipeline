@@ -28,3 +28,6 @@ Thumbs.db
 
 # Ignore google drive API files
 GoogleDrive_API/*
+
+# Ignore anything under venv
+venv/*

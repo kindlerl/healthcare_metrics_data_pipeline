@@ -1,0 +1,7 @@
+{
+  "python.pythonPath": "/opt/anaconda3/envs/healthcare_project/bin/python",
+  "python.defaultInterpreterPath": "/opt/anaconda3/envs/healthcare_project/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "python.envFile": "${workspaceFolder}/.env"
+}
+
