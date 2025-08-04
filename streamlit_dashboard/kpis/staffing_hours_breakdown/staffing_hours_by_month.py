@@ -1,14 +1,16 @@
 import streamlit as st
 import pandas as pd
-# from utils.snowflake_connection import establish_snowflake_connection
-from utils.us_states import get_state
-# from utils.db import get_data_as_dataframe
+# from utils.us_states import get_state
 import plotly.express as px
 import calendar
-# from dotenv import load_dotenv
-# import os
+from utils.themes import get_base_theme
+from utils.constants import ATT_BG_COLOR, ATT_COLORSCALE, ATT_FONT_COLOR, ATT_MARKER_LINE_COLOR
 
 def render_by_month(df):
+
+    # Set the theme
+    theme = get_base_theme()
+
     # Get the data, grouped by state
     df_month = df.groupby(['MONTH']).agg({'TOTAL_HOURS_WORKED':'sum'}).reset_index()
 
@@ -28,12 +30,49 @@ def render_by_month(df):
         title="Total Nurse Hours Worked by Month"
     )
 
+    fig.update_layout(
+        title_font=dict(size=18, color=theme[ATT_FONT_COLOR]),
+        paper_bgcolor=theme[ATT_BG_COLOR],
+        plot_bgcolor=theme[ATT_BG_COLOR],
+        font=dict(color=theme[ATT_FONT_COLOR]),
+        margin=dict(l=0, r=0, t=40, b=40),
+        xaxis=dict(
+            title=dict(
+               text="Month Name",
+               font=dict(color=theme[ATT_FONT_COLOR])
+            ),
+            tickfont=dict(color=theme[ATT_FONT_COLOR]),
+            gridcolor=theme[ATT_MARKER_LINE_COLOR],
+            zerolinecolor=theme[ATT_MARKER_LINE_COLOR]
+        ),
+        yaxis=dict(
+            title=dict(
+               text="Total Hours Worked",
+               font=dict(color=theme[ATT_FONT_COLOR])
+            ),
+            tickfont=dict(color=theme[ATT_FONT_COLOR]),
+            gridcolor=theme[ATT_MARKER_LINE_COLOR],
+            zerolinecolor=theme[ATT_MARKER_LINE_COLOR]
+        )
+    )
+    
+    # Update the colors in the hover balloon
+    fig.update_layout(
+        hoverlabel=dict(
+            bgcolor="black",      # Background color
+            font_size=14,
+            font_family="Verdana",
+            font_color="#e0e0e0"    # Text color (newer Plotly versions)
+        )
+    )
+
     fig.update_traces(
         hovertemplate='<b>%{x}</b><br>Total Hours: %{y:,.0f}<extra></extra>'
     )
     st.plotly_chart(fig, use_container_width=True)
 
-    # Optional: show raw data
-    with st.expander("See Raw Data"):
+    # Show the raw data
+    numrows = len(df_month)
+    with st.expander(f"See Raw Data ({numrows:,.0f} rows)"):
         st.dataframe(df_month)
 

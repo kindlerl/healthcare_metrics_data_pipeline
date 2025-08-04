@@ -6,7 +6,9 @@ from utils.themes import get_base_theme
 import plotly.express as px
 from utils.constants import COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_TOTAL_HOURS
 from utils.constants import TOP_10_ROWS, TOP_20_ROWS, TOP_50_ROWS, ALL_ROWS
-from utils.constants import ATT_BG_COLOR, ATT_COLORSCALE, ATT_FONT_COLOR, ATT_MARKER_LINE_COLOR
+from utils.constants import ATT_BG_COLOR, ATT_COLORSCALE, ATT_FONT_COLOR, ATT_MARKER_LINE_COLOR, ATT_MARKER_BAR_COLOR
+from utils.constants import HOVER_BGCOLOR, HOVER_FONT_FAMILY, HOVER_FONT_COLOR, HOVER_FONT_SIZE
+
 
 def render_by_hospital(df):
 
@@ -122,9 +124,19 @@ def render_by_hospital(df):
         )
     )
 
+    # Update the colors in the hover balloon
+    fig.update_layout(
+        hoverlabel=dict(
+            bgcolor=HOVER_BGCOLOR,
+            font_size=HOVER_FONT_SIZE,
+            font_family=HOVER_FONT_FAMILY,
+            font_color=HOVER_FONT_COLOR
+        )
+    )
+
     fig.update_traces(
         marker=dict(
-            color='lightskyblue',  # Or customize per bar or theme
+            color=theme[ATT_MARKER_BAR_COLOR],
             line=dict(
                 color=theme[ATT_MARKER_LINE_COLOR],
                 width=1.5

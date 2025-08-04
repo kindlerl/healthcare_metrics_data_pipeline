@@ -1,9 +1,11 @@
 import streamlit as st
 import pandas as pd
 from utils.us_states import get_state
-from utils.themes import get_base_theme, show_theme_selector
+from utils.themes import get_base_theme
 import plotly.express as px
 from utils.constants import COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_MONTH, COL_TOTAL_HOURS
+from utils.constants import ATT_BG_COLOR, ATT_COLORSCALE, ATT_FONT_COLOR, ATT_MARKER_BAR_COLOR, ATT_MARKER_LINE_COLOR
+from utils.constants import HOVER_BGCOLOR, HOVER_FONT_COLOR, HOVER_FONT_FAMILY, HOVER_FONT_SIZE
 
 def render_by_state(df):
     # Get the data, grouped by state
@@ -50,25 +52,34 @@ def render_by_state(df):
 
     # Apply layout and color to your figure
     fig.update_layout(
-        title_font=dict(size=18, color=theme['font_color']),
-        geo=dict(bgcolor=theme['bg_color']),
-        paper_bgcolor=theme['bg_color'],
-        plot_bgcolor=theme['bg_color'],
-        font=dict(color=theme['font_color']),
+        title_font=dict(size=18, color=theme[ATT_FONT_COLOR]),
+        geo=dict(bgcolor=theme[ATT_BG_COLOR]),
+        paper_bgcolor=theme[ATT_BG_COLOR],
+        plot_bgcolor=theme[ATT_BG_COLOR],
+        font=dict(color=theme[ATT_FONT_COLOR]),
         coloraxis_colorbar=dict(
             title=dict(
                text="Total Hours",
-               font=dict(color=theme['font_color'])
+               font=dict(color=theme[ATT_FONT_COLOR])
             ),
-            tickfont=dict(color=theme['font_color'])
+            tickfont=dict(color=theme[ATT_FONT_COLOR])
         ),
         margin=dict(l=0, r=0, t=0, b=0)
+    )
 
+    # Update the colors in the hover balloon
+    fig.update_layout(
+        hoverlabel=dict(
+            bgcolor=HOVER_BGCOLOR,      # Background color
+            font_size=HOVER_FONT_SIZE,
+            font_family=HOVER_FONT_FAMILY,
+            font_color=HOVER_FONT_COLOR    # Text color (newer Plotly versions)
+        )
     )
 
     fig.update_traces(
-        colorscale=theme['colorscale'],
-        marker_line_color=theme['marker_line_color'],
+        colorscale=theme[ATT_COLORSCALE],
+        marker_line_color=theme[ATT_MARKER_LINE_COLOR],
         marker_line_width=0.5,
         colorbar_title="Total Hours"
     )
@@ -82,6 +93,8 @@ def render_by_state(df):
 
     st.plotly_chart(fig, use_container_width=True)
 
-    # Optional: show raw data
-    with st.expander("See Raw Data"):
+   # Show the raw data
+    numrows = len(df_state)
+    with st.expander(f"See Raw Data ({numrows:,.0f} rows)"):
         st.dataframe(df_state)
+

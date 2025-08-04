@@ -1,40 +1,47 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from utils.us_states import get_state
+from utils.db import get_data_as_dataframe
+
 from utils.themes import get_base_theme
-from utils.constants import COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_MONTH, COL_TOTAL_HOURS
+from utils.us_states import get_state
+from utils.constants import COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_MONTH, COL_NURSE_HOURS_TO_PATIENT_RATIO, COL_TOTAL_NURSE_HOURS, COL_TOTAL_PATIENT_DAYS
 from utils.constants import HOVER_BGCOLOR, HOVER_FONT_FAMILY, HOVER_FONT_COLOR, HOVER_FONT_SIZE
 from utils.constants import ATT_BG_COLOR, ATT_COLORSCALE, ATT_FONT_FAMILY, ATT_FONT_COLOR, ATT_MARKER_BAR_COLOR, ATT_MARKER_LINE_COLOR
 import time
 
-def render_staffing_hours_combined(df):
-
+def render_hppd_metrics():
     # --- Early exit if Reset Filters was clicked ---
     if "reset_filters_triggered" in st.session_state and st.session_state.reset_filters_triggered:
         st.session_state.update({
-            "combined_state_filter": [],
-            "combined_hospital_filter": [],
-            "combined_month_filter": [],
+            "hppd_state_filter": [],
+            "hppd_hospital_filter": [],
             "reset_filters_triggered": False
         })
         st.rerun()
-
-    st.markdown("### Combined View: Set Filters")
     
+    st.markdown("### Average Nursing Hours Per Patient Day (HPPD)")
+
     if "apply_filters_triggered" not in st.session_state:
         st.session_state.apply_filters_triggered = False
 
-    # show_theme_selector()
+    # Get the current theme
     theme = get_base_theme()
 
+    # Get the base Gold data for staffing hours dynamic queries using pandas
+    sql = "SELECT * FROM HEALTHCARE_DB.GOLD.KPI_AVERAGE_NURSE_TO_PATIENT_RATIO"
+    df = get_data_as_dataframe(sql)
+
     # --- FILTER: STATE ---
+    # Add the state name to the dataframe and move it next to the state abbreviation
+    # COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_MONTH, COL_NURSE_HOURS_TO_PATIENT_RATIO, COL_TOTAL_NURSE_HOURS, COL_TOTAL_PATIENT_DAYS
     df[COL_STATE_NAME] = df[COL_STATE].apply(get_state)
-    df = df[[COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_MONTH, COL_TOTAL_HOURS]]
+    df = df[[COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_MONTH, COL_TOTAL_NURSE_HOURS, COL_TOTAL_PATIENT_DAYS, COL_NURSE_HOURS_TO_PATIENT_RATIO]]
 
     states = sorted(df[COL_STATE_NAME].unique())  # Get a simple, sorted list of the state names
+
     try:
-        selected_states = st.multiselect("Select State(s):", states, key="combined_state_filter")
+        selected_states = st.multiselect("Select one or more states (Optional, to filter providers):", states, key="hppd_state_filter")
     except Exception as e:
         st.error("Something went wrong loading state filters. Please reload the app.")
         st.stop()
@@ -46,30 +53,21 @@ def render_staffing_hours_combined(df):
         filtered_state_df = df[df[COL_STATE_NAME].isin(selected_states)]
         hospital_options = sorted(filtered_state_df[COL_PROVIDER_NAME].unique())
         try:
-            selected_hospitals = st.multiselect("Select Hospital(s):", hospital_options, key="combined_hospital_filter")
+            selected_hospitals = st.multiselect("Select one or more providers:", hospital_options, key="hppd_hospital_filter")
         except Exception as e:
             st.error("Something went wrong loading hospital filters. Please reload the app.")
             st.stop()
     else:
         selected_hospitals = []
 
-    # --- FILTER: MONTH (Only show after hospital is picked) ---
-    if selected_hospitals:
-        st.markdown('<br style="line-height:6px;">', unsafe_allow_html=True)
+    num_providers_selected = len(selected_hospitals)
+    if num_providers_selected > 15:
+        st.write(f"WARNING: {num_providers_selected} selected - selecting any more providers will make the chart less usable")
+    elif num_providers_selected > 10:
+        st.write(f"WARNING: {num_providers_selected} selected - selecting more than 10 providers makes the chart more difficult to view")
 
-        filtered_hospital_df = filtered_state_df[filtered_state_df[COL_PROVIDER_NAME].isin(selected_hospitals)] # type: ignore
-        month_options = sorted(filtered_hospital_df[COL_MONTH].unique())
-        try:
-            selected_months = st.multiselect("Select Month(s):", month_options, key="combined_month_filter")
-        except:
-            st.error("Something went wrong loading month filters. Please reload the app.")
-            st.stop()
-    else:
-        selected_months = []
-
-
-    if selected_states and selected_hospitals and selected_months:
-
+    # --- SHOW ACTION BUTTONS TO RESET OR CREATE CHART
+    if selected_states and selected_hospitals:
         # Add a little white space
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown('<hr style="line-height:6px;margin-bottom:7px;">', unsafe_allow_html=True)
@@ -98,9 +96,8 @@ def render_staffing_hours_combined(df):
     # reset the apply_filters_triggered flag in session_state
     # --- Check if any filter was cleared manually ---
     filters = [
-        st.session_state.get("combined_state_filter", []),
-        st.session_state.get("combined_hospital_filter", []),
-        st.session_state.get("combined_month_filter", []),
+        st.session_state.get("hppd_state_filter", []),
+        st.session_state.get("hppd_hospital_filter", []),
     ]
 
     if any(len(f) == 0 for f in filters):
@@ -125,34 +122,32 @@ def render_staffing_hours_combined(df):
         if selected_hospitals:
             filtered_df = filtered_df[filtered_df[COL_PROVIDER_NAME].isin(selected_hospitals)]
 
-        # Finally, filter the state-hospital-filtered dataset by the months chosen by the user
-        if selected_months:
-            filtered_df = filtered_df[filtered_df[COL_MONTH].isin(selected_months)]
-
         # --- DISPLAY THE FILTERED DATASET:  Display as a table; Include a Total Hours summary
 
         if not filtered_df.empty:
-            st.markdown("### Filtered Results")
-
-            # Convert the months to a date data type to ensure proper sort order
-            # in the line chart
-            filtered_df[COL_MONTH] = pd.to_datetime(filtered_df[COL_MONTH])
+            filtered_df[COL_MONTH] = pd.to_datetime(df[COL_MONTH])
             filtered_df["YEAR_MONTH"] = filtered_df[COL_MONTH].dt.strftime("%Y-%m")
+            filtered_df = filtered_df.sort_values(by=[COL_STATE, COL_PROVIDER_NAME, "YEAR_MONTH"])
 
-            # Ensure the proper sort order
-            filtered_df = filtered_df.sort_values(by=[COL_PROVIDER_NAME, COL_STATE_NAME, "YEAR_MONTH"])
+            st.markdown("### Filtered Results")
+            # filtered_df = filtered_df.sort_values(by=[COL_STATE, COL_PROVIDER_NAME, COL_MONTH])
+        #     st.dataframe(filtered_df.sort_values(by=[COL_STATE, COL_PROVIDER_NAME, COL_MONTH]))
+
+        #     # Optional summary
+        #     st.markdown(f"**Total Hours Worked:** {filtered_df[COL_TOTAL_HOURS].sum():,.2f}")
 
         # --- VISUALIZATION: Show a chart to represent the filtered data
             fig = px.line(
                 filtered_df,
                 x="YEAR_MONTH",
-                y=COL_TOTAL_HOURS,
+                y=COL_NURSE_HOURS_TO_PATIENT_RATIO,
                 color=COL_PROVIDER_NAME,
-                title="Monthly Nurse Hours by Hospital",
+                title="Monthly Hours Per Patient Day Ratio",
                 markers=True
             )
 
             fig.update_layout(
+                height=800,
                 plot_bgcolor=theme[ATT_BG_COLOR],
                 paper_bgcolor=theme[ATT_BG_COLOR],
                 font=dict(
@@ -172,7 +167,7 @@ def render_staffing_hours_combined(df):
                 ),
                 yaxis=dict(
                     title=dict(
-                       text="Total Hours Worked",
+                       text="Nurse Hours to Patient Ratio",
                        font=dict(color=theme[ATT_FONT_COLOR])
                     ),
                     gridcolor=theme[ATT_MARKER_LINE_COLOR],
@@ -181,14 +176,19 @@ def render_staffing_hours_combined(df):
                 legend=dict(
                     title=dict(
                         text="<b>Provider Name</b>",
-                        font=dict(color=theme[ATT_FONT_COLOR])
+                        font=dict(
+                            size=14,
+                            color=theme[ATT_FONT_COLOR]
+                        )
+                        ,
                     ),
                     font=dict(
                         color=theme[ATT_FONT_COLOR],
                         family=theme[ATT_FONT_FAMILY]
-                        # size=12 
+                        # size=12                       # Optional
                     )
                 ),
+                legend_tracegroupgap = 4, # Space between entries in legend
                 hovermode="x unified",
                 hoverlabel=dict(
                     bgcolor=HOVER_BGCOLOR,
@@ -203,7 +203,7 @@ def render_staffing_hours_combined(df):
                 hovertemplate=(
                     "<b>%{customdata[0]}</b><br>" +
                     "Month: %{x|%B %Y}<br>" +
-                    "Total Hours Worked: %{y:,.2f}"
+                    "Nurse Hours to Patient Ratio: %{y:,.2f}"
                 ),
                 customdata=filtered_df[[COL_PROVIDER_NAME]]
             )
@@ -214,10 +214,15 @@ def render_staffing_hours_combined(df):
             # Show the raw data
             numrows = len(filtered_df)
             with st.expander(f"See Raw Data ({numrows:,.0f} rows)"):
-                raw_data_df = filtered_df[[COL_PROVIDER_NAME, COL_STATE_NAME, "YEAR_MONTH", COL_TOTAL_HOURS]]
-                st.dataframe(raw_data_df.sort_values(by=[COL_STATE_NAME, COL_PROVIDER_NAME, "YEAR_MONTH"]))
+                raw_data_df = filtered_df[[COL_PROVIDER_NAME, COL_STATE_NAME, "YEAR_MONTH", COL_TOTAL_NURSE_HOURS, COL_TOTAL_PATIENT_DAYS, COL_NURSE_HOURS_TO_PATIENT_RATIO]]
+                st.dataframe(raw_data_df, use_container_width=True)
 
-                # Optional summary
-                st.markdown(f"**Total Hours Worked:** {filtered_df[COL_TOTAL_HOURS].sum():,.2f}")
+                # Overall summary
+                st.markdown(f"**Average HPPD Across Selection:** {filtered_df[COL_NURSE_HOURS_TO_PATIENT_RATIO].mean():,.2f}")
+
+
+
+
+
 
 
