@@ -5,6 +5,7 @@ from utils.db import get_data_as_dataframe
 
 from utils.themes import get_base_theme
 from utils.us_states import get_state
+from utils.constants import DB_NAME, DB_SCHEMA
 from utils.constants import COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_MONTH, COL_NURSE_HOURS_TO_PATIENT_RATIO, COL_TOTAL_NURSE_HOURS, COL_TOTAL_PATIENT_DAYS
 from utils.constants import HOVER_BGCOLOR, HOVER_FONT_FAMILY, HOVER_FONT_COLOR, HOVER_FONT_SIZE
 from utils.constants import ATT_BG_COLOR, ATT_COLORSCALE, ATT_FONT_FAMILY, ATT_FONT_COLOR, ATT_MARKER_BAR_COLOR, ATT_MARKER_LINE_COLOR
@@ -29,7 +30,7 @@ def render_hppd_metrics():
     theme = get_base_theme()
 
     # Get the base Gold data for staffing hours dynamic queries using pandas
-    sql = "SELECT * FROM HEALTHCARE_DB.GOLD.KPI_AVERAGE_NURSE_TO_PATIENT_RATIO"
+    sql = "SELECT * FROM " + DB_NAME + "." + DB_SCHEMA + ".KPI_AVERAGE_NURSE_TO_PATIENT_RATIO"
     df = get_data_as_dataframe(sql)
 
     # --- FILTER: STATE ---
@@ -59,6 +60,12 @@ def render_hppd_metrics():
             st.stop()
     else:
         selected_hospitals = []
+        # try:
+        #     selected_hospitals = st.multiselect("Select one or more providers:", df, key="hppd_hospital_filter")
+        # except Exception as e:
+        #     st.error("Something went wrong loading hospital filters. Please reload the app.")
+        #     st.stop()
+
 
     num_providers_selected = len(selected_hospitals)
     if num_providers_selected > 15:
@@ -68,6 +75,7 @@ def render_hppd_metrics():
 
     # --- SHOW ACTION BUTTONS TO RESET OR CREATE CHART
     if selected_states and selected_hospitals:
+    # if selected_hospitals:
         # Add a little white space
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown('<hr style="line-height:6px;margin-bottom:7px;">', unsafe_allow_html=True)
@@ -200,12 +208,14 @@ def render_hppd_metrics():
 
             # Customize the hover card layout
             fig.update_traces(
+                customdata=filtered_df[[COL_PROVIDER_NAME, COL_TOTAL_NURSE_HOURS, COL_TOTAL_PATIENT_DAYS]],
                 hovertemplate=(
                     "<b>%{customdata[0]}</b><br>" +
-                    "Month: %{x|%B %Y}<br>" +
-                    "Nurse Hours to Patient Ratio: %{y:,.2f}"
-                ),
-                customdata=filtered_df[[COL_PROVIDER_NAME]]
+                    "Month: %{x|%b %Y}<br>" +
+                    "Nurse Hours: %{customdata[1]:,.0f}<br>" +
+                    "Patient Days: %{customdata[2]:,.0f}<br>" +
+                    "HPPD Ratio: %{y:.2f}<extra></extra>"
+                )
             )
             
             st.plotly_chart(fig, use_container_width=True)
@@ -215,7 +225,10 @@ def render_hppd_metrics():
             numrows = len(filtered_df)
             with st.expander(f"See Raw Data ({numrows:,.0f} rows)"):
                 raw_data_df = filtered_df[[COL_PROVIDER_NAME, COL_STATE_NAME, "YEAR_MONTH", COL_TOTAL_NURSE_HOURS, COL_TOTAL_PATIENT_DAYS, COL_NURSE_HOURS_TO_PATIENT_RATIO]]
-                st.dataframe(raw_data_df, use_container_width=True)
+                # Format the float values for consistency
+                raw_data_df = raw_data_df.style.format({COL_TOTAL_NURSE_HOURS: '{:,.2f}', COL_NURSE_HOURS_TO_PATIENT_RATIO: '{:.2f}'})
+                
+                st.dataframe(raw_data_df, use_container_width=True, height=600)
 
                 # Overall summary
                 st.markdown(f"**Average HPPD Across Selection:** {filtered_df[COL_NURSE_HOURS_TO_PATIENT_RATIO].mean():,.2f}")

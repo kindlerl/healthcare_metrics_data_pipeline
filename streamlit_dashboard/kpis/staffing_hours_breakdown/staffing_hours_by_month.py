@@ -5,6 +5,7 @@ import plotly.express as px
 import calendar
 from utils.themes import get_base_theme
 from utils.constants import ATT_BG_COLOR, ATT_COLORSCALE, ATT_FONT_COLOR, ATT_MARKER_LINE_COLOR
+from utils.constants import COL_TOTAL_HOURS_WORKED, COL_MONTH, COL_MONTH_NAME
 
 def render_by_month(df):
 
@@ -12,21 +13,21 @@ def render_by_month(df):
     theme = get_base_theme()
 
     # Get the data, grouped by state
-    df_month = df.groupby(['MONTH']).agg({'TOTAL_HOURS_WORKED':'sum'}).reset_index()
+    df_month = df.groupby([COL_MONTH]).agg({COL_TOTAL_HOURS_WORKED:'sum'}).reset_index()
 
     # Get the full month name from the date
-    df_month['MONTH_NAME'] = pd.to_datetime(df_month['MONTH']).dt.month_name()
-    df_month = df_month[['MONTH_NAME', 'TOTAL_HOURS_WORKED']]
+    df_month[COL_MONTH_NAME] = pd.to_datetime(df_month[COL_MONTH]).dt.month_name()
+    df_month = df_month[[COL_MONTH_NAME, COL_TOTAL_HOURS_WORKED]]
 
     # Preserve the calendar order
-    df_month["MONTH_NAME"] = pd.Categorical(df_month["MONTH_NAME"], categories=calendar.month_name[1:], ordered=True)
-    df_month = df_month.sort_values("MONTH_NAME")
+    df_month[COL_MONTH_NAME] = pd.Categorical(df_month[COL_MONTH_NAME], categories=calendar.month_name[1:], ordered=True)
+    df_month = df_month.sort_values(COL_MONTH_NAME)
 
     fig = px.bar(
         df_month,
-        x="MONTH_NAME",
-        y="TOTAL_HOURS_WORKED",
-        labels={"MONTH_NAME": "Month", "TOTAL_HOURS_WORKED": "Total Nurse Hours Worked"},
+        x=COL_MONTH_NAME,
+        y=COL_TOTAL_HOURS_WORKED,
+        labels={COL_MONTH_NAME: "Month", COL_TOTAL_HOURS_WORKED: "Total Nurse Hours Worked"},
         title="Total Nurse Hours Worked by Month"
     )
 
@@ -74,5 +75,15 @@ def render_by_month(df):
     # Show the raw data
     numrows = len(df_month)
     with st.expander(f"See Raw Data ({numrows:,.0f} rows)"):
-        st.dataframe(df_month)
+        styled_df = (
+            df_month.style
+            .format({COL_TOTAL_HOURS_WORKED: "{:,.2f}"})  # Format with commas + 2 decimals
+            .set_properties(subset=[COL_TOTAL_HOURS_WORKED], **{'text-align': 'right'})  # Align data
+            .set_table_styles(
+                [{'selector': f'th.col{i}', 'props': [('text-align', 'right')]}
+                 for i, col in enumerate(df_month.columns) if col == COL_TOTAL_HOURS_WORKED]  # Align header
+            )
+        )
+
+        st.table(styled_df)
 

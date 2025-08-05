@@ -3,18 +3,18 @@ import pandas as pd
 from utils.us_states import get_state
 from utils.themes import get_base_theme
 import plotly.express as px
-from utils.constants import COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_MONTH, COL_TOTAL_HOURS
+from utils.constants import COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_MONTH, COL_TOTAL_HOURS_WORKED
 from utils.constants import ATT_BG_COLOR, ATT_COLORSCALE, ATT_FONT_COLOR, ATT_MARKER_BAR_COLOR, ATT_MARKER_LINE_COLOR
 from utils.constants import HOVER_BGCOLOR, HOVER_FONT_COLOR, HOVER_FONT_FAMILY, HOVER_FONT_SIZE
 
 def render_by_state(df):
     # Get the data, grouped by state
-    df_state = df.groupby([COL_STATE]).agg({COL_TOTAL_HOURS:'sum', COL_PROVIDER_NAME:'first'}).reset_index()
+    df_state = df.groupby([COL_STATE]).agg({COL_TOTAL_HOURS_WORKED:'sum', COL_PROVIDER_NAME:'first'}).reset_index()
     df_state[COL_STATE_NAME] = df_state[COL_STATE].apply(lambda x: get_state(x))
 
     # Shift the column order to move the STATE_NAME next to the STATE for the 
     # raw data table visualization
-    new_col_order = [COL_STATE, COL_STATE_NAME, COL_PROVIDER_NAME, COL_TOTAL_HOURS]
+    new_col_order = [COL_STATE, COL_STATE_NAME, COL_PROVIDER_NAME, COL_TOTAL_HOURS_WORKED]
     df_state = df_state[new_col_order]
 
     # Allow the user to display the US States map at different sizes
@@ -34,10 +34,10 @@ def render_by_state(df):
         df_state,
         locations=COL_STATE,  # Column with state abbreviations
         locationmode='USA-states',
-        color=COL_TOTAL_HOURS,
+        color=COL_TOTAL_HOURS_WORKED,
         color_continuous_scale='Blues',
         scope='usa',
-        labels={COL_TOTAL_HOURS: 'Total Hours'},
+        labels={COL_TOTAL_HOURS_WORKED: 'Total Hours'},
         hover_name=COL_STATE_NAME,
         title='Total Nurse Hours Worked by State',
     )
@@ -95,6 +95,22 @@ def render_by_state(df):
 
    # Show the raw data
     numrows = len(df_state)
+
+    # Format the float values for consistency
+    # df_state[COL_TOTAL_HOURS_WORKED] = df_state[COL_TOTAL_HOURS_WORKED].apply(lambda x: f"{x:,.2f}")
+    # df_state = df_state.style.set_properties(subset=[COL_TOTAL_HOURS_WORKED], **{'text-align': 'right'})
+
     with st.expander(f"See Raw Data ({numrows:,.0f} rows)"):
-        st.dataframe(df_state)
+        styled_df = (
+            df_state.style
+            .format({COL_TOTAL_HOURS_WORKED: "{:,.2f}"})  # Format with commas + 2 decimals
+            .set_properties(subset=[COL_TOTAL_HOURS_WORKED], **{'text-align': 'right'})  # Align data
+            .set_table_styles(
+                [{'selector': f'th.col{i}', 'props': [('text-align', 'right')]}
+                 for i, col in enumerate(df_state.columns) if col == COL_TOTAL_HOURS_WORKED]  # Align header
+            )
+        )
+
+        st.table(styled_df)
+
 

@@ -1326,24 +1326,114 @@ FROM
 LIMIT
     50;
 
-
-SELECT DISTINCT staffing_date 
-FROM HEALTHCARE_DB.SILVER.fact_provider_daily_staffing
-ORDER BY staffing_date;
-
-SELECT DISTINCT workdate 
-FROM HEALTHCARE_DB.BRONZE.pbj_daily_nurse_staffing_main
-ORDER BY workdate;
-
-SELECT DISTINCT cy_qtr 
-FROM HEALTHCARE_DB.BRONZE.pbj_daily_nurse_staffing_main
-ORDER BY cy_qtr;
+DESC TABLE HEALTHCARE_DB.SILVER.FACT_QUALITY_MEASURE_CLAIMS
+DESC TABLE HEALTHCARE_DB.SILVER.FACT_SNF_VBP_FACILITY_PERFORMANCE
+DESC TABLE HEALTHCARE_DB.SILVER.FACT_QUALITY_MEASURE_MDS
+DESC TABLE HEALTHCARE_DB.SILVER.DIM_DATA_COLLECTION_INTERVALS
+DESC TABLE HEALTHCARE_DB.GOLD.KPI_30_DAY_READMISSION_RATE_BY_DIAGNOSIS
 
 
+SELECT
+    *
+    -- STATE_OR_NATION,
+    -- NUMBER_OF_HOSPITALIZATIONS_PER_1000_LONG_STAY_RESIDENT_DAYS
+    -- DISTINCT MEASURE_DESCRIPTION
+FROM
+    HEALTHCARE_DB.GOLD.KPI_30_DAY_READMISSION_RATE_BY_DIAGNOSIS
+    -- HEALTHCARE_DB.SILVER.FACT_QUALITY_MEASURE_MDS
+    -- HEALTHCARE_DB.BRONZE.NH_DATA_COLLECTION_INTERVALS
+    -- HEALTHCARE_DB.SILVER.DIM_DATA_COLLECTION_INTERVALS
+    -- HEALTHCARE_DB.SILVER.FACT_STATE_US_AVERAGES
+WHERE
+    MEASURE_DESCRIPTION LIKE 'Number of hospitalizations per 1000%'
 
 
+SELECT DISTINCT OWNERSHIP_TYPE FROM HEALTHCARE_DB.BRONZE.NH_PROVIDER_INFO LIMIT 10
 
 
+WITH states AS (
+    SELECT 
+        STATE,
+        CASE
+           WHEN STATE = 'AK' THEN 'Alaska'
+           WHEN STATE = 'AL' THEN 'Alabama'
+           WHEN STATE = 'AR' THEN 'Arkansas'
+           WHEN STATE = 'AZ' THEN 'Arizona'
+           WHEN STATE = 'CA' THEN 'California'
+           WHEN STATE = 'CO' THEN 'Colorado'
+           WHEN STATE = 'CT' THEN 'Connecticut'
+           WHEN STATE = 'DC' THEN 'District of Columbia'
+           WHEN STATE = 'DE' THEN 'Delaware'
+           WHEN STATE = 'FL' THEN 'Florida'
+           WHEN STATE = 'GA' THEN 'Georgia'
+           WHEN STATE = 'HI' THEN 'Hawaii'
+           WHEN STATE = 'IA' THEN 'Iowa'
+           WHEN STATE = 'ID' THEN 'Idaho'
+           WHEN STATE = 'IL' THEN 'Illinois'
+           WHEN STATE = 'IN' THEN 'Indiana'
+           WHEN STATE = 'KS' THEN 'Kansas'
+           WHEN STATE = 'KY' THEN 'Kentucky'
+           WHEN STATE = 'LA' THEN 'Louisiana'
+           WHEN STATE = 'MA' THEN 'Massachusetts'
+           WHEN STATE = 'MD' THEN 'Maryland'
+           WHEN STATE = 'ME' THEN 'Maine'
+           WHEN STATE = 'MI' THEN 'Michigan'
+           WHEN STATE = 'MN' THEN 'Minnesota'
+           WHEN STATE = 'MO' THEN 'Missouri'
+           WHEN STATE = 'MS' THEN 'Mississippi'
+           WHEN STATE = 'MT' THEN 'Montana'
+           WHEN STATE = 'NC' THEN 'North Carolina'
+           WHEN STATE = 'ND' THEN 'North Dakota'
+           WHEN STATE = 'NE' THEN 'Nebraska'
+           WHEN STATE = 'NH' THEN 'New Hampshire'
+           WHEN STATE = 'NJ' THEN 'New Jersey'
+           WHEN STATE = 'NM' THEN 'New Mexico'
+           WHEN STATE = 'NV' THEN 'Nevada'
+           WHEN STATE = 'NY' THEN 'New York'
+           WHEN STATE = 'OH' THEN 'Ohio'
+           WHEN STATE = 'OK' THEN 'Oklahoma'
+           WHEN STATE = 'OR' THEN 'Oregon'
+           WHEN STATE = 'PA' THEN 'Pennsylvania'
+           WHEN STATE = 'RI' THEN 'Rhode Island'
+           WHEN STATE = 'SC' THEN 'South Carolina'
+           WHEN STATE = 'SD' THEN 'South Dakota'
+           WHEN STATE = 'TN' THEN 'Tennessee'
+           WHEN STATE = 'TX' THEN 'Texas'
+           WHEN STATE = 'UT' THEN 'Utah'
+           WHEN STATE = 'VA' THEN 'Virginia'
+           WHEN STATE = 'VT' THEN 'Vermont'
+           WHEN STATE = 'WA' THEN 'Washington'
+           WHEN STATE = 'WI' THEN 'Wisconsin'
+           WHEN STATE = 'WV' THEN 'West Virginia'
+           WHEN STATE = 'WY' THEN 'Wyoming'
+           WHEN STATE = 'PR' THEN 'Puerto Rico'
+           WHEN STATE = 'VI' THEN 'Virigin Islands'
+        END AS STATE_NAME,
+        NURSE_HOURS_TO_PATIENT_RATIO AS HPPD
+    FROM 
+        HEALTHCARE_DB.GOLD.KPI_AVERAGE_NURSE_TO_PATIENT_RATIO
+),
+regions AS (
+    SELECT
+        STATE_NAME,
+        HPPD,
+        CASE
+            WHEN STATE_NAME IN ('Connecticut', 'Maine', 'Massachusetts', 'New Hampshire', 'Rhode Island', 'Vermont', 'New Jersey', 'New York', 'Pennsylvania') THEN 'Northeast'
+            WHEN STATE_NAME IN ('Illinois', 'Indiana', 'Michigan', 'Ohio', 'Wisconsin', 'Iowa', 'Kansas', 'Minnesota', 'Missouri', 'Nebraska', 'North Dakota', 'South Dakota') THEN 'Midwest'
+            WHEN STATE_NAME IN ('Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Maryland', 'North Carolina', 'South Carolina', 'Virginia', 'West Virginia', 'Alabama', 'Kentucky', 'Mississippi', 'Tennessee', 'Arkansas', 'Louisiana', 'Oklahoma', 'Texas') THEN 'South'
+            WHEN STATE_NAME IN ('Arizona', 'Colorado', 'Idaho', 'Montana', 'Nevada', 'New Mexico', 'Utah', 'Wyoming', 'Alaska', 'California', 'Hawaii', 'Oregon', 'Washington') THEN 'West'
+            ELSE STATE_NAME
+        END AS REGION
+    FROM
+        states
+)
+SELECT
+    REGION,
+    AVG(HPPD) AS AVG_HPPD
+FROM
+    regions
+GROUP BY
+    REGION
 
 
 

@@ -44,15 +44,24 @@ TOTAL_HOURS_WORKED_BY_NURSES = "Total Hours Worked by Nurses"
 AVERAGE_NURSING_HOURS_PER_PATIENT_DAY = "Average Nursing Hours per Patient Day (HPPD)"
 READMISSION_RATES_BY_DIAGNOSIS = "Readmission Rates by Diagnosis"
 
+# DATABASE
+DB_NAME = "HEALTHCARE_DB"
+DB_SCHEMA = "GOLD"
+
 # Column Names
-COL_TOTAL_HOURS = "TOTAL_HOURS_WORKED"
+COL_TOTAL_HOURS_WORKED = "TOTAL_HOURS_WORKED"
 COL_PROVIDER_NAME = "PROVIDER_NAME"
 COL_STATE = "STATE"
 COL_STATE_NAME = "STATE_NAME"
 COL_MONTH = "MONTH"
+COL_MONTH_NAME = "MONTH_NAME"
 COL_NURSE_HOURS_TO_PATIENT_RATIO = "NURSE_HOURS_TO_PATIENT_RATIO"
 COL_TOTAL_NURSE_HOURS = "TOTAL_NURSE_HOURS"
 COL_TOTAL_PATIENT_DAYS = "TOTAL_PATIENT_DAYS"
+COL_METRIC_NAME = "METRIC_NAME"
+COL_METRIC_SOURCE = "METRIC_SOURCE"
+COL_AVG_SCORE = "AVG_SCORE"
+COL_LAST_UPDATED = "LAST_UPDATED"
 
 # Row Filter Values
 TOP_10_ROWS = "Top 10"
@@ -66,3 +75,8 @@ BY_STATE = "By State"
 BY_MONTH = "By Month"
 BY_HOSPITAL_STATE_MONTH = "By Hospital, State, and Month"
 
+# Readmission Rates KPI Metrics
+PCT_SSR_HOSP_AFTER_NURSING_HOME = "Percentage of short-stay residents who were rehospitalized after a nursing home admission"
+PCT_SSR_OUTPATIENT_EMER_DEPT_VISIT = "Percentage of short-stay residents who had an outpatient emergency department visit"
+NUM_OUTPATIENT_EMER_VISITS_PER_1000_LSRD = "Number of outpatient emergency department visits per 1000 long-stay resident days"
+NUM_HOSP_PER_1000_LSRD = "Number of hospitalizations per 1000 long-stay resident days"

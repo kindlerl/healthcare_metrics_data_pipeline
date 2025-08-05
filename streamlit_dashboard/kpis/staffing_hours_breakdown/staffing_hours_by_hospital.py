@@ -1,10 +1,9 @@
 import streamlit as st
 import pandas as pd
-from utils.us_states import get_state
-# from utils.db import get_data_as_dataframe
-from utils.themes import get_base_theme
 import plotly.express as px
-from utils.constants import COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_TOTAL_HOURS
+from utils.us_states import get_state
+from utils.themes import get_base_theme
+from utils.constants import COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_TOTAL_HOURS_WORKED
 from utils.constants import TOP_10_ROWS, TOP_20_ROWS, TOP_50_ROWS, ALL_ROWS
 from utils.constants import ATT_BG_COLOR, ATT_COLORSCALE, ATT_FONT_COLOR, ATT_MARKER_LINE_COLOR, ATT_MARKER_BAR_COLOR
 from utils.constants import HOVER_BGCOLOR, HOVER_FONT_FAMILY, HOVER_FONT_COLOR, HOVER_FONT_SIZE
@@ -16,7 +15,7 @@ def render_by_hospital(df):
     theme = get_base_theme()
 
     # Fetch the min/max hours worked to establish enpoints for our slider
-    hours_worked = df[COL_TOTAL_HOURS].agg(['min', 'max'])
+    hours_worked = df[COL_TOTAL_HOURS_WORKED].agg(['min', 'max'])
     min,max = st.slider("Select Total Hours Worked Range", \
                   min_value = float(hours_worked['min']), \
                   max_value = float(hours_worked['max']), \
@@ -44,22 +43,22 @@ def render_by_hospital(df):
       numrows = 0  # Just a marker to pivot on
 
     # Filter the data to aggregate the TOTAL_HOURS_WORKED for this visualization
-    df_grouped = df.groupby([COL_PROVIDER_NAME]).agg({COL_TOTAL_HOURS:'sum', COL_STATE:'first'}).reset_index()
+    df_grouped = df.groupby([COL_PROVIDER_NAME]).agg({COL_TOTAL_HOURS_WORKED:'sum', COL_STATE:'first'}).reset_index()
     df_grouped[COL_STATE_NAME] = df_grouped[COL_STATE].apply(lambda x: get_state(x))
 
     # Shift the column order to move the STATE_NAME next to the STATE for the 
     # raw data table visualization
-    new_col_order = [COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_TOTAL_HOURS]
+    new_col_order = [COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_TOTAL_HOURS_WORKED]
     df_grouped = df_grouped[new_col_order]
 
     # Filter the providers using the min,max values from the input slider
-    df_filtered = df_grouped.loc[df_grouped[COL_TOTAL_HOURS].between(min,max)]
+    df_filtered = df_grouped.loc[df_grouped[COL_TOTAL_HOURS_WORKED].between(min,max)]
 
     # Trim down the results to the user's preference
     if numrows == 0:
-        df_filtered = df_filtered.sort_values(by=COL_TOTAL_HOURS, ascending=asc)
+        df_filtered = df_filtered.sort_values(by=COL_TOTAL_HOURS_WORKED, ascending=asc)
     else:
-        df_filtered = df_filtered.sort_values(by=COL_TOTAL_HOURS, ascending=asc).head(numrows)
+        df_filtered = df_filtered.sort_values(by=COL_TOTAL_HOURS_WORKED, ascending=asc).head(numrows)
 
     # Calculate ranking for each row, to be shown in the hover by adding a RANK column
     df_filtered = df_filtered.reset_index(drop=True)
@@ -71,13 +70,13 @@ def render_by_hospital(df):
 
     # Build the chart
     fig = px.bar(df_filtered, 
-                 x=COL_TOTAL_HOURS, 
+                 x=COL_TOTAL_HOURS_WORKED, 
                  y=COL_PROVIDER_NAME, 
                  hover_data=[COL_STATE],
                  orientation="h", 
                  title="Total Hours by Hospital",
                  labels={
-                    COL_TOTAL_HOURS: "Total Nurse Hours Worked",
+                    COL_TOTAL_HOURS_WORKED: "Total Nurse Hours Worked",
                     COL_PROVIDER_NAME: "Hospital Name (Top 50)"
                     }
                  )
@@ -149,6 +148,20 @@ def render_by_hospital(df):
     st.plotly_chart(fig, use_container_width=True)
 
     # Show the raw data
+    # Only show the relevant columns
+    df_filtered = df_filtered[[COL_PROVIDER_NAME, COL_STATE_NAME, COL_TOTAL_HOURS_WORKED]]
+
     numrows = len(df_filtered)
     with st.expander(f"See Raw Data ({numrows:,.0f} rows)"):
-        st.dataframe(df_filtered)
+        styled_df = (
+            df_filtered.style
+            .format({COL_TOTAL_HOURS_WORKED: "{:,.2f}"})  # Format with commas + 2 decimals
+            .set_properties(subset=[COL_TOTAL_HOURS_WORKED], **{'text-align': 'right'})  # Align data
+            .set_table_styles(
+                [{'selector': f'th.col{i}', 'props': [('text-align', 'right')]}
+                 for i, col in enumerate(df_filtered.columns) if col == COL_TOTAL_HOURS_WORKED]  # Align header
+            )
+        )
+
+        st.table(styled_df)
+        

@@ -6,7 +6,7 @@ from utils.us_states import get_state
 from utils.db import get_data_as_dataframe
 from kpis.staffing_hours import render_staffing_hours
 from kpis.hppd_metrics import render_hppd_metrics
-from kpis.facility_metrics import render_facility_metrics
+from kpis.readmission_metrics import render_readmission_metrics
 import plotly.express as px
 import calendar
 from dotenv import load_dotenv
@@ -73,7 +73,7 @@ elif kpi_option == AVERAGE_NURSING_HOURS_PER_PATIENT_DAY:
     # print("HPPD Placeholder")
     # cost_metrics.render()
 elif kpi_option == READMISSION_RATES_BY_DIAGNOSIS:
-    render_facility_metrics()
+    render_readmission_metrics()
     # print("Readmission Rates Placeholder")
     # facility_metrics.render()
 

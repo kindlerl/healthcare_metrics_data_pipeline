@@ -3,9 +3,9 @@ import pandas as pd
 import plotly.express as px
 from utils.us_states import get_state
 from utils.themes import get_base_theme
-from utils.constants import COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_MONTH, COL_TOTAL_HOURS
+from utils.constants import COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_MONTH, COL_TOTAL_HOURS_WORKED
 from utils.constants import HOVER_BGCOLOR, HOVER_FONT_FAMILY, HOVER_FONT_COLOR, HOVER_FONT_SIZE
-from utils.constants import ATT_BG_COLOR, ATT_COLORSCALE, ATT_FONT_FAMILY, ATT_FONT_COLOR, ATT_MARKER_BAR_COLOR, ATT_MARKER_LINE_COLOR
+from utils.constants import ATT_BG_COLOR, ATT_FONT_FAMILY, ATT_FONT_COLOR, ATT_MARKER_LINE_COLOR
 import time
 
 def render_staffing_hours_combined(df):
@@ -30,7 +30,7 @@ def render_staffing_hours_combined(df):
 
     # --- FILTER: STATE ---
     df[COL_STATE_NAME] = df[COL_STATE].apply(get_state)
-    df = df[[COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_MONTH, COL_TOTAL_HOURS]]
+    df = df[[COL_PROVIDER_NAME, COL_STATE, COL_STATE_NAME, COL_MONTH, COL_TOTAL_HOURS_WORKED]]
 
     states = sorted(df[COL_STATE_NAME].unique())  # Get a simple, sorted list of the state names
     try:
@@ -146,7 +146,7 @@ def render_staffing_hours_combined(df):
             fig = px.line(
                 filtered_df,
                 x="YEAR_MONTH",
-                y=COL_TOTAL_HOURS,
+                y=COL_TOTAL_HOURS_WORKED,
                 color=COL_PROVIDER_NAME,
                 title="Monthly Nurse Hours by Hospital",
                 markers=True
@@ -214,10 +214,21 @@ def render_staffing_hours_combined(df):
             # Show the raw data
             numrows = len(filtered_df)
             with st.expander(f"See Raw Data ({numrows:,.0f} rows)"):
-                raw_data_df = filtered_df[[COL_PROVIDER_NAME, COL_STATE_NAME, "YEAR_MONTH", COL_TOTAL_HOURS]]
-                st.dataframe(raw_data_df.sort_values(by=[COL_STATE_NAME, COL_PROVIDER_NAME, "YEAR_MONTH"]))
+                raw_data_df = filtered_df[[COL_PROVIDER_NAME, COL_STATE_NAME, "YEAR_MONTH", COL_TOTAL_HOURS_WORKED]]
+
+                styled_df = (
+                    raw_data_df.style
+                        .format({COL_TOTAL_HOURS_WORKED: "{:,.2f}"})  # Format with commas + 2 decimals
+                        .set_properties(subset=[COL_TOTAL_HOURS_WORKED], **{'text-align': 'right'})  # Align data
+                        .set_table_styles(
+                          [{'selector': f'th.col{i}', 'props': [('text-align', 'right')]}
+                           for i, col in enumerate(raw_data_df.columns) if col == COL_TOTAL_HOURS_WORKED]  # Align header
+                        )
+                    )
+
+                st.table(styled_df)
 
                 # Optional summary
-                st.markdown(f"**Total Hours Worked:** {filtered_df[COL_TOTAL_HOURS].sum():,.2f}")
+                st.markdown(f"**Total Hours Worked:** {filtered_df[COL_TOTAL_HOURS_WORKED].sum():,.2f}")
 
 

@@ -23,6 +23,9 @@ logs/*
 # Ignore notebook checkpoint saves
 .ipynb_checkpoints/
 
+# Ignore local_only files
+local_only/*
+
 .DS_Store
 Thumbs.db
 
