@@ -30,12 +30,10 @@ This project analyzes U.S. nursing home staffing and quality metrics using moder
 10. Incident Counts (Falls, Infections, etc.)
 
 ## 💡 Project Structure
-- [`dbt_healthcare/`](https://github.com/kindlerl/dbt_healthcare) — dbt models, snapshots, and macros used for transforming raw data into Silver and Gold layers.
 
 ```bash
 .
-├── [dbt_healthcare/](https://github.com/kindlerl/dbt_healthcare)         # dbt models, snapshots, and macros used for transforming raw data 
-├── [dbt_healthcare/](https://github.com/kindlerl/dbt_healthcare)         # dbt models and macros (separate repo)
+├── dbt_healthcare/         # dbt models and macros (separate repo, link below)
 ├── streamlit_dashboard/    # Streamlit app and visualization code
 ├── ingestion/              # Python + Lambda scripts for ingesting from Google Drive
 ├── rawdata/                # Raw CMS CSVs (local copy)
@@ -45,6 +43,7 @@ This project analyzes U.S. nursing home staffing and quality metrics using moder
 ├── Project_Documentation/  # Project summary, data dictionary, screenshots
 ├── README.md               # This file
 ```
+- 📁 [`dbt_healthcare`](https://github.com/your-username/dbt_healthcare) — dbt models, snapshots, and tests used for transforming raw data into Silver and Gold layers.
 
 ## 🔗 How to Run the Dashboard Locally
 
