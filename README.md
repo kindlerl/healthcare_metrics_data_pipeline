@@ -20,6 +20,9 @@ This project analyzes U.S. nursing home staffing and quality metrics using moder
 - **Gold Layer:** dbt models that calculate 10 KPIs across staffing, quality, cost, and throughput
 - **Reporting:** Streamlit dashboard with interactive filters, charts (Plotly), and dark/light themes
 
+## 📄 Data Dictionary  
+A full description of all original columns and data types is available in [`references/NH_Data_Dictionary.pdf`](./references/NH_Data_Dictionary.pdf)
+
 ## 📓 KPIs Tracked
 
 1. Total Hours Worked (State & Month)
@@ -34,7 +37,6 @@ This project analyzes U.S. nursing home staffing and quality metrics using moder
 10. Incident Counts (Falls, Infections, etc.)
 
 ## 💡 Project Structure
-
 ```bash
 .
 ├── dbt_healthcare/         # dbt models and macros (separate repo, link below)
@@ -67,10 +69,12 @@ $ pip install -r requirements.txt
 $ streamlit run streamlit_dashboard/app.py
 ```
 
-## 🎥 Video Walkthrough
-
-[Link to video walkthrough]\
-Covers the architecture, tech stack, and dashboard demo.
+## 📊 Sample Visuals from Streamlit Dashboard
+| Visualization | Preview |
+|---------------|---------|
+| Total Hours Worked by Nurses, by Hospital | [![Thumbnail](./assets/images/thumbs/KPI_Total_Hours_Worked_by_Nurses_by_Hospital_Thumb.png)](./assets/images/full/KPI_Total_Hours_Worked_by_Nurses_by_Hospital.png) |
+| Total Hours Worked by Nurses by State | [![Thumbnail](./assets/images/thumbs/KPI_Total_Hours_Worked_by_Nurses_by_State_Thumb.png)](./assets/images/full/KPI_Total_Hours_Worked_by_Nurses_by_State.png) |
+| Average Nurse Hours Per Patient Day (HPPD) | [![Thumbnail](./assets/images/thumbs/KPI_Average_Nursing_Hours_Per_Patient_Day_HPPD_Thumb.png)](./assets/images/full/KPI_Average_Nursing_Hours_Per_Patient_Day_HPPD.png) |
 
 ## 🔎 Insights from the Data
 
@@ -89,9 +93,14 @@ See the [`project_summary.md`](./project_summary.md) file for a detailed explana
 - **dbt** for transformation, testing, and layering
 - **Streamlit + Plotly** for final reporting/dashboarding
 
-## 📅 Deliverables
+## 🔆 Deliverables
+- End-to-end source code for the Healthcare Data Pipeline
+- Entity Relationship Diagram
+- Data modeling logic implemented with dbt
+- Visualizations and insights generated via Streamlit
+- A detailed [Project Summary](./project_summary.md) highlighting key findings
 
--
+> Note: Private deliverables such as the project walkthrough video and internal documentation have been shared separately.
 
 ---
 
