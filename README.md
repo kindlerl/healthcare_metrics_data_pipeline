@@ -33,6 +33,7 @@ This project analyzes U.S. nursing home staffing and quality metrics using moder
 
 ```bash
 .
+├── [`dbt_healthcare/`](https://github.com/your-username/dbt_healthcare)         # dbt models, snapshots, and macros used for transforming raw data 
 ├── dbt_healthcare/         # dbt models and macros (separate repo)
 ├── streamlit_dashboard/    # Streamlit app and visualization code
 ├── ingestion/              # Python + Lambda scripts for ingesting from Google Drive
@@ -79,7 +80,7 @@ See the `project_summary.md` file for a detailed explanation of each question be
 ## 🚀 Tech Stack
 
 - **Google Drive API** for source data access
-- **AWS S3 + Lambda + DynamoDB** for ingestion and tracking
+- **AWS S3 + Lambda + DynamoDB + AWS EventBridge** for ingestion and tracking
 - **Snowflake** as cloud data warehouse
 - **dbt** for transformation, testing, and layering
 - **Streamlit + Plotly** for final reporting/dashboarding
