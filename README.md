@@ -34,7 +34,7 @@ This project analyzes U.S. nursing home staffing and quality metrics using moder
 ```bash
 .
 ├── [dbt_healthcare/](https://github.com/kindlerl/dbt_healthcare)         # dbt models, snapshots, and macros used for transforming raw data 
-├── dbt_healthcare/         # dbt models and macros (separate repo)
+├── [dbt_healthcare/](https://github.com/kindlerl/dbt_healthcare)         # dbt models and macros (separate repo)
 ├── streamlit_dashboard/    # Streamlit app and visualization code
 ├── ingestion/              # Python + Lambda scripts for ingesting from Google Drive
 ├── rawdata/                # Raw CMS CSVs (local copy)
