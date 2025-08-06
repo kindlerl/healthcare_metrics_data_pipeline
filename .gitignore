@@ -14,6 +14,9 @@ __pycache__/
 # Ignore dbt - it has its own GitHub repo
 dbt_healthcare/*
 
+# Ignore iteration architecture images
+assets/architecture/Healthcare_Project_DLL*
+
 # Ignore large data files
 rawdata/*.csv
 
