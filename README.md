@@ -43,7 +43,7 @@ This project analyzes U.S. nursing home staffing and quality metrics using moder
 ├── Project_Documentation/  # Project summary, data dictionary, screenshots
 ├── README.md               # This file
 ```
-- 📁 [`dbt_healthcare`](https://github.com/your-username/dbt_healthcare) — dbt models, snapshots, and tests used for transforming raw data into Silver and Gold layers.
+- 📁 [`dbt_healthcare`](https://github.com/kindlerl/dbt_healthcare) — dbt models, snapshots, and tests used for transforming raw data into Silver and Gold layers.
 
 ## 🔗 How to Run the Dashboard Locally
 
