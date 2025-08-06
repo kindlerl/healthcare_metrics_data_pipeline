@@ -70,7 +70,7 @@ Covers the architecture, tech stack, and dashboard demo.
 
 ## 🔎 Insights from the Data
 
-See the `project_summary.md` file for a detailed explanation of each question below:
+See the [`project_summary.md`](./project_summary.md) file for a detailed explanation of each question below:
 
 - What is the relationship between nurse staffing and hospital occupancy?
 - Which hospitals have the highest overtime hours for nurses?
