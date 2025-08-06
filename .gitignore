@@ -11,6 +11,9 @@ __pycache__/
 .venv/
 .env
 
+# Ignore the Project_Documentation folder
+Project_Documentation/*
+
 # Ignore dbt - it has its own GitHub repo
 dbt_healthcare/*
 

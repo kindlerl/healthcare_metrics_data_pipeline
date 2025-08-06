@@ -78,7 +78,9 @@ $ streamlit run streamlit_dashboard/app.py
 
 ## 🔎 Insights from the Data
 
-See the [`project_summary.md`](./project_summary.md) file for a detailed explanation of each question below:
+📄 **Project Summary**
+Includes detailed responses to the 4 core analysis questions below, supported by visual insights and data patterns. See [`project_summary.md`](project_summary.md).
+
 
 - What is the relationship between nurse staffing and hospital occupancy?
 - Which hospitals have the highest overtime hours for nurses?
