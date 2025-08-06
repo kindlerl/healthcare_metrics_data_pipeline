@@ -70,8 +70,8 @@ $ streamlit run streamlit_dashboard/app.py
 ```
 
 ## 📊 Sample Visuals from Streamlit Dashboard
-| Visualization | Preview |
-|---------------|---------|
+| Visualization | Preview (click for full size) |
+|---------------|-------------------------------|
 | Total Hours Worked by Nurses, by Hospital | [![Thumbnail](./assets/images/thumbs/KPI_Total_Hours_Worked_by_Nurses_by_Hospital_Thumb.png)](./assets/images/full/KPI_Total_Hours_Worked_by_Nurses_by_Hospital.png) |
 | Total Hours Worked by Nurses by State | [![Thumbnail](./assets/images/thumbs/KPI_Total_Hours_Worked_by_Nurses_by_State_Thumb.png)](./assets/images/full/KPI_Total_Hours_Worked_by_Nurses_by_State.png) |
 | Average Nurse Hours Per Patient Day (HPPD) | [![Thumbnail](./assets/images/thumbs/KPI_Average_Nursing_Hours_Per_Patient_Day_HPPD_Thumb.png)](./assets/images/full/KPI_Average_Nursing_Hours_Per_Patient_Day_HPPD.png) |
