@@ -30,7 +30,7 @@ This project analyzes U.S. nursing home staffing and quality metrics using moder
 10. Incident Counts (Falls, Infections, etc.)
 
 ## 💡 Project Structure
-[![Report 1](reports/thumbnails/Report_1_Weekly_Sales_by_Store_and_Holiday_thumb.png)](reports/Report_1_Weekly_Sales_by_Store_and_Holiday.png)
+
 ```bash
 .
 ├── [dbt_healthcare/](https://github.com/kindlerl/dbt_healthcare)         # dbt models, snapshots, and macros used for transforming raw data 
