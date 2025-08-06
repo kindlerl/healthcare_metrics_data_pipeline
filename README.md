@@ -6,6 +6,10 @@ This project analyzes U.S. nursing home staffing and quality metrics using moder
 
 ## 📊 Project Architecture
 
+[![ArchitectureDiagram](./assets/images/thumbs/Healthcare_Project_Architecture_thumb.png)](./assets/images/full/Healthcare_Project_Architecture.png)
+
+(Click image to open a full sized image)
+
 - **Data Sources:** 15+ raw CMS CSV files from Google Drive
 - **Ingestion Pipeline:**
   - AWS Lambda to incrementally move files from Google Drive → S3
