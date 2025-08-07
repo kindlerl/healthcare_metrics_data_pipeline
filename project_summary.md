@@ -21,11 +21,11 @@ Patient-level occupancy or capacity fields were unavailable.  As a result, **nur
 
 [See associated visualization](./assets/images/full/observation1_hppd.png)
 
-- *Meadow View Health* and Rehabilitation experienced a **consistent decline** in patient days across three months, but only reduced nurse hours after the second month — suggesting a lagging staffing adjustment in response to occupancy drops.
+- Some providers, like *Meadow View Health and Rehabilitation* showed a **consistent decline** in patient days across three months, but only reduced nurse hours after the second month — suggesting a lagging staffing adjustment in response to occupancy drops.
 
-- *Parkview Care Center* showed a **brief dip in HPPD in May followed by a partial recovery in June**, indicating a moderate and timely adjustment in staffing as patient volume changed.
+- Other providers, like *Parkview Care Center* showed a **brief dip in HPPD in May followed by a partial recovery in June**, indicating a moderate and timely adjustment in staffing as patient volume changed.
 
-- In contrast, *Lutheran Life Villages* demonstrated **stable staffing alignment**, with HPPD fluctuating less than ±5% from a 3-month average of 3.77 — implying either **consistent occupancy patterns or deliberate staffing stability**.
+- In contrast, *Lutheran Life Villages* maintained a **stable staffing alignment**, with HPPD fluctuating less than ±5% from a 3-month average of 3.77 — implying either **consistent occupancy patterns or deliberate staffing stability**.
 
 > Together, these cases highlight the operational complexity of aligning nurse staffing to fluctuating patient volume and underscore the importance of tracking HPPD to identify where mismatches may occur.
 
@@ -50,7 +50,12 @@ Overtime hours were estimated using a standard healthcare analytics proxy metric
 
 ## ❓ 3. Average Staffing Levels by State and Hospital Type
 
-[![USMap](./assets/images/thumbs/observation3_staff_levels_by_state_thumb.png)](./assets/images/full/observation3_staff_levels_by_state.png)
+<div style="text-align: center;">
+    [![Map of United States](./assets/images/thumbs/observation3_staff_levels_by_state_thumb.png)](./assets/images/full/observation3_staff_levels_by_state.png)
+    <div style="margin-top: 8px;">
+        (Click image for full size)
+    </div>
+</div>
 
 Due to a lack of explicit "hospital type" data (e.g., urban vs rural), this analysis focused on **average nurse hours per patient day (HPPD)** by **U.S. state and region**.
 
