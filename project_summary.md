@@ -28,13 +28,14 @@ Patient-level occupancy or capacity fields were unavailable.  As a result, **nur
 
 - In contrast, *Lutheran Life Villages* maintained a **stable staffing alignment**, with HPPD fluctuating less than ±5% from a 3-month average of 3.77 — implying either **consistent occupancy patterns or deliberate staffing stability**.
 
+> [!NOTE]
 > Together, these cases highlight the operational complexity of aligning nurse staffing to fluctuating patient volume and underscore the importance of tracking HPPD to identify where mismatches may occur.
 
 ---
 
 ## ❓ 2. Which Hospitals Have the Highest Overtime Hours?
 
-Overtime hours were estimated using a standard healthcare analytics proxy metric:
+Since the data did not provide regular and overtime hours metrics, overtime hours were estimated using a standard healthcare analytics proxy metric:
 
 ```text
 % Overtime = Contractor Nurse Hours / (Employee + Contractor Nurse Hours)
@@ -45,6 +46,7 @@ Overtime hours were estimated using a standard healthcare analytics proxy metric
 - More than **350 facilities recored contractor usage exceeding 60%**.
 - These high ratios likely indicate staffing shortages and higher operational costs due to dependence on contingent labor.
 
+> [!NOTE]
 > While not literal overtime from timecards, this ratio reveals real stress on core staffing models and financial implications.
 
 ---
@@ -59,6 +61,7 @@ Due to a lack of explicit "hospital type" data (e.g., urban vs rural), this anal
 - **Midwest, South, and Northeast** states averaged around 3.75–3.79 HPPD.
 - **Puerto Rico** had an even higher average (5.20) but reflects a small facility count.
 
+> [!NOTE]
 > State-level differences may reflect policy, staffing mandates, or population-driven facility scale. The consistent clustering in most regions suggests baseline national staffing stability.
 
 ---
@@ -70,6 +73,7 @@ While individual length-of-stay (LOS) metrics were not present, **monthly total 
 - Some facilities showed steady or declining patient days, with staffing levels adjusting accordingly.
 - Others maintained flat patient volume but had unaligned staffing adjustments, suggesting other operational dynamics at play.
 
+> [!NOTE]
 > Monitoring total patient days over time provides insight into facility throughput and supports better decisions around bed management, staffing, and discharge planning while maintaining a positive patient exerience.
 
 ---
