@@ -9,7 +9,8 @@ This document provides detailed answers and data-driven insights related to the 
 3. What are the average staffing levels by state and hospital type?
 4. What trends can you identify in patient length of stay over time?
 
-Each insight is backed by analysis from transformed datasets modeled via dbt, visualized in Streamlit, and aggregated using Snowflake SQL.
+> [!NOTE]
+> Each insight is backed by analysis from transformed datasets modeled via dbt, visualized in Streamlit, and aggregated using Snowflake SQL.
 
 ---
 
@@ -50,12 +51,7 @@ Overtime hours were estimated using a standard healthcare analytics proxy metric
 
 ## ❓ 3. Average Staffing Levels by State and Hospital Type
 
-<div style="text-align: center;">
-    [![Map of United States](./assets/images/thumbs/observation3_staff_levels_by_state_thumb.png)](./assets/images/full/observation3_staff_levels_by_state.png)
-    <div style="margin-top: 8px;">
-        (Click image for full size)
-    </div>
-</div>
+![Map of United States](./assets/images/full/observation3_staff_levels_by_state.png)
 
 Due to a lack of explicit "hospital type" data (e.g., urban vs rural), this analysis focused on **average nurse hours per patient day (HPPD)** by **U.S. state and region**.
 
