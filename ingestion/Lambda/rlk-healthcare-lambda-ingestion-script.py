@@ -100,17 +100,6 @@ def lambda_handler(event, context):
                     print(f"Error uploading file '{file_name}' to S3: {e}")
                     continue
 
-            # # Update DynamoDB
-            # try:
-            #     table.put_item(Item={
-            #         'filename': file_name,
-            #         'timestamp': timestamp,
-            #         'status': 'uploaded'
-            #     })
-            #     print(f"File '{file_name}' status updated in DynamoDB.")
-            # except Exception as e:
-            #     print(f"Error updating DynamoDB: {e}")
-            #     continue
     except Exception as e:
         print(f"Error processing files: {e}")
         return {
